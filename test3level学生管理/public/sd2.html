@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>student</title>
+    <script src="./bootstrap-3.3.7-dist/js/jQuery-2.2.2-min.js"></script>
+    <script src="./bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="./bootstrap-3.3.7-dist/css/bootstrap.min.css"
+    />
+    <script src="bootstrap-3.3.7-dist/js/template-web.js"></script>
+    <script src="./javascripts/sd2.js"></script>
+  </head>
+  <style>
+    /* .add-sql-table{
+      display: none; 
+    }
+    .add-sql-table-show{
+      display: block;
+    } */
+    .add-sql-table td input{
+   
+      width: 100%;
+    }
+    </style>
+  <style></style>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4   col-lg-offset-4 text-center">
+          <h1 class="text-center">搜查</h1>
+          <form role="form" id="form-search-control">
+            <select name="" id="select-search" class="form-control">
+              <option value="name">name</option>
+              <option value="age">age</option>
+              <option value="sex">sex</option>
+              <option value="_id">id</option>
+              <option value="classId">class 功能还不行</option>
+            </select>
+            <div class="input-group">
+              <input type="text" class="form-control form-search" />
+              <span class="input-group-btn">
+                <button class="btn btn-default button-search" type="button">
+                  Go!
+                </button>
+              </span>
+            </div>
+            <!-- /input-group -->
+          </form>
+        </div>
+        <!-- /.col-lg-6 -->
+        <div class="col-lg-4 text-right login-infor"></div>
+      </div>
+      <!-- /.row -->
+      <div class="row">
+        <div class="col-lg-12">
+          <h1>学生列表</h1>
+          <form class="bs-example bs-example-form" role="form"></form>
+          <table class="table table-hover table-striped table-bordered ">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>student_id</th>
+                <th>img</th>
+                <th>name</th>
+                <th>age</th>
+                <th>sex</th>
+                <th>班级</th>
+                <th hidden>班级修改</th>
+
+                <th >control</th>
+              
+              </tr>
+            </thead>
+            <tbody class="tbodycontent">
+              <script type="text/html" id="mystudents">
+                  {{each}}
+                  <tr>
+                    <td>{{$index}}</td>
+                    <td>{{$value._id}}</td>
+                    {{if $value.img}}
+                    <th><img src="./files/{{$value.img}}"  alt="" width="50px"></th>
+                    {{else}}
+                    <th><img src="./files/r9mA9w7gyRbDlvb2zVrzjHwQ.png" alt="" width="50px"></th>
+                    {{/if}}
+                    <td><input type="text" disabled value={{$value.name}}></td>
+                    <td><input type="text" disabled value={{$value.age}}></td>
+                    <td><input type="text" disabled value={{$value.sex}}></td>
+                    <td><input type="text"  disabled value={{$value.classId.name}}></td>
+                    <td hidden><select name="" class="select-alter" >
+
+                    </select></td>
+                    <td><button class="btn btn-default deletebutton">取消</button></td>
+                    <td><button class="btn btn-danger updatebutton">修改</button></td>
+                    {{/each}}
+                </tr>
+              </script>
+              <script type="text/html" id="studenterror">
+                {{each response}}
+                <tr>
+                  <td class="text-center" colspan="6"><h1>{{$value}}</h1></td>
+                </tr>
+                {{/each}}
+              </script>
+            </tbody>
+          </table>
+
+          <button class="btn btn-default btn-sm first-page">首页</button>
+          <button class="btn btn-warning btn-sm last-page">上一页</button>
+          <span
+            ><strong
+              ><input
+                class="btn btn-default btn-sm currentpage"
+                value="1"/></strong
+          ></span>
+          <button class="btn btn-danger btn-sm next-page">下一页</button>
+          <button class="btn btn-default btn-sm footer-page">尾页</button>
+          <span class="text-right total-data pull-right"
+            ><strong></strong
+          ></span>
+          <select name="" id="page-select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- 文件上传功能 -->
+          <h3>文件上传</h3>
+          <form id="uploadForm" class="form-inline" role="form">
+            <div class="form-group ">
+              <input
+                type="file"
+                class="form-control"
+                name="myFiles"
+                id="selectFiles"
+              />
+
+              <input
+                type="button"
+                class="btn btn-default form-control"
+                value="上传"
+                id="uploadBtn"
+              />
+            </div>
+          </form>
+          <!-- 文件下载功能 -->
+          <h3>文件下载</h3>
+          <a
+            class="btn btn-link"
+            href="/files/download?fileName=r9mA9w7gyRbDlvb2zVrzjHwQ.png"
+            >下载</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="buttoncontrol  container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-12">
+
+              <h1 class="text-left">新增学生</h1>
+              <button class="btn btn-danger  text-center addbutton">新增学生</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+            <div class="xixi clearfix" style="width: 100%;">
+                <table
+                  class="table table-hover clearfix table-striped table-bordered add-sql-table " >
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>student_id</th>
+                      <th>name</th>
+                      <th>age</th>
+                      <th>sex</th>
+                      <th>照片</th>
+                      <th>班级</th>
+                      <th >control</th>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td><input type="text" disabled value="auto" /></td>
+                    <td><input type="text" disabled value="auto" /></td>
+                    <td><input type="text" /></td>
+                    <td><input type="text" /></td>
+                    <td><input type="text" /></td>
+                    <td>
+                      <input type="file" class=""   accept = "image/*" name="myFiles" id="selectFilesphoto">
+        
+                      <!-- <input type="button" class="btn btn-default form-control" value="上传" id="uploadBtnphoto"> -->
+                   </td>
+                    <td><select id="selectClass"> </select></td>
+                   
+                    <td >
+                      <button class="btn btn-danger addconfirm">确定</button>
+                      <!-- <button class="btn btn-danger removeconfirm">取消</button></td> -->
+                    </td>
+                  </tr>
+                </table>
+            </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+          <table
+            class="table table-hover table-striped table-bordered add-sql-table "
+          >
+            <thead>
+              <tr>
+                <th>班级新增</th>
+
+                <!-- <th>sex</th> -->
+                <th colspan="2">control</th>
+              </tr>
+            </thead>
+            <tr>
+              <td>
+                <input name="addClass-input" class="form-control" type="text" />
+              </td>
+              <td colspan="2">
+                <button class="btn btn-danger addClassConfirm">确定加入</button>
+                <!-- <button class="btn btn-danger removeconfirm">取消</button></td> -->
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-lg-4"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    // 是否登录
+
+ 
+  
+  </script>
+</html>

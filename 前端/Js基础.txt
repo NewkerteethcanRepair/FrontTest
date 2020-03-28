@@ -1,0 +1,345 @@
+2019 12 16
+用哪个方法实现下彩虹特效 复习下linear-gradtion
+
+2019 1217 
+NaN 属于number类型
+
+2019 1220
+数组增删改查看一下
+
+2019 1222
+
+*******************************慢慢细品快速排序
+
+
+2019 1223
+AB visiblity:看不见，摸的着. display:看不见，摸不着. display是dom级别的，可以渲染和重绘。 visiblity不是dom级别的，不能重绘，只能渲染
+
+*************两个数组相加一起组成新数组 length改变问题？ 可以啊
+
+
+
+2019 
+
+2019 1224
+
+***************8splice  array[array.length]为什么赋值了后确实underfined
+
+*****************concat 用 新变量遍历
+
+
+2019 1225
+
+1 ）****a.push(...b）和 fn(a,...b)混用和不混用的差距？基本无差距但是有细小的问题。？？？（√）
+
+...b 后赋值给 a， a再次...a 为什么会没有变化?  
+
+其实和拷贝没有关系。  let b =[...a] 等价于 let b=a; 要相等 let b=...a但是语法不符合 所以现阶段永远不行！
+
+2）******let arr1=[1,2];
+
+let arr2=arr1;
+arr2[0]=2;
+console.log(arr1);  arr1[2,2] ?    
+
+赋值问题？？？ 深拷贝和浅拷贝？（√）
+
+引用对象 并没有生成，只是新生成的变量指向了 arr1的值，指针改变了，并没有新生成
+其实就是浅拷贝！。
+引用类型都是浅拷贝
+
+3）var num4=computer(num1()); == 闭包吗？ 但是还是+1了  为什么？？？？？？？？
+
+
+cursor光标
+
+2019 1226
+类方法写抽奖系统
+闭包
+1）****1. 变量声明、函数声明都会被提升到作用域顶处；
+****2. 当出现相同名称时，优先级为：变量声明(foo#1) < 函数声明(foo#2) < 变量赋值(foo#3)
+
+2）链接：https://www.nowcoder.com/questionTerminal/f8005745d5634378856dfacc473c8b8b
+来源：牛客网
+ function test(a, b){
+a=a+10;
+b.name = 'xiaohong'
+}
+var a=10;
+var b = {'name': 'xiaoming'}
+console.log(b.name) // 'xiaoming'
+test(a, b);
+console.log(a); // 10
+console.log(b.name) // 'xiaohong'
+
+2019 1227
+
+1）null和undefined是原始值，不会类型转换，但双等是相等的
+隐式类型转换？
+
+2）function 和Function
+
+3） 理解 function add(){}定义的函数会优先解析，而不是顺序解析；因此整个过程中，首先依次解析两个add function，由于同名，所以后者会覆盖前者；然后，顺序解析其余的JS代码，y = add(m);语句和z = add(m); 语句调用的都是第二个add function，因此返回的都是4.
+定义函数的三种方式有：function函数、Function()构造函数、对象字面量。
+从解析顺序来分析，它们的不同在于：function函数：优先解析；Function()构造函数、函数字面量定义:顺序解析。
+                    示例：
+                        // 4 2 3 3 5 6
+                        function f(){return 1;}                 // 函数1     优先解析
+                        alert(f());        //返回值为4 说明第1个函数被第4个函数覆盖   
+                        var f = new Function("return 2;");        // 函数2
+                        alert(f());        //返回值为2 说明第4个函数被第2个函数覆盖
+                        var f = function(){return 3;}            // 函数3
+                        alert(f());           //返回值为3 说明第2个函数被第3个函数覆盖   
+                        function f(){return 4;}                 // 函数4    优先解析 覆盖函数1
+                        alert(f());        //返回值为3 说明第4个函数被第3个函数覆盖
+                        var f = new Function("return 5");         // 函数5
+                        alert(f());    //返回值为5 说明第3个函数被第5个函数覆盖   
+                        var f = function(){return 6 ;}            // 函数6
+                        alert(f());        //返回值为6 说明第5个函数被第6个函数覆盖   
+
+2019 12 28
+继承  继承方式 对象冒充 call 和 原型链继承
+***********闭包为什么可以访问其他函数的变量？
+***********多态 一段代码可以有多种功能
+
+2019 1230
+哪些技术可用于优化 CSS 图片加载 ABCD
+A CSSSprite B SVGSprite CIconfont D Base64
+A,减少对服务器请求
+B,体积小，矢量
+C,体积小，矢量，集成度高
+D, 减少对服务器请求
+
+浏览器不兼容CommonJS的根本原因，在于缺少四个Node.js环境的变量。 module exports require global 
+
+1)delete 理解 
+
+2) **读书系统 时间 写一下 ？？
+
+
+2019 12 31
+typeof
+undefined        值未定义
+boolean           布尔值
+string               字符串
+number            数值（整形和浮点）
+object                对象或null
+function            函数
+
+2020 1 02
+1) 租车 时间写一下  时间多的话写一个prototype继承做一下 
+
+2）子类继承父类的时候。 其实 方法写到 私有或者类方法或者 写到父类的prototype 都可以 
+但是 写到prototype只调用了1次，而私有方法时。每次super都会调用一次，有多少子类就会调用多少次
+
+2012 0103
+1 函数也是对象？ 对的， 应为实际function 也是Function的prototype 即是Function的原型对象
+
+***看哈hasOwnproperty 非继承
+
+2
+function Foo(){'use strict'
+console.log(this.location);
+}
+Foo()
+'use strict'是严格模式 
+严格模式下禁止this关键字指向全局对象。
+此时this为undefined。
+3
+回调函数，这是异步编程最基本的方法。
+事件监听，另一种思路是采用事件驱动模式。任务的执行不取决于代码的顺序，而取决于某个事件是否发生。
+发布/订阅，上一节的"事件"，完全可以理解成"信号"。
+Promises对象，Promises 对象是CommonJS 工作组提出的一种规范，目的是为异步编程提供统一接口。
+
+4
+静态语言（强类型语言）
+静态语言是在编译时变量的数据类型即可确定的语言，多数静态类型语言要求在使用变量之前必须声明数据类型。 
+
+例如：C++、Java、Delphi、C#等。
+动态语言（弱类型语言）
+动态语言是在运行时确定数据类型的语言。变量使用之前不需要类型声明，通常变量的类型是被赋值的那个值的类型。 
+例如PHP/ASP/Ruby/Python/Perl/ABAP/SQL/JavaScript/Unix Shell等等。
+
+2012 0104
+type of () =="string" or"number"
+xx instanceof String or Number
+
+用下正则表达式
+
+20200105
+concat函数连接多个array，不改变原array，返回连接的结果
+
+map函数对array中的每一项执行指定函数，将每一项执行的结果组成新的array返回
+
+sort函数返回排序后的array，会改变原array
+
+splice函数对array进行操作，会改变array
+
+20200106
+
+for ... in 循环返回的值都是数据结构的 键值名。
+遍历对象返回的对象的key值,遍历数组返回的数组的下标(key)。
+
+for ... in 循环不仅可以遍历数字键名,还会遍历原型上的值和手动添加的其他键。如——例3
+
+特别情况下, for ... in 循环会以任意的顺序遍历键名
+
+总结一句: for in 循环特别适合遍历对象。
+
+**************for of 循环用来获取一对键值对中的值。
+	不管对象还是数组
+	for(var i in b){     map 用 in 或者of 都可以
+  	 log(i) //是键值名
+  	a[i]//键值
+	}
+	for(var i of b）{  所以一般set 用 of
+	log [i]//键值
+	}
+
+2
+//自定义异常  throw new myerror(a)  a是function里面参数？？、
+
+*******任何对象转为布尔值，都为得到 true
+（切记！在 JS 中，只有 0，-0，NaN，""，null，undefined 这六个值转布尔值时，结果为 false）。
+1 super（）可以调用没有指向
+2 多态
+3 new target只能在 构造函数中使用， 不能再里面的实例对象方法中用，差不多就是constructor 第一行使用
+4自定义对象只能固定 条件 throw new myerror（固定参数=message）？？？？？
+5 尽量用 array object内置方法做 
+
+******6 变量作用域 let 和 var
+var 命令的变量提升机制，var 命令实际只会执行一次。
+而 let 命令不存在变量提升，所以每次循环都会执行一次，声明一个新变量（但初始化的值不一样）。
+for 的每次循环都是不同的块级作用域，let 声明的变量是块级作用域的，所以也不存在重复声明的问题。
+let生命变量的for循环里，每个匿名函数实际上引用的都是一个新的变量
+
+20200107
+对象怎么添加对象值
+在js里面添加的属性名使用驼峰法，在css里面使用连接线 除了id和query 其他返回的都是节点列表
+
+20200108
+setAttribute
+getAttribute
+onclick 里面只能 放函数 识别 函数
+
+
+20200109 
+合理使用 var a=document.createElement("你要创建的标签")
+a.innerHTML="xxxxx";
+HTML元素.appendChild(子节点）
+
+
+2 扩展运算符看一下*********************************888
+
+**********快速排序   
+登录界面 js优化 
+
+attr 和 prop 的区别
+
+
+202001012
+
+js的onload
+区别一：执行时间不同
+window.onload()是在页面所有元素（包括图片，引用文件）加载完成后再执行。也就是说页面所有的东西都加载完成之后再加载。
+
+$(document).ready()是DOM结构绘制完毕就执行，不必等到加载完毕，意思就是，DOM数加载完毕，不必等到页面中的图片或其他外部文件都加载完毕。所以$(document).ready()执行更快
+
+区别二：编写个数不同
+window.onload()同时编写多个，在执行的时候，只会执行最后一个。也就是说只执行一次。
+$(document).ready()编写多个，就执行多个
+区别三：有无简写
+window.onload()没有简写的方式
+$(document).ready()简写 $(function(){})
+
+2020 0113
+************************8preventDefault()后 加入submit 属性却没用????????
+
+2020 0114
+ toTOP 滚动置顶
+
+
+2020  0115
+
+offset 轮播js 图 
+
+只有和用户交互的才能称为事件 比如 点击 移动 
+
+20200115
+多态和继承看一下
+
+set和map
+
+2020 0119
+1 **** 为什么9功图 没有添加 background-color 属性 但是父类确又？？？
+2 ***** 对象 里面的属性 一定要 遍历吗， 为什么不能 单独 arr[1];
+
+
+2020 0204
+
+***************************
+根据官方的建议：具有 true 和 false 两个属性的属性，如 checked, selected 或者 disabled 使用prop()，其他的使用 attr()
+到此，将 attr(‘checked’) 改成 prop(‘checked’) 即可修复提的 issues 了。
+
+2020 0206
+计时测试可以用
+console.time()
+结束及时
+用console.timeEnd()
+
+
+2020 0208
+ 添加 blur 事件 (失去焦点)事件
+ keyup
+ 
+2 
+set 和map 
+set 哟弄个与保存不重复的数据（只有值，没有键）  应用场景：去重
+map 用于保存键值对数据 如：name：张三	 应用场景：复制数据
+2020 0210
+轮播淡入淡出效果
+多态看一下
+
+3 2020 0211
+canvas 不支持ie8
+自由移动？ （）√
+requestanimationFrame？？？ √
+兼容？？ X
+
+2020 02 12
+1如何遍历复杂的map entires
+
+2首先需要用get(0)的方法将jQuery对象转为原生js对象
+
+3其次，使用定时器监听视频的播放状态
+
+ ***1 电影院 本地存储 评论 和 登录页面 √x
+
+**2 地图 （√X）
+
+**3 video 加载 （√）
+
+***4 瀑布流 
+
+2020 02 13
+为了防止 onload冲突，建议 直接监听  jquery也要吗？
+
+第三阶段
+2020 02 19
+
+readdir  读取全部文件
+data.foreach(item=>{
+)
+
+  align-self: center;垂直居中 新css方法 必须弹性
+1 对于最最基础的单行文本，要想实现垂直方向居中，很简单的方法就是让文本的行高等于父级元素的高度。这个仅适用于让当行文本垂直居中的情况，多行文本就不适用了。
+
+2 如果是图片的话，直接设置img的属性vertical-align: middle;前提是需要设置父级元素为块级元素并且设置高度。
+
+
+
+2020 0220
+
+
+ajax
+1. 可以实现与服务端的异步通信 2. 实现页面的局部刷新

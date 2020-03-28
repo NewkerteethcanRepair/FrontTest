@@ -1,0 +1,1 @@
+export const GET_STUDENTS_BY_PAGE = "getStudentsByPage";

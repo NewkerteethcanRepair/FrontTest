@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>student</title>
+    <script src="./bootstrap-3.3.7-dist/js/jQuery-2.2.2-min.js"></script>
+    <script src="./bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="./bootstrap-3.3.7-dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <table class="table table-hover table-striped table-bordered ">
+      <thead>
+        <th>#</th>
+        <th>学生编号</th>
+        <th>name</th>
+        <th>age</th>
+        <th>sex</th>
+        <th>control</th>
+      </thead>
+      <tbody>
+        
+
+      </tbody>
+    </table>
+  </body>
+  <script>
+    $(function() {
+      getajax();
+      removebuttom();
+      console.log("sda");
+  
+    
+    });
+    function getajax() {
+      $.ajax({
+        type: "post",
+        url: "./sd/students",
+        //   data: null,
+        success: function(response) {
+          console.log(response);
+       
+          adddata(response);
+        
+          
+        }
+      });
+    }
+    // <td>#</td>
+    //       <td>学生编号</td>
+    //       <td>name</td>
+    //       <td>age</td>
+    //       <td>sex</td>
+    //       // <td>control</td>
+    function adddata(response) {
+      for (var i in response) {
+        $(".table-bordered tbody").append(`
+            <tr>
+            <td>${i}</td>
+            <td>${response[i].id}</td>
+            <td>${response[i].name}</td>
+            <td>${response[i].age}</td>
+            <td>${response[i].sex}</td>
+            <td><button class="btn btn-danger deletebutton">取消</button></td>
+        </tr>
+            `);
+      }
+    }
+    function removebuttom() {
+      $("body").on("click", ".deletebutton", function() {
+      let id= $(this).parent("td").siblings("td").eq(1).text();
+        console.log(id);
+      
+        
+     
+
+        $.ajax({
+          type: "post",
+          url: "./sd/delete",
+          data: { id: id },
+          // dataType: "dataType",
+          success: function(response) {
+            alert("删除" + response);
+            if(response="成功"){
+              location.reload()
+           }
+          }
+        });
+      });
+    }
+  </script>
+</html>

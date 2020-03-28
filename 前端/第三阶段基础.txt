@@ -1,0 +1,90 @@
+template("xx",对象） 要求传对象
+
+2020 0221
+属性选择器 *[lang|="en"] {color: red;} 上面这个规则会选择 lang 属性等于 en 或以 en- 开头的所有元素。
+[abc*="def"]	选择 abc 属性值中包含子串 "def" 的所有元素
+
+20200225
+
+箭头函数没有 this， 如果使用 用的是 父类
+
+对象都是键值对形式吗？？？？
+
+为什么班级加入 会underfind？？
+2 在 修改是 第二次修改 option 无法加载 ？？？？
+
+如果mongodb 数据 是 嵌套的 那就 populate { path："xxx" 里面在populate}
+
+
+2020 0226 
+	
+	如果有很多数据 ，可以 return { 对象}
+
+template 模板哪里   
+{{each xxx}}  
+点击事件也是异步
+
+****Ajax的执行顺序在点击事件之前
+
+时间函数的异步
+根据时间的完成来执行
+
+当输入域失去焦点 (blur) 时改变其颜色：**************************************
+
+对象的键是变量的话 +[] 就好了 
+
+2020 0228
+
+*************  es7 async 怎么套欠 见 学生管理系统 的 图片上传功能
+**session 是服务端的，cookie 是前端的。**
+**我们数据保存在服务端的 session 里，保存成功后，会有一个 session 的标记返回到前端，然后保存在 cookie 里**
+**你可以理解成 sessionid**
+**session 保存成功后，会返回一个 sessionid 给前端，前端把这个 sessionid 保存在 cookie 里**
+
+**sessionStorage和localStorage是html5  本地化存储**
+
+
+20200307
+双击事件dbclick
+
+20200310
+学生管理 分页 的 详情页面  选择那一页 就显示那一页没有做完
+
+项目问题
+
+2020 0317
+*******为什么 在store 里面  通过 。。。mapstate（{xxx}）拿到的数据 ，跟 用data里面  赋值， 然后 data里面的aa 数据【。。。aaa】 会返回空值
+********el-ui有些class 的 样式 改了不起作用？？？？？？
+
+2020 0319
+没完成或者有bug的 地方 ，
+*******为什么 在store 里面  通过 。。。mapstate（{xxx}）拿到的数据 ，跟 用data里面  赋值， 然后 data里面的aa 数据【。。。aaa】 会返回空值
+********el-ui有些class 的 样式 改了不起作用？？？？？？
+1 detailmenu 哟些时候莫名其妙 会显示 图片报错 但是页面没问题
+2 那个 导航 this.router.push(/orderlist） 第二次点击跳转 跳主页
+
+
+3  注册  订单完成界面   √
+4 文字 居中  √
+5 页面 拉的很下面 点击后 新页面也很下面 √
+
+6 订单列表 button能 跳转 √
+7 必须要登录后 才有订单 ，且提交订单时必须登录 √
+8 锚点 
+5e7440b6dd78a3c4e1a4bc6a
+_id=5e74ae9ee5dc75fba145d19d
+
+2020 0321 
+vue 组件传值
+
+symbol
+
+20200325
+
+与react 结合的时候，layui 是纯dom操作，而react是虚拟dom ，二者的结合难免会出现诸多问题。
+
+1 select 下拉框
+
+默认值的修改要通过defaultValue 属性来修改，并且通过componentDidMount 来重新渲染from.render()，
+
+而且渲染到页面中，不是data开头的属性，react 不会加载该属性。只能通过componentDidMount 中重新增加属性。

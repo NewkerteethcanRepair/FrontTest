@@ -1,0 +1,9 @@
+{"_id":{"$oid":"5e54dfb279b58872fc834144"},"name":"等效性","age":"23","sex":"男","classId":{"$oid":"5e54c8613fd38fb05c1c9491"},"__v":0}
+{"_id":{"$oid":"5e54f03279b58872fc834145"},"name":"邓翔","age":"23","sex":"男","classId":{"$oid":"5e54c7bedcc0e2e47c02d282"},"__v":0}
+{"_id":{"$oid":"5e54f03579b58872fc834146"},"name":"邓翔","age":"23","sex":"男","classId":{"$oid":"5e54c7bedcc0e2e47c02d282"},"__v":0}
+{"_id":{"$oid":"5e55080c79b58872fc834148"},"name":"巷闲话","age":"12","sex":"男","classId":{"$oid":"5e54c7fddcc0e2e47c02d283"},"__v":0}
+{"_id":{"$oid":"5e5515581f120424b10e234d"},"name":"xxx324241","age":"123231","sex":"男","classId":{"$oid":"5e54c74bdcc0e2e47c02d281"},"__v":0}
+{"_id":{"$oid":"5e55155d1f120424b10e234e"},"name":"嘻嘻嘻","age":"123231","sex":"男23","classId":{"$oid":"5e54c74bdcc0e2e47c02d281"},"__v":0}
+{"_id":{"$oid":"5e5515621f120424b10e234f"},"name":"嘻嘻嘻231","age":"123231","sex":"男23","classId":{"$oid":"5e54c7fddcc0e2e47c02d283"},"__v":0}
+{"_id":{"$oid":"5e5525d2bd46e8146981d59b"},"name":"休息休息","age":"23","sex":"男","classId":{"$oid":"5e54c7bedcc0e2e47c02d282"},"__v":0}
+{"_id":{"$oid":"5e5525f3bd46e8146981d59c"},"name":"嘻嘻嘻231","age":"12","sex":"32","classId":{"$oid":"5e54c7fddcc0e2e47c02d283"},"__v":0}

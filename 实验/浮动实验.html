@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<style>
+.div1{
+    float: left;
+    /* clear: both; */
+}
+.div2{
+    clear: both;
+}
+</style>
+<body>
+    
+    <div class="div1">
+        <h1>sdadsad</h1>
+    </div>
+    <div class="div2">
+        <p>
+            dsahjkd1
+        </p>
+    </div>
+</body>
+<script>
+    // var x = 1;
+    // var obj = {
+    //   x: 2,
+    //   fun: function () {
+    //     var x = 3;
+    //     return this.x;
+    //   }
+    // };
+    // var fun = obj.fun;
+    // console.log(fun);
+    
+    // console.log( obj.fun(), fun() );
+
+
+    let obj = {
+     a: 1,
+     b: 2
+ };
+ Object.prototype.c = 3;
+ Object.defineProperty(obj, 'd', {
+     enumerable: false
+ });
+ console.log(obj);
+ console.log(Object.prototype);
+ console.log(obj.__proto__);
+ 
+ 
+ for (let key in obj) {
+     console.log(key);
+ }
+</script>
+
+</html>

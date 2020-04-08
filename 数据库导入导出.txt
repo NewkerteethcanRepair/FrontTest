@@ -1,0 +1,7 @@
+命令行：
+
+导出：
+mongoexport -d douban -c movies -o "导出的文件路径"
+
+导入：
+mongoimport -d douban -c movies --file C:\Users\admin\Desktop\doubanServer\movies.json --type=json

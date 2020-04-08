@@ -1,2 +1,18 @@
 1 todolist
 2 购物车 hook做
+
+3 回调函数 比如 onclick（function（）{
+
+}）为什么里面的会执行
+4 星星动态 react-native里面的没做
+
+5 设置了 text 的省略后    numberOfLines={1}
+ ellipsizeMode="tail" 弹性居中失效 why？
+
+扩展是保留原来的所有属性，后面再写重复的，就会把前面的覆盖饿了 覆盖的js对象的特点，跟扩不扩展没关系  √
+
+6 下拉刷新 没弄完  √
+
+7 detial 页面进入有问题
+
+

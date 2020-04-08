@@ -7,7 +7,9 @@ const initlist=[
     { id: 2, text: 'JS', done: false }
 ];
 export const getlist= handleActions({
-    ADDTO:(state,{payload})=>[...state,{
-        
+    [ADDTO]:(state,action)=>[...state,{
+        // id:3,
+        // text:action.payload,
+        // done:false,
     }]
 },initlist)

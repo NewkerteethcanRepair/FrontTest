@@ -1,5 +1,6 @@
 import { handleActions } from "redux-actions";
 import { GETSTUDENTDATA } from "./actions.type";
+import { DONETOGGLE } from "./actions.type";
 
 const initstudentData = {
   currentPage: 1,
@@ -13,3 +14,4 @@ export const pageData = handleActions(
   },
   initstudentData
 );
+

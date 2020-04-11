@@ -15,4 +15,8 @@
 
 7 detial 页面进入有问题
 
+8 flutter 无法自动补全代码 ，企鹅flutter后面都没听
+
+9  闭包练习 为什么=10； 在lv2JavaScript 闭包里面的test01 练习题
+
 

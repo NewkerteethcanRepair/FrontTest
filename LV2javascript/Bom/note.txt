@@ -1,0 +1,11 @@
+javaScript三大核心：ECMAScript BOM DOM
+ECMAScript:Js基础部分,js的面向对象语法,es6的新增内容 对于浏览器和Node服务器来说这部分共通,
+BOM:Brower Object Model 浏览器对象模型，专门设计用来操作浏览器的对象，通过js代码可以控制浏览器的某些行为
+window
+this 默认指向winodw
+price=110;//没有使用var来声明变量，默认就是window.price
+window.innerHeight window.innerWidth
+
+
+
+DOM: 文档对象模型 document Object Model

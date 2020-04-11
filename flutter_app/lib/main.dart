@@ -39,6 +39,8 @@ class MyApp extends StatelessWidget {
      
     //  ),//Scaffold
      home:HomePage()
+     
+    //  color.Col
    );//MaterialApp
    
    

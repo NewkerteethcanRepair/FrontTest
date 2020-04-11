@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
               decoration:BoxDecoration(
                 color:Colors.white,
                 borderRadius:BorderRadius.circular(8.w),
-                
+                // borderRadius:b
                 // color:Colors
               ), //decoreation
             ),
@@ -45,10 +45,95 @@ class HomePage extends StatelessWidget {
                 
               ),//Container
             Row(
-              children:<Widget>
+              children:<Widget>[
+                Container(
+                  width:240.w,
+                  height:360.w,
+                  color:Colors.black26,
+
+                  // edgeInsets是Widget的配置类，允许文本方向感知分辨率。
+                  // fromLTRB(double left, double top, double right, double bottom)，分别指定四个方向的填充。
+                  // all(doube value)，所有方向均使用相同数值的填充。
+                  // only(top:0,right:0,bottom:0,left:0)，可以设置具体某个方向的填充(可以同时指定多个方向)。
+                  // symmeric(vertical:0,horizontal:0)，用于设置对称方向的填充，vertical指top和bottom，horizontal指left和right。
+
+
+                  margin:EdgeInsets.fromLTRB(15.w,0,15.w,0.w),
+
+                ),
+                Container(
+                  width:240.w,
+                  height:360.w,
+                  color:Colors.black26,
+                  margin:EdgeInsets.fromLTRB(15.w,0,15.w,0.w),
+                ),
+                 Container(
+                  width:240.w,
+                  height:360.w,
+                  color:Colors.black26,
+                   margin:EdgeInsets.fromLTRB(15.w,0,15.w,0.w),
+                ),
+                   Container(
+                  width:240.w,
+                  height:360.w,
+                  color:Colors.black26,
+                   margin:EdgeInsets.fromLTRB(15.w,0,15.w,0.w),
+                ),
+            
+              ]
             )     
             ]
           ),
+          Container(
+            height:800.w,
+            child:ListView(
+                scrollDirection:Axis.horizontal,
+                children: <Widget>[
+                  Container(
+                    width:240.w,
+                    height:360.w,
+                    color:Colors.black26,
+                    margin:EdgeInsets.fromLTRB(15.w,15.w,15.w,0.w),
+                    // decoreation:BoxDecoration(
+
+                    // )
+                  ),
+                    Container(
+                    width:240.w,
+                    height:360.w,
+                    color:Colors.black26,
+                    margin:EdgeInsets.fromLTRB(15.w,15.w,15.w,0.w),
+                  ),
+                     Container(
+                    width:240.w,
+                    height:360.w,
+                    color:Colors.black26,
+                    margin:EdgeInsets.fromLTRB(15.w,15.w,15.w,0.w),
+                  ),
+                        Container(
+                    width:240.w,
+                    height:360.w,
+                    color:Colors.black26,
+                    margin:EdgeInsets.fromLTRB(15.w,15.w,15.w,0.w),
+                  ),
+                        Container(
+                    width:240.w,
+                    height:360.w,
+                    color:Colors.black26,
+                    margin:EdgeInsets.fromLTRB(15.w,15.w,15.w,0.w),
+                  ),
+                        Container(
+                    width:240.w,
+                    height:360.w,
+                    color:Colors.black26,
+                    margin:EdgeInsets.fromLTRB(15.w,15.w,15.w,0.w),
+                  ),
+
+
+                ],
+              
+            )
+          )
         ],//widget
       ),//Column
   

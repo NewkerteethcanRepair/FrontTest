@@ -33,8 +33,9 @@ class HomePage extends StatelessWidget {
               
               height:100.w,
               color:Colors.blue[900],
-              // coolr
               
+              // coolr
+              // color:Colors.
 
               //  color:color
             // color:Color
@@ -49,7 +50,7 @@ class HomePage extends StatelessWidget {
                 border: Border.all(width: 5.w, color: Colors.red),
                 color: Colors.yellowAccent,
                 borderRadius: BorderRadius.circular(10),
-                
+     
               ),
               //  color:Colors.formRGBO()
             ),

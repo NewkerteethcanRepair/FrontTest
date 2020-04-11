@@ -1,23 +1,20 @@
 {
-  "name": "my-app",
+  "name": "my-lottery",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.9",
+    "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-    "antd": "^4.0.4",
-    "antd-init": "^2.0.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
-    "redux-actions": "^2.6.5",
-    "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-actions": "^2.6.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,6 +36,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://localhost:3001"
+  }
 }

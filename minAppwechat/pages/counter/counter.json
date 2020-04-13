@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "showText":"../../components/showText/showText",
+    "changeText":"../../components/changeText/changeText"
+  }
+}

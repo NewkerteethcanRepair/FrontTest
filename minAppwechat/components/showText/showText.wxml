@@ -1,0 +1,3 @@
+<!--components/showText/showText.wxml-->
+<!-- <text>components/showText/showText.wxml</text> -->
+<view class="showText"> <text style="" >计数器:{{count}}</text></view>

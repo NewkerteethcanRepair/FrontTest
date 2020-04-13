@@ -1,0 +1,5 @@
+<!--components/changeText/changeText.wxml-->
+<!-- <text>components/changeText/changeText.wxml</text> -->
+<button disabled="{{isDisabled}}">-1</button>
+<button bindtap="myincrement">+1</button>
+<input class="myInput" bindinput="inputcount" bindblur="setcount"></input>

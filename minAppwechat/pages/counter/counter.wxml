@@ -1,0 +1,8 @@
+<!--pages/counter/counter.wxml-->
+<!-- <text>pages/counter/counter.wxml</text> -->
+<view>
+    <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+   <showText count="{{myCount}}"></showText>
+   <changeText bind:increment="increment" bind:setcount="setcount"> </changeText>
+</view>
+   

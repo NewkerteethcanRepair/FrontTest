@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../bootstrap-3.3.7-dist/js/jQuery-3.4.1.js"></script>
+    <link rel="stylesheet" href="../../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="../../bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+</head>
+<style>
+    .all {
+        margin-top: 200px;
+    }
+</style>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="all col-sm-4 col-sm-offset-4">
+                <h1 class="text-center text-success ">中奖名单显示</h1>
+                <div class=" text-center display-name text-warning">
+
+                </div>
+                <button class="btnLottery center-block btn btn-default">
+                    点击抽奖
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let name = [
+        "zhang1",
+        "zhang2",
+        "zhang3",
+        "zhang4",
+        "zhang5",
+        "zhang6",
+        "zhang7",
+        "zhang8",
+        "zhang9",
+        "zhang10",
+    ];
+    var state=0;
+
+    function addclick() {
+        $(".btnLottery").click(function () {
+            if(state==0){
+                state=1
+                // $("display-name").text(display)
+                $(".btnLottery").text("暂停")
+            }
+            else{
+                state=0
+                $(".btnLottery").text("开始")
+            }
+        })
+    }
+    addclick()
+
+    function RandomDraw() {
+        $(".display-name").text(name[0]);
+        setTimeout(() => {
+            let diplay;
+            let j = Math.floor(Math.random() * name.length)
+            for (var i in name) {
+
+                if (j == i) {
+
+                    display = name[i];
+                    // $(".btnLottery").click(function () {
+                    //     $("display-name").text(display)
+                    // })
+                }
+
+            }
+        }, 100);
+        // RandomDraw()
+    }
+    RandomDraw()
+</script>
+
+</html>

@@ -44,43 +44,68 @@
         "zhang9",
         "zhang10",
     ];
-    var state=0;
-
+    var state = 0;
+    var dt
     function addclick() {
         $(".btnLottery").click(function () {
-            if(state==0){
-                state=1
+            if (state == 0) {
+                state = 1
                 // $("display-name").text(display)
                 $(".btnLottery").text("暂停")
-            }
-            else{
-                state=0
+                // dt= setInterval(() => {
+                //     RandomDraw();
+                // }, 100);
+              dt=  RandomDraw()
+
+            } else {
+                state = 0
                 $(".btnLottery").text("开始")
+                // console.log(dt);
+                stopclick();
+                // clearInterval(dt);
             }
         })
     }
     addclick()
 
     function RandomDraw() {
+        // console.log(d);
+        
+       
         $(".display-name").text(name[0]);
-        setTimeout(() => {
-            let diplay;
-            let j = Math.floor(Math.random() * name.length)
-            for (var i in name) {
+        let diplay=name[0];
+        let j = Math.floor(Math.random() * name.length)
+        // console.log(j);
+        
+        // console.log('====================================');
+        // // console.log(diplay);
+        // console.log('====================================');
+        for (var i in name) {
 
-                if (j == i) {
+            if (j == i) {
 
-                    display = name[i];
-                    // $(".btnLottery").click(function () {
-                    //     $("display-name").text(display)
-                    // })
-                }
-
+                display = name[i];
+                // $(".btnLottery").click(function () {
+                //     $("display-name").text(display)
+                // })
+                $(".display-name").text(name[i]);
             }
+
+        }
+        dt= setTimeout(() => {
+            
+            RandomDraw();
         }, 100);
+
+       
+        // setTimeout(RandomDraw => {
+
+        // }, 100);
         // RandomDraw()
     }
-    RandomDraw()
+    function stopclick(){
+        clearTimeout(dt)
+    }
 </script>
 
 </html>

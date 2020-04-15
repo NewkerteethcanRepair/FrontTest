@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../bootstrap-3.3.7-dist//js/jQuery-3.4.1.js"></script>
+    <script src="../bootstrap-3.3.7-dist//js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../bootstrap-3.3.7-dist//css//bootstrap.min.css">
+</head>
+<style>
+    .control-img{
+        margin:0px 5px;
+    }
+    .control-img:hover{
+        border: 1px solid blue;
+    }
+
+
+</style>
+    <script>
+        let phonesrc=[
+            "./images/phone1 (1).jpg",
+            "./images/phone1 (2).jpg",
+            "./images/phone1 (3).jpg",
+            "./images/phone1 (4).jpg",
+            "./images/phone1 (5).jpg",
+        ];
+    </script>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="col-sm-6">
+                    <div class="big-imgage">
+                        <img src="" alt="">
+                    </div>
+                    <div class="li-list">
+                        <!-- <div><img name="a1" src="" alt=""></div>
+                        <div><img name="a2" src="" alt=""></div>
+                        <div><img name="a3" src="" alt=""></div>
+                        <div><img name="a4" src="" alt=""></div>
+                        <div><img name="a5" src="" alt=""></div> -->
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="enlargement">
+                        <img src="" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script >
+  $(function(){
+
+    function getphone(){
+
+        for(let i in phonesrc){
+
+            $(".li-list").append(`
+            <div class="pull-left control-img"><img name="${i+'a'}" src="${phonesrc[i]}"  alt="" width="80px" height="60px">
+            </div>
+            
+            `)
+        }
+    }
+    getphone();
+
+    function moveControl(){
+        
+    }
+    //   document.body.addEventListener("mouseenter",function(e){
+    //     switch(e.target.getAttribute("name")){
+
+    //         case "a1":(function(){
+    //             .setAttribute("","")
+    //             })(this); 
+    //         case "a2": (function(){
+                   
+    //             })(this);
+    //         case "a3": (function(){
+                   
+    //             })(this);
+    //         case "a4": (function(){
+                   
+    //             })(this);
+    //         case "a5": (function(){
+                   
+    //             })(this);
+    //     }
+    //   })
+  
+  })
+</script>
+
+</html>

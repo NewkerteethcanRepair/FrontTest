@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <a href="javascript:void(0)">woniu</a>
+    </div>
+
+    <p id="p1">冒泡捕获</p>
+
+    <script type="text/javascript">
+        var oa = document.querySelector("a");
+        var odiv = document.querySelector("div");
+        //dom0级的事件绑定默认支持冒泡 不支持捕获
+        // oa.onclick  =function(){
+        //     alert("a标签");
+        // }
+        // odiv.onclick  =function(){
+        //     alert("div标签");
+        // }
+
+        //dom2级 提供新的事件绑定的函数
+        //第三个参数：false代表冒泡，true代表捕获  默认就是 false
+        //addEventListener在IE8以上的浏览器里面可以支持
+        oa.addEventListener("click",function(){
+            alert("a标签");
+        },false);
+        odiv.addEventListener("click",function(){
+            alert("div标签");
+        },false);
+        document.body.addEventListener("click",function(){
+            alert("body");
+        },true);
+        document.body.parentElement.addEventListener("click",function(){
+            alert("html");
+        },true);
+        document.addEventListener("click",function(){
+            alert("document");
+        },true);
+        window.addEventListener("click",function(){
+            alert("window");
+        },true);
+
+        /**
+         * 重复绑定事件
+         * dom2级事件可以允许给同一个元素添加相同的事件，按照定义的事件的顺序来执行
+        */
+       oa.addEventListener("click",function(){
+            console.info("这是第二个click");
+       },true);
+
+       /**
+        * removeEventListener可以移除绑定的事件
+        * 事件处理函数如果是匿名函数，那我们无法删除
+        * (事件名称，事件函数，true\false)
+       */
+      var op = document.getElementById("p1");
+        op.addEventListener("click",check,true);
+       
+        function check(){
+            console.info("ok")
+        }
+        //在捕获阶段绑定事件，取消的时候也需要指定捕获阶段
+        op.removeEventListener("click",check,false);
+    </script>
+</body>
+</html>

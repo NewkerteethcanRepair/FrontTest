@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="按钮1" name="button1">
+    <input type="button" value="按钮2" name="button2">
+    <input type="button" value="按钮3" name="button3">
+
+    <!-- obtn1.onclick = function(){
+        event
+    } -->
+    
+    <script type="text/javascript">
+        var obtn1 = document.getElementsByName("button1")[0];
+        var obtn2 = document.getElementsByName("button2")[0];
+        var obtn3 = document.getElementsByName("button3")[0];
+        /**
+         * 事件委托概念：如果有多个相同元素，执行相同的事件，但是不同的行为
+         * 我们可以给元素的父级元素绑定一个事件，通过冒泡传递过来的event对象来判断要执行的元素是哪一个
+         * 在分别处理。
+         * 
+        */
+        document.body.addEventListener("click",function(e){
+            switch(e.target.getAttribute("name")){
+                case "button1":(function(obj){
+                    console.info("button1被点击");
+                })(this);
+                break;
+                case "button2":(function(obj){
+                    console.info("button2被点击");
+                })(this);
+                break;
+                case "button3":(function(obj){
+                    console.info("button3被点击");
+                })(this);
+                break;
+            }
+        });
+    </script>
+</body>
+</html>

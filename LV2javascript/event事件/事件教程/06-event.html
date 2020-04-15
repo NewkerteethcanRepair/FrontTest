@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>http://www.woniuxy.com</p>
+    <p id="p2">http://www.woniuxy.com</p>
+    <script type="text/javascript">
+        var op = document.querySelector("p");
+        /**
+         * event对象是事件对象，只要你绑定一个事件都会默认创建一个event对象。这个对象包含了我们事件操作的相关信息
+         * event对象是一个隐藏的对象，你需要在执行函数里面获取到这个对象
+         * 
+         * *1.bubbles:表示事件是否冒泡
+            2.cancelable: 表明是否可以取消事件的默认行为，当为true时可以使用preventDefault()来取消
+            3.currentTarget: 事件处理程序正在处理的那个元素
+            4.detail: 一些细节的信息
+            5.preventDefault():尝试取消事件的默认行为，比如submit或者reset等
+            6.stopPropagation(): 取消事件的进一步冒泡或者捕获。只有当bubbles为true才可以用该方法
+            7.target:事件处理程序期望处理的那个元素
+            8.type: 事件的类型。比如click ，mouseover等
+            9.view: 返回事件发生的所在视图对象，一般指发生事件所对应的window对象
+            pageX: 事件发生点，当前文档横坐标。
+            pageY: 事件发生点，当前文档纵坐标
+            screenX:离屏幕的左边距离
+            screenY:离屏幕的上面距离
+        */
+        op.addEventListener("click",function(event){
+            console.info("输出点击的位置");
+            console.info(event);
+            console.info(event.bubbles); //默认冒泡
+            console.info(event.cancelBubble);  //默认行为是否可以取消，如果本身就没有默认行为返回false
+            console.info(event.currentTarget); //返回当前你操作的这个元素
+            //event.currentTarget.parentElement;
+            event.preventDefault();   //取消默认行为
+            event.stopPropagation();  //冒泡行为就会被默认取消
+            console.info(event.target);
+            console.info(event.type);
+            console.info(event.pageX);
+            console.info(event.pageY);
+
+        })
+
+        //伪代码
+        // function addEventListener(type,fun,boo){
+        //     var event = {clientX:xxx,clientY:"xxx"}
+        //     if(type == "click"){
+        //         this.on+"click" = fun(event);
+        //     }
+        // }
+
+        var op2 = document.getElementById("p2");
+        op2.addEventListener("click",function(e){
+            console.info(event);
+            console.info(event==e);  //true  event e同一个对象
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>http://www.woniuxy.com</p>
+    <script type="text/javascript">
+        /**
+         * srcElement: 返回事件的期望处理目标元素节点
+         * type:当前事件名称
+         * 
+         * event:IE就版本里面默认提供的一个专属对象，隐式对象
+        */
+        var op = document.querySelector("p");
+        op.attachEvent("onclick",function(e){
+            console.info(e);
+            console.info(e.srcElement);
+            //IE8下面this的引用对象并不是当前这个对象本身
+            console.info(this);
+            //直接使用隐=式对象 我们不能写错名字
+            console.info(event);
+        });
+    </script>
+</body>
+</html>

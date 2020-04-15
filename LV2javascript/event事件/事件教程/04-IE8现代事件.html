@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+        /**
+         * 传统事件指派 on+事件名字来绑定
+         * 现代事件指派 addEventListener
+         * IE8不支持addEventListener 我们可以使用attachEventIE8下面专用的用于绑定现代事件
+         * attachEvent(带有on的事件名称，处理函数)  可以在IE8910下面运行
+         * 
+         * dom2级 在设计事件函数的时候，针对标准dom浏览器 addEventListener，但是为了兼容IE老版本的浏览器
+         * attachEvent可以在老版本中绑定事件 
+         * attachEvent并不能设置捕获还是冒泡的方式来运行。IE老版本只支持冒泡
+        */
+        var obox = document.getElementById("box");
+        obox.attachEvent("onclick",function(){
+            console.info("box");
+        });
+
+        function handler(){
+            console.info("box2");
+        }
+        obox.attachEvent("onclick",handler)
+
+        /**
+         * detachEvent函数用于取消之前绑定的事件
+         * 绑定的事件函数不是一个匿名函数
+        */
+        obox.detachEvent("onclick",handler);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+            height: 1500px;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <textarea name="" id="area" cols="30" rows="10"></textarea>
+    <script type="text/javascript">
+        var obox = document.querySelector(".box");
+        /**
+         * clientX:获取到鼠标位置相对于浏览器窗口的x坐标。其中不包含客户区域和滚动条的位置
+         * clientY:获取到鼠标位置相对于浏览器窗口的y坐标。其中不包含客户区域和滚动条的位置
+         * 
+         * PageX:获取到鼠标相对于页面左上角圆点的位置+滚动条经过的路径
+         * PageY:获取到鼠标相对于页面左上角圆点的位置+滚动条经过的路径
+         * 
+         * screenX：获取到当前鼠标的位置相对于整个电脑屏幕的x位置
+         * screenY：获取到当前鼠标的位置相对于整个电脑屏幕的y位置
+         * 
+         * offsetX:获取到当前鼠标位置相对触发事件的那个元素的x坐标
+         * offsetY:获取到当前鼠标位置相对触发事件的那个元素的y坐标
+         * 
+         * pageX > clientX 
+         * pageX = clientX+scrollLeft   document.documentElement.scorllLeft;
+         * 
+        */
+        obox.addEventListener("click",function(e){
+            console.info(e.clientX);
+            console.info(e.clientY);
+
+            console.info(e.pageX);
+            console.info(e.pageY);
+
+            console.info(e.screenX);
+            console.info(e.screenY);
+            
+            //默认会加1px 
+            console.info(e.offsetX);
+            console.info(e.offsetY);
+        });
+
+        var textarea = document.getElementById("area");
+        textarea.onkeydown = function(e){
+            console.info(e);
+            console.info(e.code);
+            console.info(e.key);
+            console.info(e.keyCode);
+        }
+    </script>
+</body>
+</html>

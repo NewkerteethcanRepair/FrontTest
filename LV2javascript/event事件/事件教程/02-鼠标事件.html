@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1" ondblclick="check()">
+
+    </div>
+    <script>
+        /**
+         * DOM0级提出绑定事件的方案：直接在标签上面加上事件的名字 on
+         * 获取节点动态绑定事件
+         * 推荐使用动态绑定，因为这样做你可以将js代码和html代码很好分离开
+        */
+        var odiv = document.getElementById("div1");
+        odiv.onclick = function(){
+            odiv.innerHTML = "click";
+        }
+        
+        function check(){
+            odiv.innerHTML = "dbclick";
+        }
+        /**鼠标移入的时候触发：轮播图，鼠标移入暂停*/
+        odiv.onmouseover = function(){
+            odiv.innerHTML = "mouseover"
+        }
+        odiv.onmouseout = function(){
+            odiv.innerHTML = "mouseout"
+        }
+        odiv.onmousemove = function(){
+            odiv.innerHTML = "mousemove";
+            console.info(event.pageX);
+        }
+        odiv.onmousedown =  function(){
+            odiv.innerHTML = "mousedown";
+        }
+        odiv.onmouseup = function(){
+            odiv.innerHTML = "mouseup";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script type="text/javascript">
+        function addListener(elem,type,handler){
+            if(elem.addEventListener){
+                elem.addEventListener(type,handler,false);
+            }else if(elem.attachEvent){
+                elem.attachEvent("on"+type,handler);
+            }else{
+                //使用传统的方式来绑定事件
+                elem["on"+type] = handler;
+            }
+        }
+        function removeListener(elem,type,handler){
+            if(elem.removeEventListener){
+                elem.removeEventListener(type,handler,false);
+            }else if(elem.detachEvent){
+                elem.detachEvent("on"+type,handler);
+            }else{
+                //使用传统的方式来绑定事件
+                elem["on"+type] = null;
+            }
+        }
+
+        var odiv = document.getElementById("box");
+        addListener(odiv,"click",function(){
+            console.info("兼容处理");
+        });
+
+    </script>
+</body>
+</html>

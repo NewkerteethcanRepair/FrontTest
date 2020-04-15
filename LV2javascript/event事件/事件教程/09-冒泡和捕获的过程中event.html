@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100px;
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <p id="p2">http://www.woniuxy.com</p>
+    <script type="text/javascript">
+        var op2 = document.getElementById("p2");
+        /**
+         * 事件冒泡首先执行子元素，子元素获取到event对象，接下来因为冒泡我们会将事件继续向外传递。
+         * event对象也进行传递。在冒泡和捕获之间传递的对象。同一类事件
+        */
+        op2.addEventListener("click",function(){
+            console.info("op2",event);
+            //动态给当前对象创建一个属性
+            event.xuchaobo = "xcb";
+            event.stopPropagation(); //阻止冒泡继续执行
+        });
+        document.body.addEventListener("click",function(){
+            console.info("body",event);
+            console.info(event.xuchaobo);
+        })
+    </script>
+</body>
+</html>

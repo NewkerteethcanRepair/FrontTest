@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 浏览器会有一个默认的提交行为 -->
+    <form action="06-event.html" id="myform">
+        <input type="text"  id="inp">
+        <button type="submit">提交</button>
+    </form>
+    <script type="text/javascript">
+        var oform = document.querySelector("#myform");
+        // oform.onsubmit = function(e){
+        //     e.preventDefault(); //取消浏览器一些默认行为
+        // }
+        var inp = document.querySelector("#inp");
+        //onkeyup无法阻止默认的提交 up键弹起来。
+        inp.onkeydown = function(e){
+            console.info(e);
+            console.info(e.keyCode);
+            e.preventDefault();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            opacity: .8;
+            overflow: hidden;
+        }
+        #p1{
+            font-size: 16px;
+        }
+    </style>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+    <link rel="stylesheet" href="css/woniu.css">
+</head>
+<body>
+    <div id="box" class="box">
+        <p id="p1">蜗牛</p>
+    </div>
+    <script type="text/javascript">
+        /**
+         * HTMLElement.style
+         * document.styleSheets 返回对象里面包含多个内容 获取到页面上style标签元素，还可以获取link引入的样式
+        */
+        var obox = document.getElementById("box");
+        obox.onclick = function(){
+            console.info(document.styleSheets);
+            console.info(document.styleSheets[2]);
+            console.info(document.styleSheets[2].cssRules);
+            console.info(document.styleSheets[2].cssRules[0]);
+            console.info(document.styleSheets[2].cssRules[0].style);
+            console.info(document.styleSheets[2].cssRules[0].style.fontSize);
+            
+            
+            document.styleSheets[2].cssRules[0].style.fontSize = "20px";
+            document.styleSheets[2].cssRules[0].style.marginLeft = "100px";
+        }
+    </script>
+</body>
+</html>

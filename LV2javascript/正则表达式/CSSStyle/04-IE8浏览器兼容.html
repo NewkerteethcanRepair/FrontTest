@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="box">
+        <p id="p1">蜗牛</p>
+    </div>
+    <script type="text/javascript">
+        var odiv = document.getElementById("box");
+        odiv.onclick = function(){
+            console.info(this.style.width);
+            console.info(document.styleSheets[0]);
+            //IE8下面cssRules属性无法使用
+            //IE8提供了一个属性可以获取到样式操作 rules
+            console.info(document.styleSheets[0].cssRules);  //undefined
+            console.info(document.styleSheets[0].rules);  //object
+            console.info(document.styleSheets[0].rules[0].style);  //object
+            console.info(document.styleSheets[0].rules[0].style.width);  //100px
+            document.styleSheets[0].rules[0].style.width = "200px";
+        }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 0px;
+            margin: 0px
+        }
+        #box{
+            margin-top: 100px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- style是每个标签都可以设置的属性，代表内联样式 -->
+    <div id="box" class="box" style="width: 100px;height: 100px;background-color: orange;"></div>
+    <p></p>
+    <script type="text/javascript">
+        /**
+         * 在js中操作css样式。在DOM中提供了操作css样式的对象。IE4.0开始给页面上的元素引入了一个style对象。
+         * 使用这个对象可以管理页面上所有的css样式。
+         * DOM采用操作style对象来完成html样式的控制
+         * DOM将这个中方式作为其标准来操作样式。
+         * 
+         * 1、使用js操作html元素的内联样式
+         * css中的属性会被cssStyleDeclaration作为对象的属性。属性里面里面有连字符 会被改成驼峰命名
+         * 
+        */
+
+       var odiv = document.getElementById("box");
+       odiv.onclick = function(){
+           console.info(this.style); //cssStyleDeclaration
+           console.info(this.style.backgroundColor);
+           console.info(this.style.width);
+           console.info(this.style[0]);
+           console.info(this.style.item(1));
+            //getPropertyValue("键的名字") 传递参数的时候，默认传递css 样式名字
+           console.info(this.style.getPropertyValue("background-color"));
+
+           //设置style属性值
+           this.style.backgroundColor = "red";
+           //如果当前元素身上已经有这个属性，我们替换值，如果没有动态新增这样一个样式
+           //默认设置内联的样式表 style="xxxx";
+           this.style.borderRadius = "10px";
+           //通过调用函数的方式也可以设置属性
+           //可以支持三个参数：属性名、值、设置权重 important undefined ""
+           this.style.setProperty("font-size","10px","important");
+
+           //删除属性 设置的属性值为“”默认代表删除这个样式
+           this.style.borderRadius = "";
+        //    this.style.removeProperty("font-size")
+
+           //补充：cssText 表示获取到当前对象身上的所有内联样式
+           console.info(this.style.cssText);
+           console.info(typeof this.style.cssText);
+           this.style.cssText = "width:200px;height:100px;border:1px solid red !important;";
+
+           //getPropertyPriority 获取当前某个属性是否具有important特性
+           console.info(this.style.getPropertyPriority("border"));
+       }
+
+       odiv.ondbclick = function(){
+           //通过style属性无法获取到内部样式 style属性只能获取到内联的样式
+           console.info(this.style.marginTop);
+       } 
+
+    </script>
+</body>
+</html>

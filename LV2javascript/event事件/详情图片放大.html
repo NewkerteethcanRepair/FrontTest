@@ -10,34 +10,67 @@
     <link rel="stylesheet" href="../bootstrap-3.3.7-dist//css//bootstrap.min.css">
 </head>
 <style>
-    .control-img{
-        margin:0px 5px;
+    
+    .control-img {
+        margin: px 5px;
     }
-    .control-img:hover{
+
+    .control-img:hover {
         border: 1px solid blue;
     }
+    .big-imgage img{
+        width: 400px;
+        height: 400px;
+       border: 1px solid #000;
+        
+    }
 
-
+    .mask {
+	position: absolute;
+	display: none;
+	left: 15px;
+	top: 0;
+	width: 200px;
+	height: 200px;
+    background-color: cornflowerblue;
+    opacity: 0.5;
+    cursor: crosshair;
+    overflow: hidden;
+}
+.enlargement{
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+ 
+}
+.enlargement img{
+    border: 1px solid #000;
+    width:  200%;
+    height: 200%;
+    overflow: hidden;
+}
 </style>
-    <script>
-        let phonesrc=[
-            "./images/phone1 (1).jpg",
-            "./images/phone1 (2).jpg",
-            "./images/phone1 (3).jpg",
-            "./images/phone1 (4).jpg",
-            "./images/phone1 (5).jpg",
-        ];
-    </script>
+<script>
+    let phonesrc = [
+        "./images/phone1 (1).jpg",
+        "./images/phone1 (2).jpg",
+        "./images/phone1 (3).jpg",
+        "./images/phone1 (4).jpg",
+        "./images/phone1 (5).jpg",
+    ];
+</script>
+
 <body>
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
 
                 <div class="col-sm-6">
-                    <div class="big-imgage">
-                        <img src="" alt="">
+                    <div class="big-imgage" >
+                        <img src="./images/phone1 (1).jpg"" alt="" width="400px" height="400px">
+                        <div class="mask" id="mask"></div>
                     </div>
-                    <div class="li-list">
+                    <div class="li-list text-center">
                         <!-- <div><img name="a1" src="" alt=""></div>
                         <div><img name="a2" src="" alt=""></div>
                         <div><img name="a3" src="" alt=""></div>
@@ -45,56 +78,124 @@
                         <div><img name="a5" src="" alt=""></div> -->
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <div class="enlargement">
-                        <img src="" alt="">
+                        <img src="" alt="" >
                     </div>
                 </div>
+
             </div>
+
         </div>
     </div>
 </body>
-<script >
-  $(function(){
+<script>
+    $(function () {
 
-    function getphone(){
+        function getphone() {
 
-        for(let i in phonesrc){
+            for (let i in phonesrc) {
 
-            $(".li-list").append(`
-            <div class="pull-left control-img"><img name="${i+'a'}" src="${phonesrc[i]}"  alt="" width="80px" height="60px">
+                $(".li-list").append(`
+            <div class="pull-left control-img"><img name="${i}" src="${phonesrc[i]}"  alt="" width="80px" height="60px">
             </div>
             
             `)
+            }
         }
-    }
-    getphone();
+        getphone();
 
-    function moveControl(){
+        function moveControl() {
+            $(".li-list").on("mouseenter", ".control-img", function (e) {
+
+                // console.log(e);
+                // if(e.target.get)
+                var value = $(e.target).attr("src");
+                $(".big-imgage").find("img").attr("src", value)
+             
+             
+                // console.log();
+
+            })
+            $(".big-imgage").mouseenter(function(e){
+                var value = $(e.target).attr("src");
+                $(".mask").css("display","block")
+                $(".enlargement").find("img").attr("src",value)
+            })
+            $(".big-imgage").mouseleave(function(){
+                // var value = $(e.target).attr("src");
+                $(".mask").css("display","none")
+                $(".enlargement").find("img").attr("src","")
+            })
+            // $(selector).mouseenter(function () { 
+
+            // });
+        }
+
+        moveControl();
         
-    }
-    //   document.body.addEventListener("mouseenter",function(e){
-    //     switch(e.target.getAttribute("name")){
+        function enlargeimg() {
+            $(".big-imgage").on("mousemove",  function (e) {
+               
+                var getx=e.offsetX
+                var gety=e.offsetY
+                var fangdaX=$(".mask").width()/2;
+                var fangdaY=$(".mask").height()/2;
+                console.log(fangdaX);
+                console.log(fangdaY);
+                // if(getx||gety<0){
+                //     getx=0;
+                //     gety=0;
+                // }
 
-    //         case "a1":(function(){
-    //             .setAttribute("","")
-    //             })(this); 
-    //         case "a2": (function(){
-                   
-    //             })(this);
-    //         case "a3": (function(){
-                   
-    //             })(this);
-    //         case "a4": (function(){
-                   
-    //             })(this);
-    //         case "a5": (function(){
-                   
-    //             })(this);
-    //     }
-    //   })
-  
-  })
+                
+                console.log(getx-fangdaX);
+                if(parseInt(getx-fangdaX)>=0){
+                    $(".mask").css(
+                        "left",getx-fangdaX+15
+
+                    )
+                }
+                if(parseInt(gety-fangdaY)>=0){
+                      $(".mask").css(
+                        "top",gety-fangdaY
+                        
+                    )
+                }
+
+                $(".enlargement").css({
+                    // "background-image":"url('')" 
+
+                })
+                // $(selector).css(propertyName, value);
+                
+            
+
+            });
+        }
+        enlargeimg()
+        //   document.body.addEventListener("mouseenter",function(e){
+        //     switch(e.target.getAttribute("name")){
+
+        //         case "a1":(function(){
+        //             .setAttribute("","")
+        //             })(this); 
+        //         case "a2": (function(){
+
+        //             })(this);
+        //         case "a3": (function(){
+
+        //             })(this);
+        //         case "a4": (function(){
+
+        //             })(this);
+        //         case "a5": (function(){
+
+        //             })(this);
+        //     }
+        //   })
+
+    })
 </script>
 
 </html>

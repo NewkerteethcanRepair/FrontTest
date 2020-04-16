@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        /**
+         * [abc]	查找方括号之间的任何字符。
+         * [^abc]	查找任何不在方括号之间的字符。
+            [0-9]	查找任何从 0 至 9 的数字。
+            [a-z]	查找任何从小写 a 到小写 z 的字符。
+            [A-Z]	查找任何从大写 A 到大写 Z 的字符。
+            [A-z]	查找任何从大写 A 到小写 z 的字符。
+            [adgk]	查找给定集合内的任何字符。
+            [^adgk]	查找给定集合外的任何字符。
+            (red|blue|green)	分组表达式，查找任何指定的选项，red或blue或green。
+            [\u4e00-\u9fa5] 表示匹配中文
+            ()子表达式,使用小括号可以对字符模式进行任意分组，在小括号内的字符串表示子表达式，也称为子模式
+        */
+        console.info(/[sbmb]/gi.test("nnkk"));  //sbbn还是返回一个true
+        console.info(/[^sbmb]/gi.test("nnkk"));  //true 
+        console.info(/[0-9]/gi.test("a123"));  //true
+        console.info(/[a-z]/gi.test("123"));
+        console.info(/[A-Z]+/.test("xiao"));
+        console.info(/[A-z]+/.test("xiao"));  //大小写字母都匹配
+        console.info(/(green|red|orange)/.test("reds"));
+        console.info(/[\u4e00-\u9fa5]+/.test("莲哥"));
+        //用户名要求 数字-字母-下划线-中文
+        //正则表达式组合 一
+        var reg = /[0-9A-z\u4e00-\u9fa5_]/;
+        console.info(reg.test("123"));
+        
+        var reg2 = /([a-z]{3})=([0-9]{4})/;
+        console.info(reg2.test("abc=12"));
+    </script>
+</body>
+
+</html>

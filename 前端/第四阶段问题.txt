@@ -7,3 +7,8 @@ toggle 改变 √
 问题 {...state + { 新的一个东西} }返回的是一个的state？
 那map 的 {item，done：！item.done} 返回长度会不变吗？
 3 学生管理系统分页
+
+
+4 lv2 淘宝图片放大  放大镜有问题
+
+toFixed(n)存在精度问题，建议使用Math.round()函数。

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            opacity: .8;
+            overflow: hidden;
+        }
+        #p1{
+            font-size: 16px;
+        }
+    </style>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+    <link rel="stylesheet" href="css/woniu.css">
+</head>
+<body>
+    <div id="box" class="box">
+        <p id="p1">蜗牛</p>
+    </div>
+    <script type="text/javascript">
+        /**
+         * HTMLElement.style
+         * document.styleSheets 返回对象里面包含多个内容 获取到页面上style标签元素，还可以获取link引入的样式
+        */
+        var obox = document.getElementById("box");
+        obox.onclick = function(){
+            console.info(document.styleSheets);
+            console.info(document.styleSheets[0]);
+            console.info(document.styleSheets[0].cssRules);
+            console.info(document.styleSheets[0].cssRules[0]);
+            console.info(document.styleSheets[0].cssRules[0].cssText);
+            console.info(document.styleSheets[0].cssRules[0].style);
+            console.info(document.styleSheets[0].cssRules[0].style.width);
+
+            //设置当前内部样式表的css值
+            document.styleSheets[0].cssRules[0].style.border = "1px solid red";
+            this.style.borderRadius = "10px";
+        }
+
+
+        //如果你要设置样式，直接设置为内联样式 this.style.xxx
+        //获取到当前这个元素的样式：首先你要内联--在取获取内部 ---外部找样式
+        //getComputedStyle()这个函数可以获取到当前元素的最终样式
+    </script>
+</body>
+</html>

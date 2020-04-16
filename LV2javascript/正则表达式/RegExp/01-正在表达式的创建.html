@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        /**
+        1. 通过原生对象RegExp对象来创建
+        通过构造器来创建了一个正则对象，给构造函数传递了两个参数，第一个参数是正在表达式。第二个参数修饰符
+        第一个参数：\d 表示匹配数字  + 表示一个或者多个数字
+
+        第二个参数：可选参数（可写，可不写）修饰符
+        i: 忽略大小写
+        g：全局匹配，匹配成功一个后，继续去匹配，直到最后
+        m：多行匹配，就算遇到换行我们也可以继续匹配换行后的内容
+        这个三个值可以随意匹配 gi gm im
+        */
+        var reg = new RegExp("\\d+", "gi");
+        var result = reg.test("XIAOWANG");
+        console.info(result);  //true 验证成功
+
+        /**
+         * 2. 通过字面量的形式来创建
+         * 通过字面量的形式来创建正在表达式 开发中用的最多的。
+         * //就可以表达这是一个正则表达式对象。在中间加入你的匹配规则就可以了。
+         * 也可以加修饰符
+        */
+       var reg2 = /[a-z]+/gi;
+       console.info(reg2.test("xiaFEIFEI"));  //正在匹配test方法有数据类型转换
+        
+
+    </script>   
+</body>
+
+</html>

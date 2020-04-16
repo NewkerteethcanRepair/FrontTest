@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="box">
+        <p id="p1">蜗牛</p>
+    </div>
+    <script type="text/javascript">
+        var odiv = document.getElementById("box");
+        odiv.onclick = function(){
+            //处理兼容的代码写法
+            var cssList = document.styleSheets[0].cssRules || document.styleSheets[0].rules;
+            console.info(cssList[0].style.width);
+
+            //我需要判断一个元素 是否有某个css属性，或者当前某个属性值是多少
+            //最终样式:当前作用在这个元素身上的所有样式，被浏览器解析后的样式
+            //一个元素：浏览器默认样式，浏览器用户自定义，内联，内部，外部
+            
+        }
+
+    </script>
+</body>
+</html>

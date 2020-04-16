@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投票</title>
+    <script src="../../bootstrap-4.4.1-dist//js/jQuery-3.4.1.js"></script>
+    <!-- <script src="../../layui//layui.all.js"></script>
+    <link rel="stylesheet" href="../../layui/css/layui.css"> -->
+    <script src="../../bootstrap-4.4.1-dist//js//bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../bootstrap-4.4.1-dist/css/bootstrap.min.css">
+    <script src="../投票练习/index.js"></script>
+</head>
+<style>
+    .ticket {
+        margin-top: 200px;
+    }
+    .all{
+        height: 30px;
+        margin-bottom: 30px;
+       
+    }
+    .myprogress1{
+        /* background-color:yellow; */
+        height: 30px;
+        width: 50%;
+        text-align: center;
+    }
+    .myprogress2{
+        /* background-color:greenyellow; */
+        height: 30px;
+        width: 50%;
+        text-align: center;
+    }
+
+</style>
+
+<body>
+    <div class="container ticket">
+        <div class="row">
+            <div class="col-sm-12">
+           
+                  <!-- <div class="myprogress1 float-left ">
+                        <span class="">50%</span>
+                  </div>
+                  <div class="myprogress2 float-left">
+                        <span class="">50%</span>
+                 </div> -->
+                 <div class="progress all">
+                    <div class="myprogress1 progress-bar progress-bar-striped  bg-warning progress-bar-animated"><strong>50%</strong></div>
+                      <div class=" myprogress2 progress-bar progress-bar-striped progress-bar-animated bg-success float-right" ><strong>50%<strong></div>
+                  </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-sm-6">
+                <div class="d-flex  flex-column ">
+                    <img class="align-self-center" src="../images//timg.jfif" alt="" width="400px" height="400px">
+                    <h1 class="align-self-center t1">票数:<strong></strong></h1>
+                    <button class="btn btn-outline-warning btn-lg btn1">点击投票</button>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="d-flex  flex-column ">
+                    <img class="align-self-center" src="../images/u=4189485192,3923744742&fm=26&gp=0.jpg" alt=""
+                        width="400px" height="400px">
+                    <h1 class="align-self-center t2">票数:<strong></strong></h1>
+                    <button class="btn btn-outline-success btn-lg btn2">点击投票</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

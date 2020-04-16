@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            opacity: .8;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="box" style="border-radius:10px;">
+        <p id="p1">蜗牛</p>
+    </div>
+    <script type="text/javascript">
+        var obox = document.getElementById("box");
+        obox.onclick = function(){
+            //getComputedStyle只读属性。无法设置
+            // let style = window.getComputedStyle(this,null);
+            // console.info(style);
+            // console.info(style.backgroundColor);
+            // console.info(style.opacity);
+            // if(style.opacity >=0.8){
+            //     this.style.opacity = "0.5";
+            // }
+
+            //IE9以及以上我们可以 document.defaultView.getComputedStyle
+            //来获取到最终样式
+            var style2 = document.defaultView.getComputedStyle(this);
+            console.info(style2);
+        }
+    </script>
+</body>
+</html>

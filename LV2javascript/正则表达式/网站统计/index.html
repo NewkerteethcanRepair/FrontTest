@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网站统计</title>
+    <script src="../../bootstrap-4.4.1-dist//js/jQuery-3.4.1.js"></script>
+    <!-- <script src="../../layui//layui.all.js"></script>
+    <link rel="stylesheet" href="../../layui/css/layui.css"> -->
+    <script src="../../bootstrap-4.4.1-dist//js//bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../bootstrap-4.4.1-dist/css/bootstrap.min.css">
+</head>
+<style>
+    .imglogo {
+        text-align: center;
+
+    }
+
+    .text-control {
+        /* position: relative; */
+        text-align: center;
+        /* display: flex;
+        /* justify-content: center; */
+        /* flex-direction: column;
+        align-items: center; */
+
+    }
+    .btnposition{
+        position: relative;
+        transition:2s
+    }
+
+    .p-control {
+        width: 200px;
+        /* text-align: center; */
+        margin: 0 auto;
+    }
+
+    .imgbtn-control {
+        position: absolute;
+        /* padding-left:5px; */
+        left: 600px;
+        top: 9px;
+        display: none;
+     
+    }
+
+    .tocontorlModal {
+        width: 300px;
+    }
+
+    .note {
+        display: none;
+    }
+
+    .loginbtn {
+        width: 100%;
+    }
+
+    .loginbtn button {
+        width: 100%;
+    }
+
+    .otherbtn {
+        width: 100%;
+    }
+    .c3{
+        position: relative;
+    }
+    .checkederweima{
+        position: absolute;
+        /* width: 24px; */
+        height: 30px;
+
+        right: 4px;
+        top: 4px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="">
+                            <div class="imglogo">
+                                <img src="./images/TIM图片20200416190836.png" alt="">
+                            </div>
+                            <h6 style="text-align: center;"><strong>网站统计</strong></h6>
+                            <p class="p-control">
+                                <small> 全球最大的中文网站流量分析平台，为了就是的哈尽快落实的好时机卡的很垃圾快回家看了但是卡接电话撒健康来东海</small>
+                            </p>
+                            <div class="text-control btnposition"> 
+                                
+                                <button class="btn btn-link clickto" data-toggle="modal"
+                                    data-target="#myModal">立即体验</button>
+                                <img class="imgbtn-control" src="./images/TIM图片20200416190921.png">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog modal-dialog-centered tocontorlModal">
+                        <div class="modal-content">
+
+                            <!-- 模态框头部 -->
+                            <div class="modal-header">
+                                <!-- <h4 class="modal-title">模态框头部</h4> -->
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- 模态框主体 -->
+                            <div class="modal-body">
+                                <h5 class="text-control">欢迎来到网站统计</h5>
+                                <p class="text-primary text-control"><small>统计/xx/xx/xx/xx/xx 请在此登录</small></p>
+                                <form>
+                                    <div class="form-group"> <input type="text" class="form-control"
+                                            placeholder="请输入邮箱地址" id="validationServer01" value="" required>
+                                        <div class="invalid-feedback">
+                                            邮箱有误
+                                        </div>
+                                    </div>
+                                    <div class="form-group"> <input type="password" class="form-control" placeholder="请输入密码"
+                                            id="validationServer02" value="" required>
+                                        <div class="invalid-feedback">
+                                            密码格式有问题
+                                        </div>
+                                    </div>
+                                    <div class="form-group c3"> <input type="text" class="form-control"
+                                            placeholder="请输入验证码" id="validationServer03" value="" required>
+                                            <img class="checkederweima" src="./images/TIM图片20200416190927.jpg" alt="">
+
+                                        <div class="invalid-feedback">
+                                            验证码不对
+                                        </div>
+                                    </div>
+
+
+                                </form>
+                            </div>
+
+                            <!-- 模态框底部 -->
+                            <div class="modal-footer">
+                                <div class="loginbtn">
+
+                                    <button type="button" class="btn btn-primary d-block">登录
+
+
+                                    </button>
+
+
+                                </div>
+
+                                <div class="clearfix otherbtn">
+                                    <button class="btn-link btn float-left"><small>立即注册</small></button>
+                                    <button class="btn-link btn float-right"><small>忘记密码</small></button>
+                                </div>
+
+                                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button> -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- <img class="imgbtn-control" src="./images/TIM图片20200416190921.png"> -->
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+
+        function clickto(){
+            $(".clickto").mouseenter(function(){
+                // console.log("dsa");
+                
+                $(".imgbtn-control").css({
+                    "display":"block",
+                  
+                })
+            })
+            $(".clickto").mouseleave(function(){
+                // console.log("dsa");
+                
+                $(".imgbtn-control").css({
+                    "display":"none",
+                  
+                })
+            })
+        }
+        clickto()
+        function checkinput() {
+            $("#validationServer01").blur(function () {
+                var reg = new RegExp(/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/);
+                var value = $(this).val()
+                var result = reg.test(value);
+                if (result) {
+                    $(this).addClass("is-valid");
+                    $(this).removeClass("is-invalid")
+                } else {
+                    $(this).addClass("is-invalid");
+                    $(this).removeClass("is-valid")
+                }
+                // console.log(result);
+
+
+            })
+            $("#validationServer02").blur(function () {
+                var reg = new RegExp(/^[A-Z]{1}[a-zA-Z0-9]{5,}/);
+                var value = $(this).val()
+                var result = reg.test(value);
+                if (result) {
+                    $(this).addClass("is-valid");
+                    $(this).removeClass("is-invalid")
+                } else {
+                    $(this).addClass("is-invalid");
+                    $(this).removeClass("is-valid")
+                }
+                // console.log(result);
+
+
+            })
+            $("#validationServer03").blur(function () {
+                var reg = new RegExp("mexe");
+                var value = $(this).val()
+                var result = reg.test(value);
+                if (result) {
+                    $(this).addClass("is-valid");
+                    $(this).removeClass("is-invalid")
+                } else {
+                    $(this).addClass("is-invalid");
+                    $(this).removeClass("is-valid")
+                }
+                // console.log(result);
+
+
+            })
+        }
+        checkinput()
+    })
+</script>
+
+</html>

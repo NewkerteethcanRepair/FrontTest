@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        /**
+         * $1, $2, $3, $4, $5, $6, $7, $8, $9属于正则表达式的静态变量 只读属性
+         * 表达的正在表达式中的（）匹配的内容 ，按照括号的顺序来给$1-9赋值
+        */
+        var re = /(\w+)\s(\w+)/;
+        var str = 'John Smith';
+        console.info(re.test(str));
+        //var newStr = str.replace("m","-")
+        //console.info(newStr);
+        var newStr = str.replace(re, '$2, $1'); // "Smith, John"
+        console.info(newStr);
+        console.info(RegExp.$1); // "John"
+        console.info(RegExp.$2); // "Smith"
+        console.info(RegExp.$3); // 
+
+        var dataReg = /^(\d{4})(\d{2})(\d{2})$/;
+        var date = "20200417"; //$1 = (\d{4}) = 2020
+        console.info(date.replace(dataReg, "$1"));  //2020
+        console.info(date.replace(dataReg, "$2"));  //04
+        console.info(date.replace(dataReg, "$3"));  //17
+        console.info(RegExp.$1)
+
+        /**
+         * test() 验证成功true 验证返回false
+        */
+
+        /**
+         * exec在一个指定的字符串中执行搜索匹配，匹配成功返回匹配到字符串 否则返回null
+        */
+        var reg2 = /\d[a-zA-Z]/;
+        var msg = reg2.exec("dd23tf8900mo");
+        console.info(msg);
+        //正则表达式 里面内容在复杂 你只要按照从左到右顺序读 遇到()把括号看成一个整体
+        //d exec除了获取整体匹配的字符，默认会将（）匹配到的内容也返回
+        var re = /quick\s+(brown).+(jumps)/ig;
+        var result = re.exec('The Quick Brown Fox Jumps Over The Lazy Dog');
+        console.info(result); //
+
+    </script>
+</body>
+
+</html>

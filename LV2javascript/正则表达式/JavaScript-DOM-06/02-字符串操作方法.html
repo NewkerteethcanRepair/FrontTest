@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        /**
+         * 字符串很多的api方法默认支持正则表达式
+         * match：返回匹配的结果 exec用法一致  RegExp对象
+         * replace:可以指定匹配的内容为正则表达式
+         * split：字符串的拆分，匹配正则
+        */
+
+        //replace字符串的替换方法 默认只会替换找到第一个字符
+        var username = "wuyilei";
+        var newStr = username.replace("i", "*");
+        console.info(newStr);
+        
+        //如果想要将字符串指定的内容全都替换
+        var reg = /i/ig;
+        console.info(username.replace(reg,"*"));
+
+        console.info("liqiang345yang45lian".replace(/\d+/,""));
+
+        var str2 = "adobe aacc bbaa";
+        var result = str2.replace(/a+/g,function(str,index,source){
+            if(index>0){
+                return str.toUpperCase();
+            }else{
+                return str;
+            }
+        })
+        console.info(result);
+
+
+        /**
+         * split拆分字符串
+        */
+        var str3 = "abc3mkh9bh5bhb";
+        //按照数字来拆分
+        var arr = str3.split(/\d+/)
+        console.info(arr);
+
+        var str3 = "xiaowang xiaozhang    xiaofeifei";
+        console.info(str3.split(/\s+/));
+
+        //match  结果跟exec一样的
+        var str4 = "woniu school five year";
+        console.info(str4.match(/five+/));
+    </script>
+</body>
+
+</html>

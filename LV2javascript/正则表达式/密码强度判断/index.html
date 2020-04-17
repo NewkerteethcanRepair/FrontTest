@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../bootstrap-4.4.1-dist//js/jQuery-3.4.1.js"></script>
+    <script src="../../bootstrap-4.4.1-dist//js//bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../bootstrap-4.4.1-dist/css/bootstrap.min.css">
+</head>
+<style>
+    .img-control {
+        position: relative;
+
+        width:  200px;
+        height:  20px;
+        margin-top: 10px;
+        margin-left: 30px;
+        background: url("./images/TIM图片20200417163400.png");
+        background-size: 100% 100%;
+
+    }
+    .control-width{
+        position: absolute;
+        width:0;
+        overflow: hidden;
+        display: none;
+        height:20px;
+        /* position: relative; */
+    }
+  
+    .img-control img {
+        position: absolute;
+        /* width:100%; */
+        width:  200px;
+        height: 20px;
+        /* overflow: hidden; */
+       
+
+
+    }
+   
+    /* .img-control .changeimg{
+
+      
+    }  */
+</style>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 offset-sm-4">
+                <div class="password-control">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="email">密码:</label>
+                            <input type="text" class="form-control" id="email" placeholder="password">
+
+                        </div>
+
+                    </form>
+                    <div class="img-control">
+                        <!-- <img src="./images/TIM图片20200417163400.png" alt=""> -->
+                   <div class="control-width"> <img class="changeimg" src="./images/TIM图片20200417163432.png" alt=""></div>
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        function getpassword() {
+            $(".form-control").keyup(function () {
+                var strongnum = 0;
+                var password=$(this).val()
+                // console.log(2312);
+                // /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{8,16}$/
+                // var reg1 = new RegExp(  /^[\w_-]{6,16}$/);
+                // var reg1 = new RegExp(  /^[\w_-]{6,16}$/);
+                // var reg2=new
+                // var value = $(this).val()
+                // var result = reg.test(value);
+                $([/.{6,}/, /[0-9]+/, /[a-z]+/, /[A-Z]+/, /[^0-9a-zA-Z]+/]).each(function (i, o) {
+                    console.log(i, o, strongnum);
+                    if (o.test(password)) strongnum++;
+                });
+              
+
+                if(strongnum==0){
+                    $(".control-width").css({
+                        "display":"block",
+                        "width":"0%"
+                     
+
+                    })
+                }
+
+                if(strongnum==1){
+                    $(".control-width").css({
+                        "display":"block",
+                        "width":"33%"
+                     
+
+                    })
+                }
+                if(strongnum==2){
+                    $(".control-width").css({
+                        "display":"block",
+                        "width":"67%"
+                     
+
+                    })
+                }
+                if(strongnum==3){
+                    $(".control-width").css({
+                        "display":"block",
+                        "width":"100%"
+                     
+
+                    })
+                }
+
+
+            })
+        }
+        getpassword()
+    })
+</script>
+
+</html>

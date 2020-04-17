@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /**
+         * reg(?!exp) 零宽度负先行断言。reg匹配的内容后面不满足exp的规则
+        */
+       var str= "abZW863ab88";
+       var reg = /ab(?![A-Z])/;
+       console.info(str.match(reg));  //ab  index: 7
+
+       //(?!.*\d{3}.*) 表达的含义 校验的字符串后面连续出现三个数字
+       var reg2 = /(?!.*\d{3}.*)(^.*$)/;
+       var str2 = "abc123def";
+       var str3 = "abc12def";
+       console.info(str2.match(reg2));
+       console.info(str3.match(reg2));
+
+       //
+       var reg3 = /ab(?!.{3})([0-9]+)/;
+       console.info("ab000".match(reg3));
+    </script>
+</body>
+</html>

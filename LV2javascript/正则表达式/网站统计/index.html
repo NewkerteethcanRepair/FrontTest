@@ -230,6 +230,7 @@
                 var value = $(this).val()
                 var result = reg.test(value);
                 if (result) {
+                    //可以按这个封装成一个函数
                     $(this).addClass("is-valid");
                     $(this).removeClass("is-invalid")
                 } else {

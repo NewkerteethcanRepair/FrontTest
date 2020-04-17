@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /**
+         * 在正则表达式匹配的时候，有时候我们想要匹配内容前面或者后面的内容，但是又不需要捕获指定的这些特定内容
+         * 我们将这种正则表达式成为零宽断言。正则表达式中难度稍微大一点的内容。零宽断言还有其他名字 “环视”“预搜索”
+         * 
+         * 怎么理解零宽断言：是一种零宽度的匹配[0-9a-zA-Z]ab\d+   34tf  (?=[a-z])
+         * 作用：可以给一个指定的位置添加一个限定的条件，用来规范当前这个位置之前的内容必须要满足要求和当前这个位置之后必须要
+         * 满足的要求。
+         * 对于断言这个技术，javascript只支持零宽断言。
+         * 
+         * [a-z](?=>)
+         * reg(?=exp) 零宽度的正先行断言  reg匹配的内容后面内容必须要满足exp规则
+         * 零宽度：  正:    先行：断言代码要验证的内容是断言代码之前的内容  正：exp匹配的内容校验当前位置后面的内容
+         * 零宽度负先行断言：  
+         * (?=[A-Z])//相当于判断条件，并不会加入到正则中截取数据  零宽度
+        */
+       var str = "abMO789";
+       var reg = /ab(?=[A-Z])/;
+       console.info(str.match(reg));
+       console.info(reg.test(str))
+
+       var reg2 = /ab(?=[0-9])/;
+       console.info("ab098".match(reg2));
+
+       var reg3 = /([a-z]+)(?=\d+)/;
+       console.info("90abc123".match(reg3));
+
+       //要验证字符串位置从下表为0开始验证。首先要保证0位置开始有数字，.+后面的内容是 一个或者多个字符或者数字
+       var reg4 = /^(?=\d+).+$/;
+        console.info("mabc123".match(reg4));   //null
+
+        /**
+         * 要求：必须包含数字、大小写字母、特殊符号
+         * ?= 这个语法结构代表设置后面的内容必须满足什么条件。index 从哪儿开始根据你正在来定
+         * (?=.*[a-zA-Z]) 正则表达式中必须有一个大写字母或者大小写字母
+         * (?=.*[1-9])：这句话后面必须出现数字
+         * (?=.*[@|$|%|&])判断后面必须出现@|$|%|& 这几种符号
+        */
+        var reg2 = /^(?=.*[a-zA-Z])(?=.*[1-9])(?=.*[@|$|%|&]).{6}$/;
+        console.info(reg2.test("123ab%"));
+        
+    </script>
+</body>
+</html>

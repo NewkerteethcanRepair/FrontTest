@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九宫格抽奖</title>
+    <script src="../../bootstrap-4.4.1-dist//js/jQuery-3.4.1.js"></script>
+    <!-- <script src="../../layui//layui.all.js"></script>
+    <link rel="stylesheet" href="../../layui/css/layui.css"> -->
+    <script src="../../bootstrap-4.4.1-dist//js//bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../bootstrap-4.4.1-dist/css/bootstrap.min.css">
+    <script src="./vue.js"></script>
+</head>
+<style>
+    #nine {
+        width: 300px;
+        height: 300px;
+        border: 1px solid black;
+        /* margin-top：200px; */
+        margin: 200px auto
+    }
+
+    td {
+        background-color: #ade2e9;
+        text-align: center;
+        border: 1px solid black;
+        width: 33.3%;
+        height: 33.3%;
+    }
+
+    .start {
+        background-color: #e4aa5e;
+    }
+
+    .select {
+        background-color: #ff342d;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 offset-sm-4">
+                <table id="nine">
+
+                    <!-- <tr>
+                            <td>{item}</td>
+                            <td>{item}</td>
+                            <td>{item}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="start"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>.
+                            <td></td>
+                        </tr> -->
+                    <tr>
+
+                        <template v-for="(item,index) in dataGifts">
+                            <template v-if="index<=2">
+                                <td v-bind:class="{select:item.isselected}">{{item.name}}</td>
+
+                            </template>
+                        </template>
+                    </tr>
+                    <tr>
+                        <template v-for="(item,index) in dataGifts">
+                            <template v-if="index>2&&index<4">
+                                <!-- [isActive ? activeClass : '', errorClass] -->
+                                <td v-bind:class="{select:item.isselected}">{{item.name}} </td>
+                            </template>
+                            <template v-if="index==4">
+                                <td><button class="btn btn-warning" @click="clickdone">{{item.name}}</button></td>
+                            </template>
+                            <template v-if="index>4&&index<=5">
+                                <td v-bind:class="{select:item.isselected}">{{item.name}} </td>
+                            </template>
+                        </template>
+                    </tr>
+                    <tr>
+                        <template v-for="(item,index) in dataGifts">
+                            <template v-if="index>5&&index<=8">
+
+
+                                <td v-bind:class="{select:item.isselected}">{{item.name}} </td>
+
+                            </template>
+                        </template>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: "#nine",
+        data() {
+
+            return {
+                dataGifts: [{
+                        name: "手机",
+                        isselected: false,
+                    },
+                    {
+                        name: "平板",
+                        isselected: false,
+                    },
+                    {
+                        name: "sdsa",
+                        isselected: false,
+                    },
+                    {
+                        name: "dsa",
+                        isselected: false,
+                    },
+                    {
+                        name: "Start",
+                        isselected: false,
+                    },
+                    {
+                        name: "dsa",
+                        isselected: false,
+                    },
+                    {
+                        name: "sad",
+                        isselected: false
+                    },
+                    {
+                        name: "dsa",
+                        isselected: false,
+                    },
+                    {
+                        name: "mds",
+                        isselected: false,
+                    },
+                ],
+                isStart: false,
+                isnum: 0,
+                timer: "",
+                clockwise: 0,
+
+            }
+        },
+        computed: {
+
+        },
+        methods: {
+            clickdone() {
+                // console.log('====================================');
+
+                // console.log('====================================');
+                if (this.isStart == false) {
+
+                    this.isStart = true;
+
+                    //   let d= this.dataGifts.filter(item => !item.done);
+                    for (let i in this.dataGifts) {
+
+                        if (this.dataGifts[i].name == "Start") {
+                            // console.log("开始");
+                            this.dataGifts[i].name = "Stop"
+                            // this.$set(this.dataGifts[i],"name","Stop");
+                            console.log(this.dataGifts[i].name);
+
+                            this.selectmove();
+                            // clearTimeout(this.timer)
+                        }
+                    }
+                    // [...this.dataGifts]
+                } else {
+
+                    console.log("暂停");
+                    this.isStart = false;
+                    for (let j in this.dataGifts) {
+                        if (this.dataGifts[j].name == "Stop") {
+
+                            this.dataGifts[j].name = "Start"
+
+                            // this.$set(this.dataGifts[j],"name","Start");
+                            // this.selectto()
+                            // this.selectto()
+
+                            clearTimeout(this.timer)
+                            // console.log(this.timer+"1312");
+                        }
+                        // this.selectmove();
+
+
+                    }
+
+
+                }
+                // this.selectto();
+                // setInterval(() => {
+
+                //     this.selectto();
+                // }, 200);
+                // this.selectmove();
+                [...this.dataGifts];
+            },
+
+            selectto() {
+                for (let i in this.dataGifts) {
+                    // console.log(231);
+
+                    if (this.dataGifts[i].name !== "Start") {
+                        if (this.isStart == true) {
+                            if (this.isnum - 1 == i) {
+                                console.log("顺序" + this.isnum + ",,,," + this.clockwise);
+
+                                this.dataGifts[this.clockwise].isselected = !this.dataGifts[this.clockwise]
+                                    .isselected;
+                            }
+                            // else{
+                            //     this.dataGifts[this.clockwise].isselected = ! this.dataGifts[this.clockwise].isselected;
+                            // }
+                            // else{
+                            //     this.dataGifts[this.clockwise].isselected = false;
+                            // }
+
+                        } else {
+                            if (this.isnum - 1 == i) {
+
+                                this.dataGifts[this.clockwise].isselected = !this.dataGifts[i].isselected;
+                            }
+                        }
+
+                    }
+                }
+                [...this.dataGifts];
+            },
+            selectmove() {
+
+
+                if (this.isnum <= 2) {
+                    this.clockwise = this.isnum;
+
+                }
+                if (this.isnum == 3) {
+                    this.clockwise = 5;
+
+                }
+                // if(this.isnum==5){
+                //     this.clockwise=5;
+
+                // }
+                if (this.isnum == 4) {
+                    // this.clockwise=8;
+                    // this.isnum+=8;
+
+                    this.clockwise = 8;
+                }
+                if (this.isnum == 5) {
+                    this.clockwise = 7;
+
+                }
+                if (this.isnum == 6) {
+                    this.clockwise = 6;
+
+                }
+                if (this.isnum == 7) {
+                    this.clockwise = 3;
+                    // this.isnum = 0;
+
+                }
+                if (this.isnum == 8) {
+                    this.clockwise = 0;
+                    this.isnum = 0;
+                }
+
+                this.isnum += 1;
+
+                this.timer = setTimeout(() => {
+                    this.selectmove();
+                    this.selectto()
+
+                }, 100);
+            }
+
+
+
+        },
+    });
+</script>
+
+</html>

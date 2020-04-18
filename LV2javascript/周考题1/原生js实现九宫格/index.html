@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="../jQuery-3.4.1.js"></script>
+
+<body>
+
+</body>
+<style>
+    td {
+        background-color: rgb(255, 0, 255);
+    }
+</style>
+<script>
+    // 原型对象测试
+
+    function dd(name) {
+        this.name = name;
+    }
+    son.prototype = new dd();
+
+    function son(name) {
+
+    }
+    var s = new son();
+    console.log(s.__proto__.constructor);
+
+    console.log(son.prototype.constructor);
+
+    console.log(son.prototype == s.__proto__);
+    console.log(son.prototype);
+
+
+    var a = {
+        1: 2
+    };
+    console.log(a.prototype);
+
+    var d = document.getElementsByTagName("body")[0];
+    d.innerHTML = (`  <table id="nine">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td ></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>`)
+
+    var t = document.getElementById("nine");
+
+    console.log(t);
+
+    t.style.cssText = "width:240px; height:240px; border: 1px solid black";
+
+    // t.children.cssText="width:80px; height:80px; border: 1px solid black"
+    // t.children
+
+    setInterval(() => {
+        change(), 500
+    });
+    $("#nine").find("td").css({
+        "width": "80px",
+        "height": "80px"
+
+
+    })
+    console.log(d);
+
+    function change() {
+
+        var td = $("#nine").find("td");
+        for (var i in td) {
+            var r = parseInt(Math.random() * 256)
+            var g = parseInt(Math.random() * 256)
+            var b = parseInt(Math.random() * 256)
+            $(td[i]).css({
+                "background-color": `rgb(${r},${g},${b})`
+            });
+        }
+
+    }
+</script>
+
+</html>

@@ -6,7 +6,7 @@ $(function () {
 })
 
 function getFl() {
-    $(".smallImg").on("click", ".fl", function () {
+    $(".proIntro").on("click", ".fl", function () {
         // console.log("sd");
         
         $(this).toggleClass("fl-clicked")
@@ -18,7 +18,7 @@ function getFl() {
 }
 
 function getbottomimg(){
-    $(".proDet").find(".smallImg img").hover(
+    $(".proImg").find(".smallImg img").hover(
         function() {
             $(this).addClass("fl-clicked")
             var imgsrc=$(this).attr("src");

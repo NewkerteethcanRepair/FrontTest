@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p class="op">这是测试内容</p>
+    <p class="op">这是测试内容2</p>
+    <script type="text/javascript" src="js/jQuery-2.2.2-min.js"></script>
+    <script>
+        //在jq操作过程中经常犯错的地方。前面写的jquery语法 后面突然变成js
+        //不推荐大家这样写
+        var op = $(".op").css("color","red")[0].innerHTML;
+        console.info(op);
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="cd">孵化园</li>
+        <li class="tianfu">天府</li>
+        <li id="cq">重庆</li>
+    </ul>
+    <div class="box">
+        <span class="as">span1</span>
+    </div>
+    <div class="box">
+        <span class="as1">span2</span>
+    </div>
+    <input type="checkbox" name="hobby" checked>
+    <input type="checkbox" name="hobby">
+
+    <ul class="ul2">
+        <li><a href="#">杨莲</a></li>
+        <li class="ll"><a href="#">刘磊</a></li>
+        <li><a href="#">李焰</a></li>
+    </ul>
+
+    <script type="text/javascript" src="js/jQuery-2.2.2-min.js"></script>
+    <script type="text/javascript">
+        console.info($("li").first()); //====> $("li:first")
+        console.info($("li").last());
+        
+        //hasClass方法 判断当前元素是否有某个class
+        //如果选择器返回的对象包含多个内容，判断里面某一个是否有这个class
+        console.info($("li:first + li").hasClass("tianfu"))
+
+        //filter过滤,filter里面加入的选择器
+        var oli = $("ul li").filter(".cd");
+        console.info(oli);
+        var oli2 = $("ul li").filter("#cq");
+        console.info(oli2);
+
+        //has包含，通过判断包含的子元素是否有特定选择器来返回当前元素
+        var obox = $(".box").has(".as");
+        console.info(obox);
+
+        //find()获取到当前指定元素的后代元素
+        $(".box").find(".as").css("background-color","pink")
+
+        //is()删除 可以用来判断元素是否具有某个属性，判断指定元素的类型 is判断属性的时候 要在属性前面加一个：
+        var boo = $("input[name=hobby]").eq(0).is(":checked")
+        console.info(boo);
+
+        var boo2 = $(".as1").parent().is("p");
+        console.info(boo2);
+
+
+        console.info($(".ul2").children());
+        console.info($(".ul2").children(".ll"));
+
+
+        console.info($(".ll").parent());
+        
+    </script>
+</body>
+</html>

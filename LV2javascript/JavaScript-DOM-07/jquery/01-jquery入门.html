@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jQuery-2.2.2-min.js"></script>
+    <script type="text/javascript">
+        /**
+         * jquery的基本用法
+         * $是一个函数名，这个函数的功能非常强大，可以当做选择器用 也可以创建文档
+        */
+
+        //js的页面加载写法
+        //    window.onload = function(){
+        //        xxxxxxx
+        //    }
+
+        //ready是一个函数 作用就相当于load事件
+        $(document).ready(function () {
+            var op = document.querySelector(".op");
+            console.info(op);
+        })
+        var op = document.querySelector(".op");
+        console.info(op);
+
+        //如果$函数检测到传递进来的是一个函数，那默认 window.onload = funcion()
+        $(function () {
+            var op = document.querySelector(".op");
+            console.info(op);
+
+            //$函数可以默认绑定window load时间 还可以当前选择器函数
+            var obox = document.getElementById("box");
+            console.info(obox);
+
+            //js和jquery在操作元素的区别：
+            //1.对于js而言，获取到就是当前你操作的节点
+            //2.对于jq而言，所有函数调用的时候默认返回一个对象。
+            var obox2 = $("#box");
+            console.info(obox2);
+
+        })
+
+
+
+    </script>
+</head>
+
+<body>
+    <p class="op">天气不错</p>
+    <div id="box"></div>
+
+</body>
+
+</html>

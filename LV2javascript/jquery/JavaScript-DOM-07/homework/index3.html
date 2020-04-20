@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>最简单的轮播效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        .box {
+            width: 1200px;
+            height: 460px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            padding: 5px;
+        }
+
+        .inner {
+            width: 1200px;
+            height: 460px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .inner img {
+            width: 1200px;
+            height: auto;
+            vertical-align: top
+        }
+
+        ul {
+            /* ul里面存放li 我要让li全都放在一行显示 */
+            width: 1000%;
+            position: absolute;
+            list-style: none;
+            left: 0;
+            top: 0;
+        }
+
+        .inner li {
+            float: left;
+        }
+
+        ol {
+            position: absolute;
+            height: 20px;
+            left: 40%;
+            bottom: 20px;
+            text-align: center;
+            padding: 5px;
+        }
+
+        ol li {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            background-color: #fff;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 100%;
+        }
+
+        ol .current {
+            background-color: coral;
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #fff;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #000;
+            opacity: 0.5;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box">
+        <div class="inner">
+            <!--轮播图-->
+            <ul>
+                <li><a href="#"><img src="imgs/banner01.jpg" alt=""></a></li>
+                <li><a href="#"><img src="imgs/banner02.jpg" alt=""></a></li>
+                <li><a href="#"><img src="imgs/banner03.jpg" alt=""></a></li>
+                <li><a href="#"><img src="imgs/banner04.jpg" alt=""></a></li>
+                <li><a href="#"><img src="imgs/banner05.jpg" alt=""></a></li>
+            </ul>
+            <ol class="bar">
+
+            </ol>
+            <!--左右焦点-->
+            <div id="arr">
+                <span id="left">
+                    &lt;
+                </span>
+                <span id="right">
+                    &gt;
+                </span>
+            </div>
+        </div>
+    </div>
+    <script>
+        var obox = document.getElementById("box");
+        var oinner = obox.children[0];
+        var oul = oinner.children[0];
+        var liArr = oul.children;
+        var ool = document.querySelector(".bar");
+        //获取到当前这个元素最终盒子的大小
+        var ingWidth = oinner.offsetWidth;
+        var leftBtn = document.getElementById("left");
+        var rightBtn = document.getElementById("right");
+        //控制当前显示那张图片
+        var pic = 0;
+
+        (function () {
+            //根据li的数量动态创建小图标的数量
+            for (let i = 0; i < liArr.length; i++) {
+                var oli = document.createElement("li");
+                oli.innerHTML = (i + 1);
+                oli.setAttribute("index", i);
+                ool.appendChild(oli);
+            }
+            //给第一个小圆点设置默认背景样式
+            ool.children[0].className = "current";
+            //将第一个li图片节点，克隆一份放在整个ul的最后面，目的是为了让用户能看到无缝切换
+            oul.appendChild(oul.children[0].cloneNode(true))
+        })();
+
+        //我们要设计轮播图播放，控制整体每张图 间隔多少秒 切换一次
+        function handler() {
+            //liarr.length等于6 克隆了一个放在最后
+            if (pic == liArr.length - 1) {
+                pic = 0;
+                //控制图片滑动，其实是控制ul整个标签移动
+                oul.style.left = 0 + "px";
+            }
+            pic++;
+            //每张图片在挪动的时候，我们需要一个动画来动画
+            animate(oul,-pic*ingWidth);
+            //图片挪动，小按钮也需要改变样式
+            if(pic == liArr.length-1){
+                ool.children[ool.children.length-1].className = "";
+                ool.children[0].className = "current";
+            }else{
+                for (let index = 0; index < ool.children.length; index++) {
+                   ool.children[index].removeAttribute("class");
+                }
+                ool.children[pic].className = "current";
+            }
+        }
+
+        /**
+        * 这个行数控制每张图片，从右边滑动到左边 需要多久完成。每次挪动多少距离
+        */
+        function animate(element, target) {
+            //每次进来挪动图片，清理一下上次的定时器
+            clearInterval(element.timeId)
+            element.timeId = setInterval(() => {
+                /**
+                * 图片在挪动的过程中，判断是往左边挪动，还是往右边挪动。
+                */
+                var current = element.offsetLeft;
+                //图片比如是1200px 每次挪动10px 间隔10秒钟滑动一次
+                var step = 10;
+                step = current < target ? step : -step;
+                //设置移动后的位置
+                current += step;
+                if (Math.abs(current - target) > Math.abs(step)) {
+                    element.style.left = current + "px";
+                }
+                else{
+                    clearInterval(element.timeId);
+                    element.style.left = target + "px";
+                }
+            }, 10);
+        }
+
+        var imgInterval = setInterval(handler, 3000);
+
+
+        //设置点击事件控制图片的轮转
+        leftBtn.onclick = function(){
+            // 点击完成后，重新开始轮播
+            clearInterval(imgInterval);
+            if(pic==0){
+                pic = liArr.length-1;
+                oul.style.left = -pic*ingWidth +"px";
+            }
+            pic--;
+            animate(oul,-pic*ingWidth);
+            // 按钮的样式也需要调整
+            for(let i=0;i<ool.children.length;i++){
+                ool.children[i].removeAttribute("class");
+            }
+            ool.children[pic].className = "current";
+            imgInterval = setInterval(handler, 3000);
+        }
+        rightBtn.onclick = function(){
+            handler();
+            clearInterval(imgInterval);
+            imgInterval = setInterval(handler, 3000);
+        }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

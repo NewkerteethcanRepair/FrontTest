@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" class="box" index="1"></div>
+    <ul class="ul">
+        <li class="list">123</li>
+        <li>456</li>
+        <li>789</li>
+    </ul>
+    <div class="div2">woniu</div>
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <p class="op">天府校区<span>成都校区</span></p>
+    <input type="text" name="username">
+
+    <script type="text/javascript" src="js/jQuery-2.2.2-min.js"></script>
+    <script type="text/javascript">
+        var obox = $("#box");
+        //封装了getAttribute和setAttribute
+        // obox.getAttribute()
+        var index = obox.attr("index");
+        console.info(index);
+
+        obox.attr("title","box");
+
+        //删除一个属性
+        obox.removeAttr("title");
+
+        obox.attr("index",10);
+
+        //JQuery专门提供了一个函数操作class属性
+        //对于addClass函数，我们动态拼接一个类名 默认空格隔开
+        $(".ul").addClass("as");
+        $(".ul").addClass("middle")
+        // $(".ul").removeClass("as");
+
+        //检测当前元素是否有class=list 如果有的那就默认删除，没有那就添加
+        $(".ul li").toggleClass("list") 
+        console.info($(".ul li"));
+        $(".ul li").addClass(function(){
+            //在jq里面 不能用this来直接表示当前操作对象 $(this)----this
+            //.ul li返回是一个对象，对象里面包含三个li 我们直接操作对象中每个li
+            //index()这个函数返回当前对象中的元素的下标
+            return "li"+$(this).index();
+        });
+
+        // 链式表达,主要你使用jq返回了一个jq对象，都继续在后面调用他提供的api操作对象
+        $(".div2").addClass("as").css("color","red").html("杨莲");
+        console.info($(".div2").addClass("as"));
+
+        // var map = new Map();
+        // map.set(xxx,xx).set().set();
+
+        //prop获取到元素的属性值，默认返回的第一个元素的属性值。设置属性值 默认遍历设置
+        // $("input[type=checkbox]").prop("checked",true);
+        console.info($("input[type=checkbox]").prop("checked"));
+
+
+        //html() 就是封装了之前 innerHTML属性 整体替换 
+        var mes = document.querySelector(".div2").innerHTML;
+        console.info(mes);
+
+        var mes2 = $(".div2").html("刘磊").css("color","orange");
+        console.info(mes2);
+
+        //text()  innerText属性
+        console.info($(".op").text());
+        $(".op span").text("孵化园");
+        
+        // val()  value属性 在表单操作中经常要获取到元素的值
+        $("input[name=username]").blur(function(){
+            console.info($(this).val());  //this.value;
+        });
+
+    </script>
+</body>
+</html>

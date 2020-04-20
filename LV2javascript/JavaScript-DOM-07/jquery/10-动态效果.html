@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        .box2 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <div class="box2"></div>
+    <button type="button" class="btn1">按钮1</button>
+    <button type="button" class="btn2">按钮2</button>
+    <button type="button" class="btn3">按钮3</button>
+    <button type="button" class="btn4">按钮4</button>
+    <button type="button" class="btn5">按钮5</button>
+    <p class="op">woniu 学院</p>
+
+    <script type="text/javascript" src="js/jQuery-2.2.2-min.js"></script>
+    <script type="text/javascript">
+
+        //slow normal fast
+        $(".box").click(function () {
+            $(this).hide(2000) //diplay:none 将元素宽度和高度等比例缩放 0
+        });
+        $(".btn").click(function () {
+            $(".box").show("slow");
+        });
+
+        //滑动的方式来隐藏和设置元素
+        $(".box2").click(function () {
+            $(this).slideUp(2000)
+        }
+        );
+        $(".btn2").click(function () {
+            $(".box2").slideDown("slow");
+        });
+
+        //slideTaggle() 如果元素隐藏那就显示，如果元素显示那就隐藏
+        $(".btn3").click(function(){
+            $(".box2").slideToggle(1000);
+        });
+
+        //fadeIn fadeOut 通过改变透明度来显示和隐藏元素
+        $(".btn4").click(function(){
+            $(".box2").fadeOut(2000);
+        });
+
+        //jq animate动画
+        $(".btn5").click(function(){
+            $(".op").animate({
+                fontSize:"100px"
+            },2000)
+        });
+
+
+
+
+
+    </script>
+</body>
+
+</html>

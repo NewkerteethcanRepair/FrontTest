@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <em class="em">em</em>
+
+    <p>this is p</p>
+    <span>this is span</span>]
+    <ul class="ul2">
+        <li>123</li>
+        <li class="ll">456</li>
+        <li>789</li>
+    </ul>
+
+    <div class="box2">
+        <p>this is p</p>
+    </div>
+    <span class="spanas">this is span</span>
+
+
+    <button type="button">按钮</button>
+
+    <script type="text/javascript" src="js/jQuery-2.2.2-min.js"></script>
+    <script type="text/javascript">
+        //创建一个节点  document.createElement()
+        var obox = $("<div class='box'>box</div>");
+        //将节点添加到页面中,将某个元素添加到父级元素的后面  appendChild()
+        $("body").append(obox);
+        $("body").append("<strong>虚胖 is strong</strong>");
+
+        //appendTo()获取到一个元素，将这个元素追加到某个元素的内容
+        $(".em").appendTo(".box");
+
+
+        //insertBefore----jq---prepend()
+        //prepend默认是将添加的元素放在子元素的最前面
+        $(".box").prepend("<strong>prepend</strong>");
+
+        //prependTo();功能和appendTo一样
+
+
+        //after()将元素放在指定元素后面
+        $("span").eq(0).after($("p").eq(0))
+        $(".ll").before("<li>111</li>")
+
+        //replaceWith()用指定的元素替换选中的元素
+        //$(".box2 p").replaceWith("<strong>this is strong</strong>");
+        $(".box2 p").replaceWith($(".spanas"));
+
+        //删除节点 指定传递一个选择器
+        //$(".ul2 li").remove();
+        //empty清空选中元素的资源。
+        //$(".ul2 li").empty();
+
+        //克隆
+        $(".ll").clone().insertBefore(".ll");
+        //jquery也分为深克隆和浅克隆
+        //浅克隆默认是克隆元素 深克隆元素的事件
+        $("[type=button]").eq(0).click(function(){
+            alert($(this).html());
+        });
+        $("[type=button]").eq(0).clone(true).appendTo($("body"));
+        
+    </script>
+</body>
+</html>

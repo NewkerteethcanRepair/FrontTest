@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        .bgcolor{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <button type="button" class="btn">按钮</button>
+    <button type="button" class="btn">按钮</button>
+    <div class="box"></div>
+    <div class="box2" style="margin-top: 100px;"></div>
+    <button type="button" class="btn2">添加</button>
+    <input type="text" name="username">
+
+    <script type="text/javascript" src="js/jQuery-2.2.2-min.js"></script>
+    <script type="text/javascript">
+        //事件的绑定 全都封装成了函数 addEventListener()  兼容问题处理
+        $(".btn").click(function(event){
+            console.info($(this).index());
+            console.info(event);
+        });
+
+        //通过on来绑定事
+        // 需要自己传入事件的名称 和事件绑定的函数
+        // $(".box").on("click",function(){
+        //     console.info($(this).width());
+        // });
+        // $(".box").on("click mouseover",function(){
+        //     console.info($(this).width());
+        // });
+
+        $(".box").on({
+            click:function(){
+                console.info("click");
+            },
+            mouseover:function(){
+                console.info("mouseover");
+            }
+        });
+
+        //功能一样的函数bind
+        $(".box2").bind({
+            click:function(){
+                console.info("click");
+            },
+            mouseover:function(){
+                console.info("mouseover");
+            }
+        });
+
+        //给某个元素绑定事件，事件只执行一次
+        $(".btn2").one("click",function(){
+            setTimeout(() => {
+               alert("恭喜你提交成功"); 
+            }, 2000);
+        });
+
+        $("input[name=username]").keyup(function(){
+            console.info($(this).val());
+        });
+
+        //removeEventListener()
+        $(".box2").off("mouseover");
+
+        //hover()
+        $("input[name=username]").hover(
+            function() {
+                $(this).addClass("bgcolor")
+            },
+            function() {
+                $(this).removeClass("bgcolor")
+            }
+        );
+
+
+
+
+
+    </script>
+</body>
+</html>

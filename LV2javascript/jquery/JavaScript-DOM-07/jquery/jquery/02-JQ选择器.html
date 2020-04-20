@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* ul li:first-child{
+            background-color: red;
+        } */
+    </style>
+</head>
+<body>
+    <p id="p1">wn02</p>
+    <div class="box">box</div>
+    <div class="box">box2</div>
+    <ul>
+        <li class="as"><a href="#">杨莲</a></li>
+        <li class="as current"><a href="#">依蕾</a></li>
+        <li class="as"><a href="#">丁晓</a></li>
+    </ul>
+    <ul class="ul2">
+        <li class="current">孵化园校区</li>
+        <li class="current">天府校区</li>
+        <li class="current">重庆校区</li>
+        <li class="current">西安校区</li>
+        <li class="current">上海校区</li>
+    </ul>
+    <input type="text" name="username">
+    <input type="text" name="pwd">
+
+    <script text="text/javascript" src="js/jQuery-2.2.2-min.js"></script>
+    <script text="text/javascript">
+        //$ not defined说明你没有引入jq文件
+        $(function(){
+            //通过id来获取元素
+            var op = $("#p1");
+            console.info(op);
+
+            //document.getElementsByClassName("box");
+            //NodeList----看成一个数组
+            var obj = document.querySelectorAll(".box");
+            //返回的fn-init对象 对象提供很属性和行为
+            var obox = $(".box");
+            console.info(obj);
+            console.info(obox);
+
+            //获取到元素
+            var oul = $("ul")
+            console.info(oul);
+
+            //jquery$函数获取元素 就是css选择器的语法
+            var oinp = $("input[name=username]")
+            console.info(oinp);
+            var oinp = $("input[name=pwd]")
+            console.info(oinp);
+
+            //获取到指定元素下面的子元素
+            var oli = $("ul li:first-child");
+            console.info(oli);
+
+            var oli2 = $("li:first")
+            console.info(oli2);
+
+            var oli3 = $("li:first + li")
+            console.info(oli3);
+
+            //要选中的元素 必须有as 和current这个class
+            var oli4 = $(".as.current");
+            console.info(oli4);
+
+            //下标从0开始，获取到所有的偶数行
+            $(".ul2 li:even").css("background-color","pink");
+            $(".ul2 li:odd").css("background-color","orange");
+            //新版本里面 eq可以作为选择器来用。老版本是放在对象后面调用
+            console.info($(".ul2 li").eq(0));
+            
+        });
+    </script>
+</body>
+</html>

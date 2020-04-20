@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .as{
+            border: 1px solid blue;
+        }
+        .box{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="as" style="width: 100px;height: 100px;background-color: red;">
+
+    </div>
+    <div class="box"></div>
+    <script type="text/javascript" src="js/jQuery-2.2.2-min.js"></script>
+    <script type="text/javascript">
+        //css的样式，在jquery中不用考虑这个样式是内联内部还是外部。直接获取
+        var res = $(".as").css("width");
+        console.info(res);
+        console.info($(".as").css("border"));
+
+        //设置css的样式 两个参数就设置样式 默认内联
+        $(".as").css("border-radius","20px");
+
+        //设置多个样式需要将样式放在对象中 传递给css函数
+        $(".box").css({
+            width:"100px",
+            height:"100px",
+            border:"1px solid orange"
+        });
+
+        // 动态获取样式
+        $(".box").click(function(){
+            $(this).css({
+                width:function(index,val){
+                    //val == 100px parseInt(100px) ---100
+                    return parseInt(val)*2;
+                },
+                height:function(index,val){
+                    return parseInt(val)*2;
+                }
+            })
+        });
+
+        //width(); height() 获取到的盒子内容区域大小
+        console.info($(".box").width());
+        console.info($(".box").height());
+
+        //innerWidth();innerHeight() 表示内容区域+padding
+        console.info($(".box").innerWidth());
+        console.info($(".box").innerHeight());
+
+        //outerWidth()   盒子真正的大小
+        console.info($(".box").outerWidth());
+        
+    </script>
+</body>
+</html>

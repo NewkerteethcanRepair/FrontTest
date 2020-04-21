@@ -212,14 +212,19 @@
 
                     if (this.dataGifts[i].name !== "Start") {
                         if (this.isStart == true) {
-                            if (this.isnum - 1 == i) {
+                            if (this.isnum  == i) {
                                 console.log("顺序" + this.isnum + ",,,," + this.clockwise);
 
-                                this.dataGifts[this.clockwise].isselected = !this.dataGifts[this.clockwise]
-                                    .isselected;
+                                this.dataGifts[this.clockwise].isselected =true
                             }
+                            else{
+                                this.dataGifts[i].isselected =false
+                            }
+                            // if(this.isnum!=i){
+                            //     this.dataGifts[i].isselected = false
+                            // }
                             // else{
-                            //     this.dataGifts[this.clockwise].isselected = ! this.dataGifts[this.clockwise].isselected;
+                            //     this.dataGifts[i].isselected = false
                             // }
                             // else{
                             //     this.dataGifts[this.clockwise].isselected = false;
@@ -228,7 +233,7 @@
                         } else {
                             if (this.isnum - 1 == i) {
 
-                                this.dataGifts[this.clockwise].isselected = !this.dataGifts[i].isselected;
+                                // this.dataGifts[this.clockwise].isselected = !this.dataGifts[i].isselected;
                             }
                         }
 
@@ -254,7 +259,6 @@
                 if (this.isnum == 4) {
                     // this.clockwise=8;
                     // this.isnum+=8;
-
                     this.clockwise = 8;
                 }
                 if (this.isnum == 5) {

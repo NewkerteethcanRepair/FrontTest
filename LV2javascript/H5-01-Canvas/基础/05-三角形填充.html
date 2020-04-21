@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="300" height="300" id="canvas"></canvas>
+    <script type="text/javascript">
+        function draw(){
+            var canvas = document.getElementById("canvas");
+            //通过canvas原生调用getContent来检查当前浏览器是否支持
+            if(!canvas.getContext) return;
+            //获取到一个上下文对象（画笔对象）
+            var ctx = canvas.getContext("2d");
+            
+            
+
+            //4步骤
+            ctx.beginPath();
+            ctx.moveTo(50,50);
+            ctx.lineTo(200,50);
+            ctx.lineTo(200,200)
+            ctx.closePath(); //如果加入了closePath闭合路径，将当前路径结尾和开始连接在一起
+            ctx.stroke();
+            
+            //单独设置给画笔设置一个颜色
+            ctx.fillStyle = "rgb(255,0,0)";
+            //这个函数就是填充颜色，ctx画笔指向的是前面三角形。填充的就是前面内存绘制的三角形
+            ctx.fill();
+
+        }
+        draw();
+
+        </script>
+</body>
+</html>

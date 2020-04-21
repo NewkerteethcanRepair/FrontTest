@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img class="img1" src="chrome.png" alt="">
+    <img class="img2" src="chrome.png" alt="">
+    <img class="img3" src="chrome.png" alt="">
+    <script type="text/javascript"src="jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="jQueryRotate.2.2.js"></script>
+    <script type="text/javascript">
+        //animate自定义动画
+        // rotate函数是插件里面提供的一个封装函数
+
+        /**
+         * angel：起始的位置
+         * animateTo:旋转到180deg
+         * duration:代表运行时间
+         * callback：回调函数。旋转完成执行一个回调函数
+        */
+        // $(".img1").rotate({
+        //     angel:0, //默认是0
+        //     animateTo:180,
+        //     duration:2000,
+        //     callback:function(){
+        //         alert("结束！！！");
+        //     }
+        // });
+        $(".img2").bind({
+            mouseover:function(){
+                $(this).rotate({
+                    animateTo:360,
+                })
+            },mouseout:function(){
+                $(this).rotate({
+                    animateTo:0,
+                })
+            },
+            duration:2000
+        });
+
+        //控制图片一致旋转
+        var num = 0;
+        setInterval(() => {
+            num+=3;
+            $(".img3").rotate(num++);
+        }, 10);
+        
+
+    </script>
+</body>
+</html>

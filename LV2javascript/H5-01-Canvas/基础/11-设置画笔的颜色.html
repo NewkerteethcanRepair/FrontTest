@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="300" height="300" id="canvas"></canvas>
+    <script type="text/javascript">
+        function draw() {
+            var canvas = document.getElementById("canvas");
+            //通过canvas原生调用getContent来检查当前浏览器是否支持
+            if (!canvas.getContext) return;
+            //获取到一个上下文对象（画笔对象）
+            var ctx = canvas.getContext("2d");
+
+            ctx.beginPath();
+            ctx.moveTo(50,50);
+            ctx.lineTo(200,200);
+            //给画笔添加颜色，画出来线段就是指定的颜色
+            ctx.strokeStyle = "pink";
+            ctx.closePath();
+            ctx.stroke();
+
+            for (let i = 0; i < 6; i++) {
+                for (let j = 0; j < 6; j++) {
+                    ctx.strokeStyle = `rgb(${Math.floor(255 - 42.5 * i)},${Math.floor(255 - 42.5 * j)},0)`;
+                    ctx.strokeRect(j*50, i* 50 ,50,50);
+                }
+            }
+
+
+        }
+        draw();
+
+    </script>
+</body>
+
+</html>

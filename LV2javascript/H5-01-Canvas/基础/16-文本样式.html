@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="300" height="300" id="canvas"></canvas>
+    <script type="text/javascript">
+        function draw() {
+            var canvas = document.getElementById("canvas");
+            //通过canvas原生调用getContent来检查当前浏览器是否支持
+            if (!canvas.getContext) return;
+            //获取到一个上下文对象（画笔对象）
+            var ctx = canvas.getContext("2d");
+            //字体大小字体类型
+            //textAlign 字体的位置 start、end、left、right、center
+            /**
+            * start：以字体参考线作为标准，文本放在参考线的右边
+              end：让文本结尾放在参考线位置
+              left:左对齐
+              right：右对齐
+              center：以参考线为基础，参考线左边一段内容，参考线右边一段内容
+            */
+            ctx.font = "70px 宋体";
+            ctx.textAlign = "end";
+            ctx.fillStyle = "red";
+            ctx.fillText("青龙白虎",0,100);
+            ctx.strokeStyle = "orange"
+            ctx.strokeText("青龙白虎",10,200);
+
+        }
+        draw();
+
+    </script>
+</body>
+
+</html>

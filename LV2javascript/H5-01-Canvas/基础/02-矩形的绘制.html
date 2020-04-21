@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="300" height="300" id="canvas"></canvas>
+    <script type="text/javascript">
+        function draw(){
+            var canvas = document.getElementById("canvas");
+            //通过canvas原生调用getContent来检查当前浏览器是否支持
+            if(!canvas.getContext) return;
+            //获取到一个上下文对象（画笔对象）
+            var ctx = canvas.getContext("2d");
+            //绘制一个填充颜色矩形
+            // 第一个参数:图形在canvas标签里面x坐标 y坐标 绘制图形的宽度 高度
+            // 在绘制图形的过程中，没有指定填充颜色，浏览器默认填充黑色
+            ctx.fillRect(50,50,100,100);
+            //绘制一个矩形的边框 边框的没有设置 默认由浏览器来提供 边框一般默认1
+            ctx.strokeRect(50,150,100,100);
+            //在页面上清除一个矩形区域,指定区域里面的样式被清空 默认是矩形
+            ctx.clearRect(60,60,300,300);
+        }
+        draw();
+    </script>
+</body>
+</html>

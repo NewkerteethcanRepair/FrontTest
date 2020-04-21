@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>插件抽奖</title>
+
+    <!-- <script type="text/javascript"src="jquery-1.7.2.min.js"></script> -->
+    <script type="text/javascript" src="../插件/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../插件/jQueryRotate.2.2.js"></script>
+
+
+
+</head>
+<style>
+    .main {
+        position: relative;
+        width: 500px;
+        height: 600px;
+        margin: 200px auto;
+        /* height: 100%; */
+        background: url(../抽奖/TIM图片20200421113739.png) no-repeat;
+
+    }
+
+    .main img {
+        position: absolute;
+        left: 148px;
+        top: 148px;
+    }
+</style>
+
+<body>
+    <div class="main">
+        <!-- <img src="../抽奖/TIM图片20200421113739.png" alt=""> -->
+        <img class="isstart" src="../抽奖/TIM图片20200421113801.png" alt="">
+
+    </div>
+</body>
+<script>
+    //    //animate自定义动画
+    //         // rotate函数是插件里面提供的一个封装函数
+
+    //         /**
+    //          * angel：起始的位置
+    //          * animateTo:旋转到180deg
+    //          * duration:代表运行时间
+    //          * callback：回调函数。旋转完成执行一个回调函数
+    //         */
+    //         // $(".img1").rotate({
+    //         //     angel:0, //默认是0
+    //         //     animateTo:180,
+    //         //     duration:2000,
+    //         //     callback:function(){
+    //         //         alert("结束！！！");
+    //         //     }
+    //         // });
+    // $(".main img").bind({
+    //     mouseover:function(){
+    //         $(this).rotate({
+    //             animateTo:360,
+    //         })
+    //     },mouseout:function(){
+    //         $(this).rotate({
+    //             animateTo:0,
+    //         })
+    //     },
+    //     duration:5000
+    // });
+
+    // 控制图片一致旋转
+
+
+    $(function () {
+        rotatelottery()
+    })
+    var isstart=false
+    var timer;
+    var d=0;
+    function rotatelottery(){
+        $(".isstart").click(function(){
+            if(!isstart){
+                // isstart=true
+                var num = Math.random()*360;
+                // console.log(num);
+                
+            // timer=setTimeout(() => {
+            //     num += 3;
+            //     $(".main img").rotate(num++);
+            // }, 2000);
+            d+=num
+            console.log('====================================');
+            console.log(d);
+            console.log('====================================');
+            $(this).rotate({
+                animateTo:d,
+                duration:2000,
+                callback:function(){
+                    var h
+                    if(d<360){
+                     h=d
+                    }
+                    else{
+
+                        h=d%360
+                    }
+
+                    if(h<=45){
+
+                        alert("三等奖");
+                    }
+                    else if(h>=45&&h<=135){
+                        alert("什么都没有")
+                    }
+                    else if(h<=180&&h>=135){
+                        alert("什么都没有")
+                    }
+                    else if(h>180&&h<360){
+                        alert("臭鱼l")
+                    }
+                }
+            },
+            
+            )
+            
+            // if(num%45==0){
+            //     alert("网络错误")
+            // }
+            // else if(num%45<=45&&num%45>0){
+            //     alert("一等奖")
+            // }
+            // else{
+            //     alert("都是垃圾")
+            // }
+
+            }
+
+            // else{
+            //     isstart=false
+            //     clearTimeout(timer);
+            // }
+           
+        })
+    }
+</script>
+
+</html>

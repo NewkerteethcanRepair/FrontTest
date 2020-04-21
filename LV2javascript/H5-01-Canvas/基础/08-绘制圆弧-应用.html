@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="300" height="300" id="canvas"></canvas>
+    <script type="text/javascript">
+        function draw() {
+            var canvas = document.getElementById("canvas");
+            //通过canvas原生调用getContent来检查当前浏览器是否支持
+            if (!canvas.getContext) return;
+            //获取到一个上下文对象（画笔对象）
+            var ctx = canvas.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(100,100,40,-Math.PI/2,Math.PI/2,false);
+            ctx.closePath();
+            ctx.stroke();
+
+
+            ctx.beginPath();
+            ctx.arc(150,150,40,Math.PI/2,Math.PI*2,false);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(200,200,40,0,Math.PI*2,false);
+            ctx.stroke();
+            ctx.fillStyle = "pink";
+            ctx.fill();
+        }
+        draw();
+
+    </script>
+</body>
+
+</html>

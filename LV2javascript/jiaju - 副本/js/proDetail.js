@@ -3,7 +3,24 @@ $(function () {
     getFl()
     getbottomimg();
     taball();
+    secondmenu()
 })
+
+function secondmenu(){
+    $(".head ul li").hover(function(){
+
+        var aa=$(this).children().length;
+        console.log($(this).children().length);
+        
+        if(aa!=1){
+            $(this).children("div").slideToggle(200);
+    
+        }
+        else{
+            $(this).children("div").hide();
+        }
+    })
+}
 
 function getFl() {
     $(".proIntro").on("click", ".fl", function () {

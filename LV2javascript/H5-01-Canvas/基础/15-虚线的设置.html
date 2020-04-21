@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="300" height="300" id="canvas"></canvas>
+    <script type="text/javascript">
+        function draw() {
+            var canvas = document.getElementById("canvas");
+            //通过canvas原生调用getContent来检查当前浏览器是否支持
+            if (!canvas.getContext) return;
+            //获取到一个上下文对象（画笔对象）
+            var ctx = canvas.getContext("2d");
+
+            //setLineDash() 这个函数用来设置一条虚线，这个函数接受一个数组[虚线的长度，虚线的间隔]
+            //lineDashOffset 这个属性用来设置虚线起始位置，一般默认是0
+            ctx.setLineDash([20,20]);
+            ctx.lineDashOffset = 0;
+            ctx.strokeRect(50,50,210,210);
+        }
+        draw();
+
+    </script>
+</body>
+
+</html>

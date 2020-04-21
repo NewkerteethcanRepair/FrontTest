@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="300" height="300" id="canvas"></canvas>
+    <script type="text/javascript">
+        function draw() {
+            var canvas = document.getElementById("canvas");
+            //通过canvas原生调用getContent来检查当前浏览器是否支持
+            if (!canvas.getContext) return;
+            /**
+             * arc:绘制圆弧6个参数，分别控制圆心、大小弧度
+             * arcTo:也是绘制圆弧 根据给定点来绘制原型
+             * arcTo五个参数
+             * 第一个参数和第二个参数 确定了一个点
+             * 第三个参数和四个参数确定了第二个点
+             * 参数5：圆弧的半径
+            */
+        
+            var ctx = canvas.getContext("2d");
+            ctx.beginPath();
+            ctx.moveTo(50,50);
+            ctx.arcTo(200,50,200,200,100);
+            ctx.lineTo(200,200);
+            ctx.stroke();
+
+            //使用画笔来绘制矩形
+            ctx.beginPath();
+            ctx.rect(50,50,10,10);
+            ctx.rect(200,50,10,10);
+            ctx.rect(200,200,10,10);
+            ctx.stroke();
+            ctx.fill();
+            
+        }
+        draw();
+
+    </script>
+</body>
+
+</html>

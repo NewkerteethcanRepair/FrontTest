@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //storage事件 可以监控数据是否发生变化，一旦发生变化就执行这个事件。
+        //要求不能在同一个文件里面 ，
+        window.addEventListener("storage",function(){
+            console.info(localStorage.getItem("key"));
+        });
+    </script>
+</body>
+</html>

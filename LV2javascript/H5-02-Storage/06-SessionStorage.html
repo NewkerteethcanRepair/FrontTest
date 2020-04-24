@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //进入到程序就获取username这个键
+        //sessionStorage作用访问就是一次会话，一般我们将这个对象和服务器端的session对象配合起来使用
+        // http特点状态，解决访问的状态 --session
+        //sessionStorage配合SPA单页操作来完成一些数据传递
+        var res = sessionStorage.getItem("username");
+        console.info(res);
+
+        sessionStorage.setItem("username","liulei");
+
+        console.info(sessionStorage.key(0))
+
+
+        //利用localstorage完成离线购物车用户没有登录也可以完成购物车的加载。
+        //等用户登录完成后，我在将购物车数据提交给服务器永久保存。
+        //jd tb---tb的购物车在线购物车要求必须要登录才能将商品加入购物车
+        //jd ---可以支持离线购物车，没有登录依然可以逛商品加入购物车，等登录成功后可以将数据发送服务器。
+        
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //先判断浏览器是否支持storage
+        if(typeof(Storage) !== "undefined"){
+            console.info("支持storage技术");
+            //localStorage.clear();
+            //将数据保存到localStorage对象，也是默认采用键值对
+            localStorage.setItem("username","12345");
+            var res = localStorage.getItem("username");
+            console.info(res);
+
+            //购物车页面
+            var goodsid = localStorage.getItem("goodsid");
+            console.info(goodsid);
+
+            //key(index)代表获取到localstorage里面的键
+            console.info(localStorage.key(1));
+
+            //删除指定的键
+            //localStorage.removeItem("goodsid");
+
+            //删除所有
+            //localStorage.clear();
+
+            //获取所有的localstorage的键值对
+            for (let index = 0; index < localStorage.length; index++) {
+               console.info(localStorage.key(index),localStorage.getItem(localStorage.key(index)));
+            }
+        }
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../bootstrap-4.4.1-dist//js/jQuery-3.4.1.js"></script>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        #area{
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+        }
+        .imgsrc{
+            position: relative;
+            width: 200px;
+            left: 0;
+            top: 0;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <img draggable="true"  class="imgsrc" src="./u=2008314260,3634983506&fm=26&gp=0.jpg" alt="">
+    <div id="area">
+
+    </div>
+</body>
+<script >
+    var imgsrc=document.getElementsByClassName("imgsrc")[0];
+    // console.log(imgsrc);
+    
+    var area=document.getElementById("area");
+    let offsetx;
+    let offsety
+    imgsrc.ondragstart=function(e){
+        offsetx=e.offsetX;
+        offsety=e.offsetY;
+    }
+    area.ondragover=function(e){
+        e.preventDefault();
+        // console.log("阻止默认");
+        // console.log( imgsrc.style.top);
+    //   imgsrc.style.top= e.pageY;
+    // if(imgsrc.style.width+imgsrc.offsetLeft>500){
+    //     // imgsrc.width+imgsrc.offsetLeft=500;
+    // }
+    // if(imgsrc.style.height+imgsrc.offsetTop>500){
+    //     // console.log( imgsrc.offsetHeight+imgsrc.offsetTop);
+        
+    //     // imgsrc.height+imgsrc.offsetTop;
+    // }
+
+
+
+      
+    //   imgsrc.style.left= e.pageX;
+    }
+    area.ondrop=function(e){
+    // imgsrc.style.top
+        // 获取鼠标位置
+        console.log("dsad");
+    // console.log(imgsrc.offsetTop);
+    // console.log(imgsrc.offsetLeft);
+    
+    $(".imgsrc").css({
+        "left":e.pageX-offsetx+"px",
+        "top":e.pageY-offsety+"px",
+        // "width":80+,
+    })
+        
+    }
+
+
+</script>
+</html>

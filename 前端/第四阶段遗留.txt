@@ -1,0 +1,88 @@
+1 todolist
+1 redux router 路径不对
+
+2 todolist ui版本
+
+2 购物车 hook做
+
+3 回调函数 比如 onclick（function（）{
+}）为什么里面的会执行
+
+问题 {...state + { 新的一个东西} }返回的是一个的state？
+那map 的 {item，done：！item.done} 返回长度会不变吗？
+
+3 学生管理系统分页
+
+
+4 星星动态 react-native里面的没做
+
+5 设置了 text 的省略后    numberOfLines={1}
+ ellipsizeMode="tail" 弹性居中失效 why？
+
+扩展是保留原来的所有属性，后面再写重复的，就会把前面的覆盖饿了 覆盖的js对象的特点，跟扩不扩展没关系  √
+
+
+4 lv2 淘宝图片放大  放大镜有问题  √
+不能用offsetx 和y 兼容有问题吧。
+
+ 
+5 toFixed(n)存在精度问题，建议使用Math.round()函数。  
+
+6 下拉刷新 没弄完  √
+
+7 detial 页面进入有问题
+
+8 flutter 无法自动补全代码 ，企鹅flutter后面都没听
+
+9  闭包练习 为什么=10； 在lv2JavaScript 闭包里面的test01 练习题
+
+
+10.抽奖 vue 有问题
+
+11.周考题 选择题 问题 有点大
+
+12. jquery 顶部菜单 淡入淡出 √x
+
+13 重写 和 原型链 还有 try catch 过一下
+
+面试
+
+1. 什么是跨域？为什么浏览器要使用同源策略？你有几种方式可以解决跨域问题？了解预检请求嘛？
+2. 什么是变量提升？什么是暂时性死区？
+3. == 和 === 的区别是什么？
+4. 如何正确的判断 this？箭头函数的 this 是什么？
+5. new 的原理是什么？通过 new 的方式创建对象和通过字面量创建又什么区别？
+6. 你理解的原型是什么？
+7. call、apply、bind 作用是什么？区别是什么？
+8. React 中 Component 和 PureComponent 的区别是什么？
+
+1. JavaScript 中的事件代理是什么？
+2. prototype 和 __proto__ 区别是什么？
+3. 谈谈你对 JavaScript 中的原型链的理解，原型链的顶端是什么？
+4. Vue 和 React 的有什么异同？
+5. 什么是 JSX？
+6. AJAX 的工作原理？
+7. 深拷贝和浅拷贝分别是什么？什么时候需要深拷贝？如何实现深拷贝？
+8. 基本类型数据和引用类型数据在内存中如何进行存储的？
+
+
+call、apply、bind 作用是什么？区别是什么？
+如何正确的判断 this？箭头函数的 this 是什么？
+JavaScript 中判断数据类型的方式有哪些？
+JavaScript 异步解决方案的发展历程以及优缺点。
+== 和 === 的区别是什么？
+
+
+1. em 和 rem 的区别是什么？
+2. CSS 中 display: none、visibility: hidden、opactiy: 0 的区别。
+3. GET 和 POST 有哪些区别？
+4. ES6 的新特性有哪些？
+5. 简单描述在浏览器中输入 url 回车后的过程。
+6. 谈谈你对 SEO 的理解。
+7. AJAX 和 fetch 的区别是什么？
+8. Object.prototype.toString.call() 方法的作用是什么？
+
+1. 什么是跨域?如何解决跨域问题  2. 移动端如何适配 3. websocket有什么作用 和http有什么区别？
+4. computed和watch的区别？5. vue中组件如何通信，6 vuex核心概念解释
+
+

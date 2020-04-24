@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <audio controls id="">
+        <source src="./assets/music.mp3"> 
+    </audio>
+    <video controls id="moviesplay">
+        <source src="./assets/movie.mp4"> 
+    </video>
+    <button class="button-Control">播放斩铁</button>
+</body>
+<script >
+    var moviesplay=document.getElementById("moviesplay");
+    
+    let button=document.getElementsByClassName("button-Control")[0]
+    button.onclick=function(){
+        console.log("das");
+        // Media.paused; //是否暂停
+        if(moviesplay.paused){
+            moviesplay.pause()
+            console.log("1223");
+            moviesplay.play()
+        }
+        else{
+            moviesplay.pause()
+            console.log("1223");
+        }
+        
+    }
+
+</script>
+</html>

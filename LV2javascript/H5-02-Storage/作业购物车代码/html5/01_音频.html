@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        audio {
+            margin: 100px 200px;
+            width: 400px;
+            height: 30px;
+        }
+    </style>
+    <!-- html5media 处理兼容性 -->
+    <script src="http://api.html5media.info/1.1.8/html5media.min.js"></script>
+
+</head>
+
+<body>
+    <audio id="myMusic" src="./assets/music.mp3" controls>
+        您的浏览器不支持音频播放
+    </audio>
+    <button id="toggleBtn">暂停/播放</button>
+
+    <video src="./assets/movie.mp4" controls></video>
+
+    <script>
+        const myMusic = document.getElementById('myMusic');
+        const toggleBtn = document.getElementById('toggleBtn');
+
+        toggleBtn.onclick = function () {
+            // 判断是否暂停
+            if (myMusic.paused) {
+                myMusic.play();
+            } else {
+                myMusic.pause();
+            }
+        }
+    </script>
+</body>
+
+</html>

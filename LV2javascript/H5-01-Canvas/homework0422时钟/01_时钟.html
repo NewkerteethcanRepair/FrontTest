@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #cvs {
+            background-color: #eeeeee;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="cvs" width="600" height="600"></canvas>
+
+    <script>
+        const cvs = document.getElementById('cvs');
+        const ctx = cvs.getContext('2d');
+
+        // 将画布的 (0, 0) 点移动到画布的中心位置
+        // 这行代码可以看作是全局样式
+        ctx.translate(300, 300);
+
+        setInterval(() => {
+            // 
+            ctx.clearRect(-300, -300, 600, 600);
+            drawDial();
+            drawScale();
+            drawHand();
+        }, 500);
+
+
+        // 表盘
+        function drawDial() {
+            ctx.save();
+            // 图形的样式在 save 方法和 beginPath 方法之间设置
+            ctx.strokeStyle = "orange";
+            ctx.lineWidth = 10;
+            ctx.beginPath();  // 在该方法之后开始绘制图形
+            ctx.arc(0, 0, 150, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.restore();
+        }
+
+        // 刻度
+        function drawScale() {
+            ctx.save();
+            for (let i = 0; i < 60; i++) {
+                ctx.beginPath();
+                if (i % 5 === 0) {
+                    ctx.moveTo(100, 0);
+                } else {
+                    ctx.moveTo(110, 0);
+                }
+                ctx.lineTo(130, 0);
+                ctx.stroke();
+                // 从第二根刻度开始旋转（第一个刻度不需要旋转）
+                ctx.rotate(Math.PI / 180 * 6);
+            }
+            ctx.restore();
+        }
+
+        // 指针
+        function drawHand() {
+            // 获取系统时间
+            const dt = new Date();
+            // 获取小时
+            const h = dt.getHours(); // 11
+            // 获取分钟
+            const m = dt.getMinutes();
+            // 获取秒
+            const s = dt.getSeconds();
+
+            // 时针
+            ctx.save();
+            ctx.lineWidth = 8;
+            ctx.lineCap = "round";
+            ctx.rotate(Math.PI / 180 * (h + m / 60) * 30);
+            ctx.beginPath();
+            ctx.moveTo(0, 10);
+            ctx.lineTo(0, -60);
+            ctx.stroke();
+            ctx.restore();
+            // 分针
+            ctx.save();
+            ctx.lineWidth = 5;
+            ctx.lineCap = "round";
+            ctx.rotate(Math.PI / 180 * m * 6);
+            ctx.beginPath();
+            ctx.moveTo(0, 10);
+            ctx.lineTo(0, -70);
+            ctx.stroke();
+            ctx.restore();
+            // 秒针
+            ctx.save();
+            ctx.lineWidth = 2;
+            ctx.lineCap = "round";
+            ctx.rotate(Math.PI / 180 * s * 6);
+            ctx.beginPath();
+            ctx.moveTo(0, 10);
+            ctx.lineTo(0, -90);
+            ctx.stroke();
+            ctx.restore();
+        }
+
+
+    </script>
+</body>
+
+</html>

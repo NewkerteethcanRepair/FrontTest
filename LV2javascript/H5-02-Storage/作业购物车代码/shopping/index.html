@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 商品列表 -->
+    <h1>商品列表</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>商品名称</th>
+                <th>商品数量</th>
+                <th>商品价格</th>
+                <th>商品操作</th>
+            </tr>
+        </thead>
+        <tbody id="goodsTbody">
+
+        </tbody>
+    </table>
+    <!-- 购物车列表 -->
+    <h1>购物车列表</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>商品名称</th>
+                <th>商品数量</th>
+                <th>商品价格</th>
+                <th>商品库存</th>
+            </tr>
+        </thead>
+        <tbody id="shoppingTbody">
+
+        </tbody>
+    </table>
+
+    <script src="./js/jquery-3.4.1.min.js"></script>
+
+    <script>
+        const goodsList = [
+            { _id: 0, name: '苹果', count: '7', price: '5' },
+            { _id: 1, name: '香蕉', count: '10', price: '3' },
+            { _id: 2, name: '梨', count: '13', price: '2' }
+        ];
+        let shoppingList = [];
+        // 获取本地存储中的购物车数据
+        // 判断本地存储中是否有 shoppingList 数据，如果没有，则采用默认的空数组
+        if (localStorage.shoppingList) {
+            shoppingList = JSON.parse(localStorage.shoppingList);
+        }
+
+        render();
+        cartRender();
+
+        function render() {
+            const str = goodsList.map((item, index) => (`
+                <tr>
+                    <td>${item.name}</td>
+                    <td>
+                        <button class="decrement" data-num="${item._id}">-</button>
+                        <span>${item.count}</span>
+                        <button class="increment" data-num="${item._id}">+</button>
+                    </td>
+                    <td>$${item.price}</td>
+                    <td>
+                        <button class="addToCart" data-num="${item._id}">加入购物车</button>
+                    </td>
+                </tr>
+            `)).join('');
+            $('#goodsTbody').html(str);
+        }
+
+        // 点击增加按钮添加商品数量
+        // 事件委托（事件代理）
+        $('#goodsTbody').on('click', '.increment', function () {
+            // jquery 获取自定义属性通过 节点.data('xxx') 方法
+            const _id = $(this).data('num');
+            // 原生 js 获取自定义属性通过 节点.dataset.xxx
+            goodsList[_id].count++;
+            render();
+        })
+
+        $('#goodsTbody').on('click', '.decrement', function () {
+            // jquery 获取自定义属性通过 节点.data('xxx') 方法
+            const _id = $(this).data('num');
+            // 原生 js 获取自定义属性通过 节点.dataset.xxx
+            if (goodsList[_id].count > 0) {
+                goodsList[_id].count--;
+            } else {
+                alert('傻逼，不能再减了！');
+            }
+            render();
+        })
+
+        $('#goodsTbody').on('click', '.addToCart', function () {
+            // 1. 获取当前选择的要加入购物车的商品的 _id
+            const _id = $(this).data('num');
+            // 2. 通过 _id 获取到对应的商品对象
+            const good = goodsList[_id];
+            // 3. 将商品对象添加到购物车数组
+            // shoppingList.push(good);
+            // 除了要将商品原本的数据（名称、价格、数量等）加入到购物车列表外，还要新增一个库存字段
+            shoppingList.push({
+                ...good,
+                kucun: 1000
+            });
+            // 数据持久化：
+            // 将新增了数据的shoppingList重新保存到本地存储中
+            localStorage.shoppingList = JSON.stringify(shoppingList);
+
+            // 4. 重新渲染购物车列表
+            cartRender();
+        })
+
+        // 购物车列表的渲染
+        function cartRender() {
+            const str = shoppingList.map(item => (
+                `   
+                <tr>
+                    <td>${item.name}</td>
+                    <td>${item.count}</td>
+                    <td>$${item.price}</td>
+                    <td>${item.kucun}</td>
+                </tr>
+                `
+            )).join("");
+            $("#shoppingTbody").html(str);
+        }
+
+
+    </script>
+</body>
+
+</html>

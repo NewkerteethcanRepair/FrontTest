@@ -38,3 +38,24 @@ for (let i = 1; i < 5; i++) {
     if (i === 3) continue;
     console.log(i);
 }
+// ********************
+// let i = 5;
+// function a(i) {
+// i *= 2;
+// console.log(i);
+// // return i
+// }
+// // a(i);
+// console.log((i));
+// 输出值为0是因为forEach方法在数组元素为空时
+// 会跳过执行回调函数，
+// 相当于此选项回调函数并未执行，所以还是输出0。
+// *********************
+var a1 = new Array(10)
+console.log(a1);
+
+let i = 0;
+new Array(10).forEach(() => {
+i++;
+});
+console.log(i);

@@ -86,3 +86,6 @@ JavaScript 异步解决方案的发展历程以及优缺点。
 4. computed和watch的区别？5. vue中组件如何通信，6 vuex核心概念解释
 
 
+1. continue和break的区别 2. 解释一下事件委托，3. 如何修改函数的this指向 4. vue中常用的生命周期钩子函数 5. Promise有几种状态 6. vue中keep-alive组件的应用场景
+
+

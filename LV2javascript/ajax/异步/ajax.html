@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script>
+        // // 原生 JS 的 ajax
+        // // 1. 创建 ajax 的核心对象 XMLHttpRequest
+        // const xhr = new XMLHttpRequest();
+        // // 2. 打开客户端与服务端的连接
+        // // - 第一个参数：请求类型(get/post/delete/put等)
+        // // - 第二个参数：请求资源路径
+        // // - 第三个参数：是否异步（默认为true）
+        // xhr.open('post', 'data.json');
+        // // 3. 客户端向服务端发送请求
+        // xhr.send('id=1&age=20');
+        // // 4. 等待并接收服务端的处理结果
+        // // readyState 用来表示服务端处理进度，4 表示处理完成。
+        // // status 状态码，用来表示服务端处理状态（例如：成功/失败等）
+        // xhr.onreadystatechange = function() {
+        //     if(xhr.readyState == 4 && xhr.status == 200) {
+        //         console.info(JSON.parse(xhr.responseText));
+        //     }
+        // }
+
+        // 回调函数
+        function ajax({ type = 'get', url, data, success }) {
+            const xhr = new XMLHttpRequest();
+            xhr.open(type, url);
+            xhr.send(data);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    const msg = JSON.parse(xhr.responseText);
+                    success(msg);
+                }
+            }
+        }
+
+        // ajax({
+        //     url: 'data.json',
+        //     success: function (msg) {
+        //         console.log(msg);
+        //     }
+        // });
+
+
+        $.ajax({
+            url: 'data.json',
+            type: 'get',
+            // data: { id: 1 },
+            success(msg) {
+                console.log(msg);
+            }
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>

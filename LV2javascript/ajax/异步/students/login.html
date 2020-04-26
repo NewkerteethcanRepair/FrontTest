@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>登录</h1>
+    <input type="text" placeholder="用户名" id="username">
+    <input type="text" placeholder="密码" id="password">
+    <input type="button" value="登录">
+
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/mock-min.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/server.js"></script>
+
+    <script>
+        $('[type=button]').click(function() {
+            $.ajax({
+                url: '/users/login',
+                type: 'post',
+                data: {
+                    username: $('#username').val(),
+                    password: $('#password').val(),
+                },
+                dataType: 'json',
+                success(msg) {
+                    if(msg) {
+                        alert('登录成功！');
+                    } else {
+                        alert('登录失败！');
+                    }
+                }
+            })
+        })
+
+
+        
+    </script>
+</body>
+
+</html>

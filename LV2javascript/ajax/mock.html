@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./mock-min.js"></script>
+</head>
+<body>
+    <script >
+
+        const data=Mock.mock({
+            'students|10-29':[
+                {
+                    "id|+1":1,
+                    "name":"@cname",
+                    "city":"@city",
+                    "gender|1":["nan","nv"]
+                }
+            ]
+        });
+        console.log(data);
+        
+    </script>
+</body>
+</html>

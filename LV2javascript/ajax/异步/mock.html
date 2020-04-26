@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./js/mock-min.js"></script>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+
+    <script>
+        // 生成随机数据
+        // const data = Mock.mock({
+        //     'students|10-20': [
+        //         {   
+        //             'id|+1': 1,
+        //             'name': '@cname',
+        //             'city': '@city',
+        //             'date': '@date',
+        //             'gender|1': ['男', '女'],
+        //         },
+        //     ]
+        // });
+        // console.log(data);
+
+
+        // 拦截ajax请求，并且生成随机数据
+        // Mock.mock('/students/getStudents', {
+        //     'students|3': [
+        //         {   
+        //             'id|+1': 1,
+        //             'name': '@cname',
+        //             'city': '@city',
+        //             'date': '@date',
+        //             'gender|1': ['男', '女'],
+        //         },
+        //     ]
+        // });
+
+        // $.ajax({
+        //     url: '/students/getStudents',
+        //     dataType: 'json',
+        //     success(msg) {
+        //         console.log(msg);
+        //     }
+        // })
+
+        const users = [
+            { username: 'zhangsan', password: '123' },
+            { username: 'lisi', password: '000' }
+        ]
+
+        // 拦截 ajax 请求，在 mock 中处理请求
+        Mock.mock(/\/users\/login/, 'post', (options) => {
+            const data = parse(options.body);
+            return users.some(function(item, index) {
+                return data.username == item.username && data.password == item.password;
+            });
+        })
+
+
+
+
+        $.ajax({
+            url: '/users/login',
+            type: 'post',
+            data: {
+                username: 'lisi',
+                password: '000'
+            },
+            success(msg) {
+                console.info('msg', msg);
+            }
+        })
+
+        function parse(str) {
+            const obj = {};
+            const ary = str.split("&");
+            for (let item of ary) {
+                const [key, value] = item.split('=');
+                obj[key] = value;
+            }
+            return obj;
+        }
+    </script>
+</body>
+
+</html>

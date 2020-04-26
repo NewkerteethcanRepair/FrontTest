@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script >
+        // 以前异步全部用回调函数 ，
+        // 把函数作为参数 进行传递
+        // 实参直接串对象
+        ajaxto({
+            type:"get",
+            url:"data.json",
+            success:function(msg){
+                console.log(msg);
+                
+            }
+        })
+        //默认值  如果没有 type="get" 
+        function ajaxto({type,url,data,success})
+        {
+
+            // 创建 ajax的核心对象
+            const xhr=new XMLHttpRequest();
+            // 2 打开客服端与服务端的链接
+            // 第一个参数 请求类型(get/post/delete/put)
+            // 第二个 资源路径
+            // 第三个 是否异步
+            xhr.open(type,url);
+            // 发送请求
+            xhr.send(data);
+            // 4. 等待并接受服务端的处理结果
+            //status 状态码，用来表示服务端处理状态
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState== 4 && xhr.status==200){
+                    console.log("完成"+xhr.responseText);
+    
+                    var d=JSON.parse(xhr.responseText)
+                    // console.log(d);
+                    success(d) //回调函数
+                    
+    
+                    
+                }
+            }
+        }
+        
+
+
+    </script>
+</body>
+</html>

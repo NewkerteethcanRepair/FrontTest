@@ -1,7 +1,12 @@
 import React, { PureComponent } from "react";
 import { Menu } from "antd";
 import {NavLink} from "react-router-dom"
-import Todolist from "../../router/todolist"
+// import { Redirect } from 'react-router';
+
+import { withRouter } from 'react-router';
+
+// import Todolist from "../../router/todolist"
+
 import {
   MailOutlined,
   AppstoreOutlined,
@@ -9,13 +14,29 @@ import {
 } from "@ant-design/icons";
 
 const { SubMenu } = Menu;
-export default class home extends PureComponent {
+// @withRouter
+ class Home extends PureComponent {
   state = {
     current: "mail",
   };
 
+
   handleClick = (e) => {
     console.log("click ", e);
+    this.setState({
+      current:e.key
+    })
+    if(e.key=="setting:1"){
+      console.log("dsa");
+      console.log(  this.props);
+      
+    //  return (<Redirect to="/todolist" />)
+     this.props.history.push("/todolist")
+    }
+    if(e.key=="mail"){
+      this.props.history.push("/")
+   
+    }
     if(e.target)
     this.setState({
       current: e.key,
@@ -46,7 +67,7 @@ export default class home extends PureComponent {
             }
           >
             <Menu.ItemGroup title="基础项目 ">
-              <Menu.Item key="setting:1"><NavLink  to="/todolist">todolist</NavLink></Menu.Item>
+              <Menu.Item key="setting:1">todolist</Menu.Item>
               <Menu.Item key="setting:2">Option 2</Menu.Item>
             </Menu.ItemGroup>
             <Menu.ItemGroup title="综合 ">
@@ -66,8 +87,9 @@ export default class home extends PureComponent {
         </Menu>
         
         
-        <Todolist></Todolist>
+     
       </div>
     );
   }
 }
+export default withRouter(Home);

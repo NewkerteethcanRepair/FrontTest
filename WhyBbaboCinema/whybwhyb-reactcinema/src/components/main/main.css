@@ -1,0 +1,33 @@
+.ant-carousel .slick-slide {
+    text-align: center;
+    height: 320px;
+    /* width:500px;     */
+    line-height: 350px;
+    background: #364d79;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+  
+  .ant-carousel .slick-dots li button {
+    color:#001529;
+    /* border:1px solid #000; */
+    height: 8px;   
+    background-color:#001529;
+
+
+    /* margin:0 20px */
+  }
+  .ant-carousel .slick-dots li{
+    width:24px;
+    height: 8px;  
+    background-color:#535353;
+    border:1px solid #fff;
+
+  }
+  .ant-carousel .slick-dots li:hover{
+    width:36px;
+    border:1px solid #000;
+  }
+  /* .ant-carousel .slick-dots li .slick-active{
+    width:50px 
+  } */

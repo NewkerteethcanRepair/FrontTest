@@ -23,6 +23,7 @@ body
     min-height: 500px;
     min-width: 500px;
     background-color: white;
+    /* opacity: 0.98; */
     border:2px solid #ddd;
     margin:150px 0;
 
@@ -45,4 +46,10 @@ body
 }
 .form-group input{
     height:54px
+}
+.invalid-feedback{
+    font-size: 100%;
+}
+.valid-feedback{
+    font-size: 100%;
 }

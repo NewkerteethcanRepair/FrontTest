@@ -1,10 +1,15 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
+import HomeView from "../components/home/home"
+import MoviescinemaRouter from "../router/moviescinemaRouter"
 
-export default class home extends PureComponent {
+export default class home extends Component {
     render() {
         return (
             <>
-                hello
+              <HomeView history={this.props.history}>
+                  
+              </HomeView> 
+              <MoviescinemaRouter></MoviescinemaRouter>
             </>
         )
     }

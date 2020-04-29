@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router";
+// import { withRouter } from "react-router";
 import { getVipUserAsync } from "../../store/loginandregister/actions";
 import "./login.css";
 import imglogo from "../../img/mylogo.png";
-import store from "../../store/store";
-import axios from "axios";
+
+// import store from "../../store/store";
+// import axios from "axios";
 // import { Form, Input, Button, Checkbox } from "antd";
 // import React from "react";
 
 //
+
 class login extends Component {
   state = {
     VipUser: {
@@ -29,18 +31,25 @@ class login extends Component {
   toregister = () => {
     this.props.history.push("/register");
   };
-  logincontrol = () => {
+  logincontrol = async () => {
     console.log(this.state.VipUser);
-
+  
 
     // ****redux 方法 有问题 （好像不得行 要点击两次 有没有监听 redux 数据的方法？）
-    // this.props.dispatch(getVipUserAsync(this.state.VipUser));
+   await this.props.dispatch(getVipUserAsync(this.state.VipUser));
     // console.log('====================================');
     // console.log(this.props.dispatch(getVipUserAsync(this.state.VipUser)));
     // console.log('====================================');
    
-    // if(this.props.vipData==1){
-    //   this.props.history.push("/")
+    if(this.props.vipData==1){
+      this.props.history.push("/")
+    }
+    else{
+      this.setState({
+        isfalse:true
+      })
+
+    }
     //   console.log('====================================');
     //   console.log(this.props.vipData);
     //   console.log('====================================');
@@ -49,22 +58,22 @@ class login extends Component {
 
 
     // 常规方法  
-    let {VipName,VipPassword}=this.state.VipUser
-    axios.post("/VipUser/getall",{VipName,VipPassword})
-    .then(res => {
-      console.log(res)
-      if(res.data.length>0){
-        this.props.history.push("/")
-      }
-      else{
-        console.log("失败登录");
-        this.state.isfalse=true;
+    // let {VipName,VipPassword}=this.state.VipUser
+    // axios.post("/VipUser/getall",{VipName,VipPassword})
+    // .then(res => {
+    //   console.log(res)
+    //   if(res.data.length>0){
+    //     this.props.history.push("/")
+    //   }
+    //   else{
+    //     console.log("失败登录");
+    //     this.state.isfalse=true;
         
-      }
-    })
-    .catch(err => {
-      console.error(err); 
-    })
+    //   }
+    // })
+    // .catch(err => {
+    //   console.error(err); 
+    // })
 
    
   };

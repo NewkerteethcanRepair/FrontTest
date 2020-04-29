@@ -4,11 +4,11 @@ import axios from "axios";
 const getVipUser=createAction(GET_VIPUSER)
 
 export const getVipUserAsync=({VipName,VipPassword})=>{
-    return async (dispatch,getState)=>{
+    return  (dispatch,getState)=>{
         //fetch发请求  也是一个promise对象
         // /VipUser/getall?xxx=1&xxx=2
        
-       await axios({
+        axios({
            method:'post',
            url: "/VipUser/getall",
            data: {

@@ -11,7 +11,7 @@ import Home from "../views/home"
 export default function RootRouter() {
     return (
         <Router>
-          <Route path="/" component={Home} exact ></Route>  
+          <Route path="/" component={Home}></Route>  
           <Route path="/login" component={Login}></Route>  
         
           <Route path="/register" component={Register}></Route>  

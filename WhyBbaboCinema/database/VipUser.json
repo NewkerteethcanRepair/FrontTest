@@ -1,0 +1,18 @@
+{
+  "RECORDS": [
+    {
+      "_id": "5eaafdb0713300006a00619a",
+      "__v": "",
+      "Phone": "1881881888",
+      "VipName": "123",
+      "VipPassword": "Aa123456"
+    },
+    {
+      "_id": "5eab03ec72d4b425a18646ef",
+      "__v": "0",
+      "Phone": "1881881888",
+      "VipName": "123",
+      "VipPassword": "Aa123456"
+    }
+  ]
+}

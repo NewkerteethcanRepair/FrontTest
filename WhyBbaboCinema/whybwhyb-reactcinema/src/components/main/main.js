@@ -18,8 +18,8 @@ class Main extends Component {
   render() {
     const { MoviesData } = this.props;
 
-    console.log(typeof MoviesData);
-    console.log(MoviesData);
+    // console.log(typeof MoviesData);
+    // console.log(MoviesData);
 
     // console.log('====================================');
     // console.log( this.props);

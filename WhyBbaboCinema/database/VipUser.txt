@@ -1,0 +1,16 @@
+/* 1 createdAt:2020/4/29 上午11:45:34*/
+{
+	"_id" : ObjectId("5ea8f85ebc57782344a7f4dd"),
+	"VipName" : "123",
+	"VipPassword" : "Aa123456",
+	"Phone" : 1881881888,
+	"__v" : 0
+},
+
+/* 2 createdAt:2020/4/28 下午2:05:50*/
+{
+	"_id" : ObjectId("5ea7c7bed8303917440d514c"),
+	"VipName" : "dx",
+	"VipPassword" : "Aa123456",
+	"Phone" : "1388888888"
+}

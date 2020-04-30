@@ -1,0 +1,48 @@
+.movieslist{
+    margin-top: 30px;
+}
+
+/* 分页 */
+.ant-pagination{
+    color:#e8e8e9 ; 
+
+}
+
+.ant-pagination-item-ellipsis{
+    color:#e8e8e9 !important; 
+}
+
+/* 电影列表具体 */
+.changeColor{
+    background-color:#303437
+    /* opacity:0.8 */
+}
+.this-movieslist{
+    display: flex;
+    /* margin-top:20px;     */
+    padding:20px 0
+    
+
+}
+.this-movieslist>div{
+    margin:0 20px
+}
+.this-infor{
+    color:#e8e8e9;
+
+}
+.this-infor h4{
+    color:#d0e0f0;
+}
+
+.this-button button{
+    /* text-align: center; */
+    margin-top:5px;
+    width:130px
+}
+.this-button {
+    text-align: center;
+    
+
+}
+

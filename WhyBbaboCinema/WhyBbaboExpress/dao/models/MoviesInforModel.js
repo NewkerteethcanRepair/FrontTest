@@ -41,4 +41,4 @@ const MoviesInforSchema=new mongoose.Schema({
     }
 
 })
-mongoose.model('MoviesInforSchemaModel',MoviesInforSchema,'moviesinfor')
+mongoose.model('MoviesInforSchemaModel',MoviesInforSchema,"moviesinfor")

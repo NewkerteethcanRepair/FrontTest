@@ -47,6 +47,9 @@ class movieslist extends Component {
 
   render() {
     const { MoviesData } = this.props;
+    console.log('====================================');
+    console.log({MoviesData});
+    console.log('====================================');
     return (
       <>
         <div className="container">
@@ -125,10 +128,7 @@ class movieslist extends Component {
                         <p>其他名称：无</p>
                         <p>上映时间：{item.Time}</p>
                         <p>
-                          简介：电视动画片《神之塔》改编自SIU创作的同名漫画作品，于2020年2月宣布动画化的决定，
-                          于2020年4月起播出。 如果登上塔，一切就都可以得到。
-                          塔顶上有着这世界上的一切，可以得到这个世界……成为神。
-                          为了欣赏星空而登塔的少女...
+                         {item.DetailInfor}
                         </p>
                       </div>
                     </div>

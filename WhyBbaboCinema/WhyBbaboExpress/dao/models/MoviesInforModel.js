@@ -34,7 +34,11 @@ const MoviesInforSchema=new mongoose.Schema({
     Comment:{
         type:Array,
         default:[ {"xxxx": "嘻嘻还不错"}]
+    },
+    DetailInfor:{
+        type:String,
+        default:"撒活动撒即可良好的微群受打击了好了带爱神的箭你回家山卡拉等会哦暗示健康登录后"
     }
 
 })
-mongoose.model('MoviesInforSchemaModel',MoviesInforSchema,'MoviesInfor')
+mongoose.model('MoviesInforSchemaModel',MoviesInforSchema,'moviesinfor')

@@ -58,9 +58,9 @@ class Main extends Component {
                               ".jpg")}
                             alt=""
                           />
-                          <p>
-                            {" "}
-                            <strong>{item.MoviesName}</strong>
+                          <p className="overflow-textcontorl">
+                           
+                            <strong >{item.MoviesName}</strong>
                           </p>
                         </div>
                       </div>
@@ -76,7 +76,7 @@ class Main extends Component {
                 {/* <div className="col-sm-12"> */}
                 <div className="movies-recent">
                   {MoviesData.map((item, index) => {
-                    if (index >= 5) {
+                    if (index <= 5) {
                       return (
                         <div className="col-sm-12" key={item._id}>
                         
@@ -89,7 +89,7 @@ class Main extends Component {
                                 // width="100%"
                               />
                               <span><strong>{item.MoviesName}</strong></span>
-                              <span>类型:{item.Type}</span>
+                              {/* <span>类型:{item.Type}</span> */}
                               <span className="float-right">{item.Time}</span>
                             </div>
                        

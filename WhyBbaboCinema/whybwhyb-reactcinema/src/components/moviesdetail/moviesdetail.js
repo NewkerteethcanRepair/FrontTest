@@ -7,13 +7,15 @@ import Zmage from "react-zmage";
 import { Tabs } from "antd";
 const { TabPane } = Tabs;
 class moviesdetail extends Component {
-  state = {
-    _id: "",
-    size: "large",
-  };
+ 
   componentDidMount() {
-    console.log("====================================");
-
+    // console.log("====================================");
+    // if(window.scorllTop!=0){
+    //   console.log('====================================');
+    //   console.log(window.scorllTop);
+    //   console.log('====================================');
+    //   window.scorllTop=0
+    // }
     // 、state传参( 刷新页面后参数要消失，state传的参数是加密的，
     // 比query传参好用)
     // console.log(this.props.location.state._id);
@@ -24,9 +26,18 @@ class moviesdetail extends Component {
 
     this.props.dispatch(getMoivesdataAsync());
   }
+  state = {
+    _id: "",
+    size: "large",
+  };
 
   callback(key) {
     console.log(key);
+  }
+  // 电影推荐跳转
+  moviesrecommend(_id){
+
+    this.props.history.push("/main/moviesdetail/"+_id)
   }
   render() {
     const { MoviesData } = this.props;
@@ -36,7 +47,7 @@ class moviesdetail extends Component {
         {MoviesData.map((item, index) => {
           if (item._id == this.props.match.params._id) {
             return (
-              <div className="container">
+              <div className="container" key={item._id}>
                 <div className="row this-detail">
                   {/* 左边aside */}
                   <div className="col-sm-3">
@@ -52,7 +63,7 @@ class moviesdetail extends Component {
                       </div>
                       <div className="infor-detail">
                         <h5 style={{ color: "#888899" }}>基础信息:</h5>
-                        <ul class="block-infor">
+                        <ul className="block-infor">
                           <li>
                             地区: <span>{item.Country}</span>
                           </li>
@@ -81,9 +92,7 @@ class moviesdetail extends Component {
                         <strong> {item.MoviesName}</strong>
                       </h4>
                       <div className="article-infor">
-                        <span>
-                         {item.DetailInfor}
-                        </span>
+                        <span>{item.DetailInfor}</span>
                       </div>
                       <div className="detail-handle">
                         <h5 style={{ color: "#d0e0f0", marginBottom: "20px" }}>
@@ -110,14 +119,38 @@ class moviesdetail extends Component {
                     {/* //tab标签 评论和推荐 */}
                     <div className="row">
                       <div className="col-sm-12 tab-control">
-                        <Tabs alue={size} defaultActiveKey="1" onChange={this.callback}>
+                        <Tabs
+                          alue={size}
+                          defaultActiveKey="1"
+                          onChange={this.callback}
+                        >
                           <TabPane tab="相关推荐" key="1">
-                             相关推荐
+                            <div className="movies-recommendlist">
+                              {MoviesData.map((item, index) => {
+                                if (index <= 3) {
+                                  return (
+                                    <div
+                                      className="movies-recommend"
+                                      key={item._id}
+                                      onClick={()=>{
+                                      
+                                        this.moviesrecommend(item._id)
+                                      }}
+                                    >
+                                      <img
+                                        src={require("../../../images/" +
+                                          item.Movieimg +
+                                          ".jpg")}
+                                        alt=""
+                                      ></img>
+                                      <span>{item.MoviesName}</span>
+                                    </div>
+                                  );
+                                }
+                              })}
+                            </div>
                           </TabPane>
-                          <TabPane tab="评论" key="2">
-                           评论
-                          </TabPane>
-                        
+                          <TabPane tab="评论" key="2"></TabPane>
                         </Tabs>
                       </div>
                     </div>

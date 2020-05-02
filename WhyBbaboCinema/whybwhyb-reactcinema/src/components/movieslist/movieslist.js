@@ -36,7 +36,7 @@ class movieslist extends Component {
     // this.props.history.push({pathname:"/moviesdetail",state:{_id}})
 
     // 方法2
-    this.props.history.push("/moviesdetail/"+_id)
+    this.props.history.push("/main/moviesdetail/"+_id)
 
 
     // this.props.history.push({pathname:'/demo',state:{id:12,name:'dahuang'}})

@@ -11,6 +11,10 @@ h1,h2,h3,h4,h5,h6{
   color:#d0e0f0
 }
 
+span ,p,div{
+  color: #e8e8e9;
+}
+
 /* 背景设置 */
 .backall{
 

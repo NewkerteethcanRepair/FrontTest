@@ -1,0 +1,13 @@
+.cinema-header-list {
+  display: flex;
+  justify-content: start;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.cinema-header-list > div {
+    padding:15px
+}
+.cinemaserve{
+    font-size:18px
+}

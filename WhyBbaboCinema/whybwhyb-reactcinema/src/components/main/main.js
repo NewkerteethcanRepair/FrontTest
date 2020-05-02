@@ -15,6 +15,9 @@ class Main extends Component {
     this.props.dispatch(getMoivesdataAsync());
   }
   onChange = () => {};
+  moviesdetail=(_id)=>{
+    this.props.history.push("/main/moviesdetail/"+_id)
+  }
   render() {
     const { MoviesData } = this.props;
 
@@ -24,7 +27,7 @@ class Main extends Component {
     // console.log('====================================');
     // console.log( this.props);
     // console.log('====================================');
-
+  
     return (
       <div>
         <div className="container">
@@ -49,8 +52,10 @@ class Main extends Component {
                 <div className="row">
                   {MoviesData.map((item, index) => {
                     return (
-                      <div className="col-lg-3" key={item._id}>
-                        <div key={item._id} className="this-movie ">
+                      <div className="col-lg-3" key={item._id} >
+                        <div key={item._id} className="this-movie " onClick={()=>[
+                          this.moviesdetail(item._id)
+                        ]}>
                           {/* {item.Movieimg} */}
                           <img
                             src={require("../../../images/" +

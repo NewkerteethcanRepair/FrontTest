@@ -22,11 +22,11 @@ export default class home extends Component {
 
     if(e.key=="main"){
       
-       this.props.history.push("/main")
+       this.props.history.push("/main/index")
     }
     if(e.key=="movieslist"){
      
-       this.props.history.push("/movieslist")
+       this.props.history.push("/main/movieslist")
     }
     
     if(e.key=="login"){
@@ -37,6 +37,11 @@ export default class home extends Component {
    
        this.props.history.push("/register")
     }
+    if(e.key=="cinemalist"){
+   
+      this.props.history.push("/main/cinema")
+   }
+    
     
   
   };
@@ -67,9 +72,9 @@ export default class home extends Component {
                         <AppstoreOutlined />
                         电影列表
                       </Menu.Item>
-                      <Menu.Item key="rankinglist">
+                      <Menu.Item key="cinemalist">
                    
-                        排行榜
+                        影院
                       </Menu.Item>
                       <Menu.Item key="alipay">
                         <a

@@ -98,3 +98,28 @@ padding:20px 0;
     background-color:#d0e0f0;
     bottom:3px
 }
+.ant-tabs-tab-active{
+    color:#e8e8e9 !important
+}
+
+/* 推荐电影 */
+.movies-recommendlist{
+    display: flex;
+    /* justify-content: flex-start; */
+    justify-content: space-evenly;
+    cursor :pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 30px ;
+
+}
+.movies-recommend{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    /* color: #e8e8e9; */
+    /* margin: 20px; */
+
+}

@@ -36,20 +36,29 @@ class login extends Component {
   
 
     // ****redux 方法 有问题 （好像不得行 要点击两次 有没有监听 redux 数据的方法？）
-   await this.props.dispatch(getVipUserAsync(this.state.VipUser));
+    await this.props.dispatch(  getVipUserAsync(this.state.VipUser));
     // console.log('====================================');
     // console.log(this.props.dispatch(getVipUserAsync(this.state.VipUser)));
     // console.log('====================================');
    
-    if(this.props.vipData==1){
-      this.props.history.push("/")
+    if(this.props.vipData.length>0){
+      this.setState({
+        ...this.state,
+        isfalse:false
+      })
+      let Storage=JSON.stringify(this.props.vipData[0])
+     localStorage.setItem("user",Storage)
+      this.props.history.push("/main/index")
     }
     else{
       this.setState({
         isfalse:true
       })
+      // alert("密码错误")
 
     }
+     
+
     //   console.log('====================================');
     //   console.log(this.props.vipData);
     //   console.log('====================================');
@@ -159,8 +168,8 @@ class login extends Component {
                     <button
                       type="button"
                       className="btn btn-dark d-block"
-                      onClick={() => {
-                        this.logincontrol();
+                      onClick={ async () => {
+                       await this.logincontrol();
                       
                       }}
                     >

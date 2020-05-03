@@ -13,7 +13,40 @@
 "box-shadow-base": "0 2px 8px rgba(0, 0, 0, 0.15)" // 浮层阴影
 
 
+一、使用 moment 日期格式化插件，方便快捷：
+
+1、首先安装moment ： npm install moment --save
+
+2、在文件中引用：
+
+        import moment from 'moment'
+
+3、使用方式：
+
+      当前时间：moment().format('YYYY-MM-DD HH:mm:ss')
+
+      时间格式化：moment(datetime).format('YYYY-MM-DD')
+
+      今天星期几：moment().format('d')
+
+      Unix时间戳：moment().format('X')
+
+      相对时间使用方式：
+
+      3年前的时间：moment("2016-01-01", "YYYY-MM-DD").fromNow()
+
+      5天后的时间：moment().add('days', 5).format('YYYY-MM-DD')
+
+      3小时后的时间：moment().add('hours', 3).format('HH:mm:ss')
+
+      明天： moment().add(1, 'days').calendar()
+
+
 问题1
 Can't perform a React state update on an unmounted component. 
 This is a no-op, but it indicates a memory leak in your application. 
 To fix, cancel all subscriptions and asynchronous tasks in the componentWillUnmount method.
+
+
+问题2 引入地图跨越问题
+A cross-origin error was thrown. React doesn't have access to the actual error object in development. See https://fb.me/react-crossorigin-error for more information.

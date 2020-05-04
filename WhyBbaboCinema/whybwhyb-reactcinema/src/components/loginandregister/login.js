@@ -47,7 +47,7 @@ class login extends Component {
         isfalse:false
       })
       let Storage=JSON.stringify(this.props.vipData[0])
-     localStorage.setItem("user",Storage)
+       sessionStorage.setItem("user",Storage)
       this.props.history.push("/main/index")
     }
     else{

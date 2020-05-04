@@ -69,3 +69,56 @@
 .ant-table-tbody > tr.ant-table-row:hover > td{
   background-color:#55636f;
 }
+
+
+/* Message全局提示 */
+.ant-btn{
+  background-color: #343a40;
+  border: 1px solid transparent;
+  color: #e8e8e9;
+  
+}
+.ant-btn:hover{
+  background-color: #343a40;
+  border: 1px solid #e8e8e9;
+  
+  color: #fff;
+}
+.ant-btn:hover, .ant-btn:focus{
+  border: 1px solid #e8e8e9;
+}
+.ant-btn:hover, .ant-btn:focus, .ant-btn:active, .ant-btn.active{
+  background-color: #343a40 !important;
+}
+.ant-message span{
+  color:#343a40 
+}
+
+
+/* 抽屉  */
+.ant-drawer.ant-drawer-open .ant-drawer-mask{
+  opacity: 0.2 ;
+}
+
+
+
+
+.drawer-head span{
+  color:#000 !important;
+  font-size:18px;
+}
+/* //body */
+.drawer-body-flex{
+  display:flex;
+  margin-right:30px;
+}
+.ant-drawer-body p{
+  color:#000 !important;
+}
+.drawer-body-moviesdetal{
+  margin-left:30px
+}
+/* .drawer-body-moviesdetal span{
+  color:#000 ;
+  margin-right:20px
+} */

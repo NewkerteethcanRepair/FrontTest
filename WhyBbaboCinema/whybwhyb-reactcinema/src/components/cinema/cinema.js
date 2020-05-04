@@ -4,11 +4,16 @@ import { connect } from "react-redux";
 // import {getCinemadataAsync} from "../../"
 import { getCinemadataAsync } from "../../store/cinemadata/actions";
 import  "./cinema.css"
-import { Tag } from 'antd';
+import { Tag,Button,message} from 'antd';
 
 class cinema extends Component {
+    state={
+        isuser:false,
+    }
     componentDidMount(){
      this.props.dispatch(getCinemadataAsync())
+
+     
     }
     // 点击事件
     selectCinema=(_id)=>{

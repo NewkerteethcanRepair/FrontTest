@@ -42,6 +42,11 @@
       明天： moment().add(1, 'days').calendar()
 
 
+未解决：
+分页 
+评论
+订单渲染
+
 问题1
 Can't perform a React state update on an unmounted component. 
 This is a no-op, but it indicates a memory leak in your application. 
@@ -49,4 +54,7 @@ To fix, cancel all subscriptions and asynchronous tasks in the componentWillUnmo
 
 
 问题2 引入地图跨越问题
-A cross-origin error was thrown. React doesn't have access to the actual error object in development. See https://fb.me/react-crossorigin-error for more information.
+A cross-origin error was thrown. React doesn't have access to the actual error object in development. 
+See https://fb.me/react-crossorigin-error for more information.
+
+问题 3 登录后注销 如果 不刷新页面，会找不到user.VIpName的值 ，等于三木判断没有作业，页面没有重新渲染，必须手动刷新解决

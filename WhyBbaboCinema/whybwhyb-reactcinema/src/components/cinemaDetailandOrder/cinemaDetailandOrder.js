@@ -28,6 +28,7 @@ class cinemaDetailandOrder extends PureComponent {
   //抽屉
   showDrawer = ({ time, language, room, prices }) => {
     // this.props.
+    console.log(time)
     this.setState({
       visible: true,
         time:time,

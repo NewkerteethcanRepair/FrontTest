@@ -6,8 +6,9 @@ const getMoivesdata=createAction(GET_MOVIESDATA)
 
 export const getMoivesdataAsync=()=>{
     return async(dispatch,getState)=>{
-
-     await axios.post("/Moviesinfor/getall")
+        // console.log(pageSize,current);
+        
+     await axios.post("/Moviesinfor/getall",)
         .then(res => {
             console.log(res)
             if(res.data.length>0){

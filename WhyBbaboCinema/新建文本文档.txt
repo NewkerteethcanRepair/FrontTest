@@ -45,7 +45,7 @@
 未解决：
 分页 
 评论
-订单渲染
+
 
 问题1
 Can't perform a React state update on an unmounted component. 
@@ -58,3 +58,7 @@ A cross-origin error was thrown. React doesn't have access to the actual error o
 See https://fb.me/react-crossorigin-error for more information.
 
 问题 3 登录后注销 如果 不刷新页面，会找不到user.VIpName的值 ，等于三木判断没有作业，页面没有重新渲染，必须手动刷新解决
+ 
+问题 4  座位选择是 如何判断>4 后 输出 alert 现在的代码 无法alert
+
+问题 5 react 页面占不满

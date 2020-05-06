@@ -2,12 +2,13 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import "./cinemaDetailandOrder.css";
 import cinemaimg from "../../img/cinemaimg.png";
-import { Tag, Table, Button, message, Drawer, Radio, Space } from "antd";
+import { Tag, Table, Button, message, Drawer, Radio, Space,Spin} from "antd";
 import BMap from "BMap";
+import axios from "axios";
 // import { Table } from 'antd';
 // import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
 import { getCinemadataAsync } from "../../store/cinemadata/actions";
 import { getMoivesdataAsync } from "../../store/mainmoviedata/actions";
 
@@ -23,25 +24,46 @@ class cinemaDetailandOrder extends PureComponent {
     isuser: false,
     visible: false,
     placement: "left",
-    movies_name:""
+    movies_name: "",
+    isselectdate: "",
+    cinemaseat: [
+      [0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 2],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 2],
+    ],
+    selectedseat: [],
+    loading: false
   };
   //抽屉
   showDrawer = ({ time, language, room, prices }) => {
     // this.props.
-    console.log(time)
+    console.log(time);
     this.setState({
       visible: true,
-        time:time,
-        language:language,
-        room:room,
-        prices:prices,
-     
+      time: time,
+      language: language,
+      room: room,
+      prices: prices,
     });
   };
 
-  onClose = () => {
+  onClose = (e) => {
+    // console.log('====================================');
+    // console.log(e);
+  
+    // console.log('====================================');
     this.setState({
       visible: false,
+      selectedseat: [],
+      cinemaseat: [
+        [0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 2],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 2],
+      ],
     });
   };
 
@@ -52,12 +74,12 @@ class cinemaDetailandOrder extends PureComponent {
   };
   // componentWillMount(){
   //   console.log( this.props.MoviesData);
-    
+
   //    this.props.MoviesData.map((item, index) => {
   //     if (index === 0) {
   //       this.setState({
   //         movies_id: item._id,
-      
+
   //       });
   //     }
   //   });
@@ -68,27 +90,25 @@ class cinemaDetailandOrder extends PureComponent {
   //     if (item._id === this.props.match.params._id){
   //        this.setState({
   //         movies_name: item.CinemaName,
-      
+
   //       },()=>{
   //         console.log(this.state.movies_name);
-          
+
   //       })
   //     }
   //   }
   // }
   //---------------------------------------------
-  componentDidMount=async()=> {
-   await this.props.dispatch(getCinemadataAsync());
-   await this.props.dispatch(getMoivesdataAsync());
+  componentDidMount = async () => {
+    await this.props.dispatch(getCinemadataAsync());
+    await this.props.dispatch(getMoivesdataAsync());
     // console.log(this.props.match.params._id);
     // console.log(this.props.MoviesData);
-    
 
     this.props.MoviesData.map((item, index) => {
       if (index === 0) {
         this.setState({
           movies_id: item._id,
-      
         });
       }
     });
@@ -99,20 +119,17 @@ class cinemaDetailandOrder extends PureComponent {
     //   }
     // });
 
-    this.props.CinemaData.map((item,index)=>{
-      if((this.props.match.params._id ===item._id)){
+    this.props.CinemaData.map((item, index) => {
+      if (this.props.match.params._id === item._id) {
         this.setState({
-          movies_name:item.CinemaName
-        })
+          movies_name: item.CinemaName,
+          isselectdate: this.getDay(0, "-"),
+        });
       }
-    })
+    });
 
     // 进来第一次选择的电影院
 
-
-
-
-   
     this.setState(
       {
         datetime: [
@@ -150,7 +167,7 @@ class cinemaDetailandOrder extends PureComponent {
     // }, 2000); //2秒后放大到14级
     // map.enableScrollWheelZoom(true);
     // map.centerAndZoom(point, 12);
-  }
+  };
 
   //列表 电影点击
   clickmovies = (_id, index) => {
@@ -180,7 +197,7 @@ class cinemaDetailandOrder extends PureComponent {
   };
 
   // 排片日期
-  datecontrol = (getindex) => {
+  datecontrol = (getindex, getDate) => {
     console.log("sda");
 
     this.state.datetime.map((item, index) => {
@@ -188,6 +205,7 @@ class cinemaDetailandOrder extends PureComponent {
         this.setState({
           ...this.state,
           isclick: index,
+          isselectdate: getDate,
         });
       }
     });
@@ -195,12 +213,146 @@ class cinemaDetailandOrder extends PureComponent {
   //立即购票
   // time:record.time,language:record.language,room:record.room,prices:recode.prices}
 
-  render() {
+  // 座位class 渲染判断
+  seatdisplay = (indexseat) => {
+    if (indexseat === 0) {
+      return "seat1";
+    } else if (indexseat === 2) {
+      return "seat2  isclickforseat";
+    } else if (indexseat === 1) {
+      return "seat3";
+    }
+  };
+  clickseat = (row, col) => {
+    // console.log(pureselected);
+
+    const cinemaseat = [...this.state.cinemaseat];
+
+    const isselected = [...this.state.selectedseat];
+
+    let pureselected = new Map(isselected);
+    // pureselected.set(`${row}+${col}`,[row,col])
+
+    if (
+      pureselected.has(`${row}+${col}`)
+    ) {
+      console.log("0");
+
+      cinemaseat[row][col] = 0;
+      pureselected.delete(`${row}+${col}`);
+    } else {
+      console.log("1");
+      pureselected.set(`${row}+${col}`, [row, col]);
+      cinemaseat[row][col] = 1;
+    }
+    if (this.state.selectedseat.length <4) {
+      // let count=0
+      // for(var i in pureselected){
+      //     count++
+      // }
+      // console.log(count);
+      
+      // if(count>=5){
+      //   pureselected.delete(`${row}+${col}`);
+      //   return;
+      // }
     
+
+        this.setState({
+          cinemaseat: [...cinemaseat],
+          selectedseat:[...pureselected]
+        },()=>{
+         console.log(this.state.selectedseat);
+         console.log(this.state.selectedseat.length);
+          
+        });
+        
+      
+      // console.log(pureselected.length);
+    } else {
+     
+      cinemaseat[row][col] = 0;
+      pureselected.delete(`${row}+${col}`);
+      this.setState({
+        cinemaseat: [...cinemaseat],
+        selectedseat:[...pureselected]
+      },()=>{
+       console.log(this.state.selectedseat);
+       console.log(this.state.selectedseat.length);
+        
+      });
+     
+
+    }
+  
+  };
+  // 提交
+  onsubmit=()=>{
+    // ((this.state.prices-0)*this.state.selectedseat.length)
+   
+      let userid=JSON.parse(sessionStorage.getItem("user"))
+      // userid._id
+      let OrderTime=new Date()
+      let OrderTimereal= OrderTime.toLocaleString();
+      let total=((this.state.prices-0)*this.state.selectedseat.length)
+      this.setState({
+        // visible: false,
+        selectedseat: [],
+        cinemaseat: [
+          [0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 2],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 2],
+        ],
+        loading:true
+      });
+      axios.post("/order/add",{
+        MoviesInforId:this.state.movies_id,
+        VipUserId: userid._id,
+        CinemaId:this.props.match.params._id,
+        OrderTime:OrderTimereal,
+        OrderMoviesTime:this.state.time,
+        OrderRoom:this.state.room,
+        OrderSeat:this.state.selectedseat,
+        OrderPrice:this.state.prices,
+        OrderTotal:total,
+
+      })
+      .then(res => {
+        console.log(res.data)
+
+        if(res.data!=null){
+
+          setTimeout(() => {
+            // this.props.history.push("/main/moviesdetail/"+_id)
+            this.setState({
+              visible: false,
+            })
+            this.props.history.push("/main/orderesult/"+res.data._id)
+          }, 2000);
+        }
+        else{
+          alert("发送错误")
+        }
+
+
+      })
+      .catch(err => {
+        console.error(err); 
+      })
+
+    
+    // console.log("dsadsada1");
+      // ((this.state.prices-0)*this.state.selectedseat.length)
+
+    
+  }
+
+  render() {
     const { MoviesData } = this.props;
     const isuser = this.state.isuser;
-    const movies_name=this.state.movies_name
-  
+    const movies_name = this.state.movies_name;
 
     message.config({
       top: 50,
@@ -287,14 +439,15 @@ class cinemaDetailandOrder extends PureComponent {
                         >
                           立即购票
                         </Button>
+                      
                         <Drawer
                           title={
-                          <div className="drawer-head">
-                          <span className=""><strong> {item.MoviesName }</strong>
-                          
-                          </span>
-                          <span>{"----------"+movies_name}</span>
-                          </div>
+                            <div className="drawer-head">
+                              <span className="">
+                                <strong> {item.MoviesName}</strong>
+                              </span>
+                              <span>{"----------" + movies_name}</span>
+                            </div>
                           }
                           // placement={this.state.placement}
                           placement="bottom"
@@ -308,55 +461,126 @@ class cinemaDetailandOrder extends PureComponent {
                                 textAlign: "right",
                               }}
                             >
+                              <span style={{ marginRight: 8,fontSize:"16px", color:"red"}}><strong>
+                         
+                                {"总计:"+((this.state.prices-0)*this.state.selectedseat.length)+"元"}
+                              </strong></span>
                               <Button
                                 onClick={this.onClose}
                                 style={{ marginRight: 8 }}
                               >
                                 取消
                               </Button>
-                              <Button onClick={this.onClose} type="primary">
+                              <Button onClick={this.onsubmit} type="primary">
                                 确定订单
                               </Button>
                             </div>
                           }
-                        
-                          >
-                          <div>
-                          <div className="drawer-body-flex">
+                        >
+                          <Spin spinning={this.state.loading}>
+                          <div className="">
+                            <div className="drawer-body-flex float-left clearfix">
+                              <img
+                                src={require("../../../images/" +
+                                  item.Movieimg +
+                                  ".jpg")}
+                                alt=""
+                              ></img>
 
-                          <img
-                          src={require("../../../images/" +
-                            item.Movieimg +
-                            ".jpg")}
-                          alt=""
-                        ></img>
-                          
-                          {/* <p className="drawer-body-moviesdetal"></p> */}
-                          <div className="drawer-body-moviesdetal">
-                          <p>时长:123分钟</p>
-                          <p>语言:{this.state.language}</p>
-                          {/* <p>
+                              {/* <p className="drawer-body-moviesdetal"></p> */}
+                              <div className="drawer-body-moviesdetal">
+                                <p>时长:123分钟</p>
+                                <p>语言:{this.state.language}</p>
+                                {/* <p>
                             主演:
                             {item.Starring.map((item, indexstar) => {
                               return " " + item;
                             })}
                           </p> */}
-                          
-                          <p>电影时间:{this.state.time}</p>
-                          <p>电影厅:{this.state.room}</p>
-                    
-                          <p></p>
+                                <p>日期：{this.state.isselectdate}</p>
+                                <p>电影时间: {this.state.time}</p>
+                                <p>电影厅:{this.state.room}</p>
+
+                                <p>
+                                  单价：<strong>￥{this.state.prices}元</strong>
+                                </p>
+                              </div>
+                            </div>
+
+                            {/* <p>Some contents...</p> */}
                           </div>
-                        
+                          <div className="drawer-seatall float-left clearfix">
+                            <div className="drawer-setall-head">
+                              <span className="">座位选择：</span>
+                              <span className="seat1">
+                                {" "}
+                                <strong> </strong>可选座位
+                              </span>
+                              <span className="seat2">
+                                {" "}
+                                <strong> </strong>已售座位
+                              </span>
+                              <span className="seat3">
+                                {" "}
+                                <strong> </strong>已选座位
+                              </span>
+                            </div>
+                            <div className="drawer-seatll-body">
+                              <table>
+                                <tbody>
+                                  {this.state.cinemaseat.map((item, index) => {
+                                    return (
+                                      <tr key={index+"+"}>
+                                        <td className="first-td" >
+                                          {index + 1 + "#"}
+                                        </td>
+                                        {item.map((itemseat, indexseat) => {
+                                          return (
+                                            <td className="seat-control" key={indexseat+"+"+index}>
+                                              <span
+                                                className={this.seatdisplay(
+                                                  itemseat
+                                                )}
+                                                onClick={() => {
+                                                  this.clickseat(
+                                                    index,
+                                                    indexseat
+                                                  );
+                                                }}
+                                              >
+                                                {" "}
+                                                <strong></strong>
+                                              </span>
+                                            </td>
+                                          );
+                                        })}
+                                        <td className="last-td">
+                                          {index + 1 + "#"}
+                                        </td>
+                                      </tr>
+                                    );
+                                  })}
+                                </tbody>
+                              </table>
+                            </div>
+                           
                           </div>
-                      
-                      
-                       
-                          {/* <p>Some contents...</p> */}
-                        
-                          </div>
-                         
+                          <div className="drawer-seatall-aside">
+                               <h4> 已选择的座位:</h4>
+                               {this.state.selectedseat.map((item,index)=>{
+                                  console.log('====================================');
+                                  console.log(item);
+                                  console.log('====================================');
+                                 return(
+                                   
+                                  <Tag color="orange" style={{fontSize:"16px"}}>{parseInt(item[1][0])+1+"排"+parseInt(item[1][1]+1)+"座"}</Tag>
+                                 )
+                               })}
+
+                            </div>
+                            </Spin>
                         </Drawer>
+                    
                       </span>
                     );
                   }
@@ -485,7 +709,7 @@ class cinemaDetailandOrder extends PureComponent {
                               <span
                                 key={indexdatetime}
                                 onClick={() => {
-                                  this.datecontrol(indexdatetime);
+                                  this.datecontrol(indexdatetime, item.date);
                                 }}
                               >
                                 <strong
@@ -504,7 +728,7 @@ class cinemaDetailandOrder extends PureComponent {
                             <span><strong>{this.state.date2}</strong></span>
                             <span><strong>{this.state.date3}</strong></span> */}
                         </div>
-                        <div >
+                        <div>
                           <Table
                             dataSource={dataSource}
                             columns={columns}

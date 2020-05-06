@@ -6,20 +6,31 @@ import { connect } from "react-redux";
 import { getMoivesdataAsync } from "../../store/mainmoviedata/actions";
 import { Pagination } from "antd";
 import "./movieslist.css";
+import axios from "axios"
 class movieslist extends Component {
-  componentDidMount() {
-    this.props.dispatch(getMoivesdataAsync());
-  }
+
   state = {
-    current: 3,
-    _id:""
+    current: 1,
+    _id:"",
+    pageSize:10,
+
+
   };
+  componentDidMount() {
+    // this.props.dispatch(getMoivesdataAsync({pageSize:this.state.pageSize,current:this.state.current}));
+  }
 
   onChange = (page) => {
     console.log(page);
+
+    
     this.setState({
       current: page,
+    },()=>{
+      // this.props.dispatch(getMoivesdataAsync({pageSize:this.state.pageSize,current:this.state.current}));
     });
+
+    
   };
   onShowSizeChange = (current, pageSize) => {
     console.log(current, pageSize);
@@ -64,13 +75,14 @@ class movieslist extends Component {
                   <Pagination
                     total={50}
                     defaultCurrent={1}
-                    defaultPageSize={5}
+                    defaultPageSize={this.state.pageSize}
                     showSizeChanger
                     showQuickJumper
+                    // pageSize={10}
                     onShowSizeChange={this.onShowSizeChange}
                     current={this.state.current}
                     onChange={this.onChange}
-                    showTotal={(total) => `Total ${total} items`}
+                    showTotal={(total) => `总计 ${MoviesData.length} 条`}
                   />
                 </div>
               </div>

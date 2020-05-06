@@ -1,3 +1,5 @@
+
+
 .cinema-header-list {
   display: flex;
   justify-content: start;
@@ -47,7 +49,9 @@
 }
 .firmSchedule-date strong{
   font-size:16px;
-  margin:0 30px
+  margin:0 30px;
+  cursor:pointer;
+  transition:0.3
 }
 .firmSchedule-date strong:hover{
   border-bottom:2px solid  #e8e8e9
@@ -122,3 +126,55 @@
   color:#000 ;
   margin-right:20px
 } */
+
+/* 座位 */
+.drawer-seatall{
+  margin-left: 30px;
+}
+.drawer-setall-head{
+  text-align: center;
+}
+.drawer-setall-head span{
+  color:#000 !important;
+}
+.drawer-setall-head  span strong{
+  /* color:#000 !important; */
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  /* background: url(../../img/sit_ico.png) 0px 0px; */
+  /* background-size: 20px; */
+}
+.seat1 strong{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url(../../img/sit_ico.png) 0px 0px;
+}
+.seat2 strong{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url(../../img/sit_ico.png) 0px -26px;
+}
+.seat3 strong{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url(../../img/sit_ico.png)-108px 0px;
+}
+
+.isclickforseat{
+  cursor: not-allowed
+}
+
+/* 位置图片body */
+/* .seat-control{
+
+} */
+.drawer-seatll-body table{
+  margin: 20px 20px 0;
+}
+.drawer-seatll-body table tr td{
+  padding: 5px;
+}

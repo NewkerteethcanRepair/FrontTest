@@ -7,6 +7,8 @@ import Movieslist from "../components/movieslist/movieslist"
 import Moviesdetail from "../components/moviesdetail/moviesdetail"
 import Cinema from "../components/cinema/cinema"
 import CinemaDetailandOrder from "../components/cinemaDetailandOrder/cinemaDetailandOrder"
+import Orderesult from "../components/orderesult/orderesult"
+import Mymenu from "../components/mymenu/mymenu"
 export default function TodolistexamRouter() {
     return (
         <>
@@ -15,6 +17,8 @@ export default function TodolistexamRouter() {
            <Route path="/main/moviesdetail/:_id" component={Moviesdetail}></Route>
            <Route path="/main/cinema" component={Cinema}></Route>
            <Route path="/main/Cinemadetailandorder/:_id" component={CinemaDetailandOrder}></Route>
+           <Route path="/main/orderesult/:_id" component={Orderesult}></Route>
+           <Route path="/main/mymenu/:_id" component={Mymenu}></Route>
 
             
         </>

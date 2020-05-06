@@ -8,7 +8,7 @@ import {
 import imglogo from "../../img/mylogo.png";
 import "./home.css";
 import { Avatar } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { UserOutlined ,HomeOutlined,SmileOutlined } from "@ant-design/icons";
 const { SubMenu } = Menu;
 const { Search } = Input;
 
@@ -104,8 +104,16 @@ export default class home extends PureComponent {
     }
     if (e.key == "cancel") {
       window.sessionStorage.removeItem("user");
-      // this.props.history.push("/main/index");
-      window.location.reload()
+      this.props.history.push("/main/index");
+      window.location.reload(true)
+     
+    }
+    if (e.key == "myMenu") {
+      // window.sessionStorage.removeItem("user");
+      let userid=JSON.parse(sessionStorage.getItem("user"))
+
+      this.props.history.push("/main/mymenu/"+userid._id);
+      // window.location.reload()
     }
 
   };
@@ -130,14 +138,16 @@ export default class home extends PureComponent {
                     theme="dark"
                   >
                     <Menu.Item key="main">
-                      <MailOutlined />
+                      <HomeOutlined />
                       首页
                     </Menu.Item>
                     <Menu.Item key="movieslist">
                       <AppstoreOutlined />
                       电影列表
                     </Menu.Item>
-                    <Menu.Item key="cinemalist">影院</Menu.Item>
+                    <Menu.Item key="cinemalist">
+                    <SmileOutlined/>
+                    影院</Menu.Item>
                     <Menu.Item key="alipay">
                       {/* <a href="/" target="_blank" rel="noopener noreferrer">
                         关于更多
@@ -159,7 +169,7 @@ export default class home extends PureComponent {
                     {this.state.isuser &&user.VipName!=null ? (
 
                       <SubMenu
-                          title={"VIP用户: "+user.VipName}
+                          title={  "VIP用户: "+user.VipName}
                           style={{ width: 200, float: "right" }}
                         >
                           <Menu.Item key="myMenu">我的账单</Menu.Item>

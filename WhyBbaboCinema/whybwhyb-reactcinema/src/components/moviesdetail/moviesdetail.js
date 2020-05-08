@@ -24,7 +24,7 @@ class moviesdetail extends Component {
     // params传参(刷新页面后参数不消失，参数会在地址栏显示)
     // console.log(this.props.match.params._id);
 
-    this.props.dispatch(getMoivesdataAsync());
+    this.props.dispatch(getMoivesdataAsync({pageSize:1000,current:1}));
   }
   state = {
     _id: "",

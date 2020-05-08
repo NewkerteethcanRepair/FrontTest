@@ -12,7 +12,7 @@ import lunbo5 from "../../img/lunbo (5).jpg";
 let lunbo = [lunbo1, lunbo2, lunbo3, lunbo4, lunbo5];
 class Main extends Component {
   componentDidMount() {
-    this.props.dispatch(getMoivesdataAsync());
+    this.props.dispatch(getMoivesdataAsync({pageSize:1000,current:1}));
   }
   onChange = () => {};
   moviesdetail=(_id)=>{

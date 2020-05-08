@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import './index.css';
 import App from './App';
+import { ConfigProvider } from 'antd';
 // import * as serviceWorker from './serviceWorker';
 
 
 
 ReactDOM.render(
   // <React.StrictMode>
+  // <ConfigProvider {...yourConfig}>
     <App />,
+  
   // </React.StrictMode>,
   document.getElementById('root')
 );

@@ -101,7 +101,7 @@ class cinemaDetailandOrder extends PureComponent {
   //---------------------------------------------
   componentDidMount = async () => {
     await this.props.dispatch(getCinemadataAsync());
-    await this.props.dispatch(getMoivesdataAsync());
+    await this.props.dispatch(getMoivesdataAsync({pageSize:1000,current:1}));
     // console.log(this.props.match.params._id);
     // console.log(this.props.MoviesData);
 
@@ -256,7 +256,7 @@ class cinemaDetailandOrder extends PureComponent {
       //   pureselected.delete(`${row}+${col}`);
       //   return;
       // }
-    
+     
 
         this.setState({
           cinemaseat: [...cinemaseat],
@@ -264,13 +264,28 @@ class cinemaDetailandOrder extends PureComponent {
         },()=>{
          console.log(this.state.selectedseat);
          console.log(this.state.selectedseat.length);
-          
+        
         });
         
       
       // console.log(pureselected.length);
     } else {
-     
+      //  alert("不能超过4张")
+      // if(this.state.selectedseat.length==4){
+      //   // alert("不能超过4张")
+      //   return
+      // }
+      // if(this.state.selectedseat.length>4){
+
+        if( this.state.selectedseat.has(`${row}+${col}`)){
+
+          
+        }
+        else{
+
+          alert("不能超过4张")
+        }
+      // }
       cinemaseat[row][col] = 0;
       pureselected.delete(`${row}+${col}`);
       this.setState({
@@ -279,7 +294,8 @@ class cinemaDetailandOrder extends PureComponent {
       },()=>{
        console.log(this.state.selectedseat);
        console.log(this.state.selectedseat.length);
-        
+     
+      
       });
      
 

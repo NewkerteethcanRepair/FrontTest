@@ -5,6 +5,7 @@ const {getall2,add2}=require("../service/vipuserService")
 router.post('/getall',async function(req, res, next) {
 //   res.render('index', { title: 'Express' });
     const data=await getall2(req.body);
+ 
     res.send(data)
 });
 
@@ -13,6 +14,8 @@ router.post('/getall',async function(req, res, next) {
 router.post('/add',async function(req, res, next) {
     //   res.render('index', { title: 'Express' });
         const data=await add2(req.body);
+        console.log(req.body);
+        
         res.send(data)
     });
 

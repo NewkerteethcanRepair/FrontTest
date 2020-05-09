@@ -1,5 +1,6 @@
 /* components/showText/showText.wxss */
 .showText{
+    font-size: 150rpx;
     font-weight:600;
     text-align: center;
     

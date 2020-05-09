@@ -12,6 +12,7 @@ Component({
    */
   data: {
     count:"",
+    isDisabled:true
   },
 
   /**

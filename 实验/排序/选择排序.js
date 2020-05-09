@@ -18,3 +18,4 @@ for (var i = 0; i < len - 1; i++) {
 }
 
 console.log(num);
+console.log(num);

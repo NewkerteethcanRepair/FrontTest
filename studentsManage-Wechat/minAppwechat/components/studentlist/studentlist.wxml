@@ -1,0 +1,28 @@
+<!-- components/studentlist/studentlist.wxml -->
+<!-- <text>components/studentlist/studentlist.wxml</text> -->
+<view class="container">
+    <view class="student-list-head">
+        <text class="">学生列表</text>
+    </view>
+    <view class="student-list-table">
+        <view class="tr bg-w">
+            <view class="th">学生id</view>
+            <view class="th">姓名</view>
+            <view class="th ">年龄</view>
+            <view class="th ">性别</view>
+            <view class="th ">班级</view>
+        </view>
+        <!-- <block wx:for="{{studentlist}}" wx:key="{{code}}">
+            <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+                <view class="td">{{item.code}}</view>
+                <view class="td">{{item.text}}</view>
+                <view class="td">{{item.type}}</view>
+            </view>
+            <view class="tr" wx:else>
+                <view class="td">{{item.code}}</view>
+                <view class="td">{{item.text}}</view>
+                <view class="td">{{item.type}}</view>
+            </view>
+        </block> -->
+    </view>
+</view>

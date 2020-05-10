@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "studentlist":"../../components/studentlist/studentlist",
+    "studentadd":"../../components/studentadd/studentadd",
+    "studentsearch":"../../components/studentsearch/studentsearch"
+  }
+}

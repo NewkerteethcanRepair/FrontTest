@@ -1,0 +1,6 @@
+/* components/studentlist/studentlist.wxss */
+.student-list-head{
+    font-weight: 600;
+    padding:30rpx 10rpx;
+
+}

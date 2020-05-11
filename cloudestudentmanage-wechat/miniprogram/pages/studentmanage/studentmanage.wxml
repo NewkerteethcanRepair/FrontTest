@@ -1,0 +1,20 @@
+<!-- <page-meta>
+  <navigation-bar
+    title="{{nbTitle}}"
+    loading="{{nbLoading}}"
+    front-color="{{nbFrontColor}}"
+    background-color="{{nbBackgroundColor}}"
+    color-animation-duration="2000"
+    color-animation-timing-func="easeIn"
+  />
+</page-meta> -->
+<scroll-view class="" scroll-y="{{true}}">
+
+  <studentlist studentdata="{{studentdata}}"></studentlist>
+</scroll-view>
+<!-- <view class="page">
+    <view class="page__hd">
+        <view class="page__title">Slideview</view>
+        <view class="page__desc">左滑操作</view>
+    </view>
+</view> -->

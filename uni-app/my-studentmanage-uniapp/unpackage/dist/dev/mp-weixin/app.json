@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/add/add",
+    "pages/classadd/classadd"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#d91688",
+    "backgroundColor": "#fffffff"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#d91688",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "position": "top",
+    "height": "56rpx",
+    "fontSize": "12px",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/add/add",
+        "text": "学生添加"
+      },
+      {
+        "pagePath": "pages/classadd/classadd",
+        "text": "班级添加"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

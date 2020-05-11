@@ -1,0 +1,9 @@
+/* miniprogram/pages/studentmanage/studentmanage.wxss */
+@import "../../weui.wxss";
+.student-list-head{
+    font-weight: 600;
+    margin-top: 50rpx;
+    height: 600rpx;
+    border: 1rpx solid #000;
+    padding: 5rpx;
+}

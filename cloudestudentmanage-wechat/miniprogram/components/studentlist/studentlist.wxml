@@ -1,0 +1,48 @@
+<!-- components/studentlist/studentlist.wxml -->
+<!-- <text>components/studentlist/studentlist.wxml</text> -->
+
+  <!-- <table>
+         <thead>
+               <tr>
+                   <th>姓名</th>
+                   <th>年龄</th>
+                   <th>性别</th>
+                   <th>班级</th>
+                   <th>操作</th>
+                 
+               </tr>
+         </thead>
+       
+           <block  wx:for="{{studentdata}}" wx:key="{{studentdata._id}}">
+                 <tr>
+                     <td>{{item.studentname}}</td>
+                     <td>{{item.studentsex}}</td>
+                     <td>{{item.studentname}}</td>
+                     <td>{{item.studentname}}</td>
+                     <td>{{item.studentname}}</td>
+                 </tr>
+           </block>
+       
+      </table> -->
+
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Slideview</view>
+        <view class="page__desc">左滑操作</view>
+    </view>
+    <view class="page__bd">
+      <view class="weui-cells">
+          <mp-slideview buttons="{{slideButtons}}" bindbuttontap="slideButtonTap">
+              <mp-cell value="左滑可以删除" footer="说明文字"></mp-cell>
+          </mp-slideview>
+      </view>
+
+      <view class="weui-slidecells">
+        <mp-slideview buttons="{{slideButtons}}" icon="{{true}}" bindbuttontap="slideButtonTap">
+          <view class="weui-slidecell">
+            左滑可以删除（图标Button）
+          </view>
+        </mp-slideview>
+      </view>
+    </view>
+</view>

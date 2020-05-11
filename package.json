@@ -3,6 +3,8 @@
     "@react-navigation/bottom-tabs": "^5.2.5",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "mongoose": "^5.9.13"
+    "mongoose": "^5.9.13",
+    "weui": "^2.3.0",
+    "weui-miniprogram": "^1.0.3"
   }
 }

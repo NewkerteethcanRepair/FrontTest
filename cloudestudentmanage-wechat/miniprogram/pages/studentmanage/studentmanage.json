@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "stduentadd":"../../components/studentadd/studentadd",
+    "studentlist":"../../components/studentlist/studentlist",
+    "studentsearch":"../../components/studentsearch/studentsearch"
+
+    
+  }
+}

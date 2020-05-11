@@ -3,15 +3,57 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/add/add",
+			"style": {
+				"navigationBarTitleText": "学生添加"
+			}
+		},
+		{
+			"path": "pages/classadd/classadd",
+			"style": {
+				"navigationBarTitleText": "班级添加"
 			}
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationBarTextStyle": "#F8F8F8",
+		"navigationBarTitleText": "学生管理系统",
+		"navigationBarBackgroundColor": "#41bd55",
 		"backgroundColor": "#F8F8F8"
+		
+	},
+	"tabBar": {
+	    "color": "#7A7E83",
+	    "selectedColor": "#3cc51f",
+	    "borderStyle": "black",
+	    "backgroundColor": "#ffffff",
+		// "position":"top",
+		"height":"50",
+		"fontSize":"14px",
+		// "borderStyle":"black",
+	    "list": [{
+	        "pagePath": "pages/index/index",
+	        // "iconPath": "static/image/icon_component.png",
+	        // "selectedIconPath": "static/image/icon_component_HL.png",
+	        "text": "首页"
+	    }, {
+	        "pagePath": "pages/add/add",
+	        // "iconPath": "static/image/icon_API.png",
+	        // "selectedIconPath": "static/image/icon_API_HL.png",
+	        "text": "学生添加"
+	    },
+		{
+		    "pagePath": "pages/classadd/classadd",
+		    // "iconPath": "static/image/icon_API.png",
+		    // "selectedIconPath": "static/image/icon_API_HL.png",
+		    "text": "班级添加"
+		}
+		
+		]
 	},
 	"condition" : { //模式配置，仅开发期间生效
 		"current": 0, //当前激活的模式(list 的索引项)

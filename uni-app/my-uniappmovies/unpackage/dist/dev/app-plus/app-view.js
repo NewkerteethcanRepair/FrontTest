@@ -136,6 +136,8 @@ if (uni.restoreGlobal) {
   uni.restoreGlobal(weex, plus, setTimeout, clearTimeout, setInterval, clearInterval);
 }
 __definePage('pages/index/index', function () {return Vue.extend(__webpack_require__(/*! pages/index/index.vue?mpType=page */ 2).default);});
+__definePage('pages/add/add', function () {return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/add/add.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default);});
+__definePage('pages/classadd/classadd', function () {return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/classadd/classadd.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default);});
 
 /***/ }),
 /* 2 */

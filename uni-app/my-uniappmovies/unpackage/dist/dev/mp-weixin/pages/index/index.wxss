@@ -34,4 +34,9 @@
 	font-size: 36rpx;
 	color: #8f8f94;
 }
+.student-head {
+	margin-top: 30rpx;
+	padding: 10rpx;
+	font-weight: 600;
+}
 

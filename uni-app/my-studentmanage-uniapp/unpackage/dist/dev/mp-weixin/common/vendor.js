@@ -757,7 +757,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -1690,9 +1690,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 15:
-/*!***************************************************************************!*\
-  !*** E:/FrontTestandStudy/uni-app/my-studentmanage-uniapp/store/index.js ***!
-  \***************************************************************************/
+/*!******************************************************************************!*\
+  !*** H:/TheFrontStudyandTest/uni-app/my-studentmanage-uniapp/store/index.js ***!
+  \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2661,9 +2661,9 @@ var index_esm = {
 /***/ }),
 
 /***/ 17:
-/*!**************************************************************************************!*\
-  !*** E:/FrontTestandStudy/uni-app/my-studentmanage-uniapp/store/modules/students.js ***!
-  \**************************************************************************************/
+/*!*****************************************************************************************!*\
+  !*** H:/TheFrontStudyandTest/uni-app/my-studentmanage-uniapp/store/modules/students.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8242,7 +8242,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8263,14 +8263,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8346,7 +8346,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -8772,9 +8772,9 @@ module.exports = g;
 /***/ }),
 
 /***/ 4:
-/*!***********************************************************************!*\
-  !*** E:/FrontTestandStudy/uni-app/my-studentmanage-uniapp/pages.json ***!
-  \***********************************************************************/
+/*!**************************************************************************!*\
+  !*** H:/TheFrontStudyandTest/uni-app/my-studentmanage-uniapp/pages.json ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9681,9 +9681,9 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ }),
 
 /***/ 7:
-/*!****************************************************************************************!*\
-  !*** E:/FrontTestandStudy/uni-app/my-studentmanage-uniapp/pages.json?{"type":"style"} ***!
-  \****************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** H:/TheFrontStudyandTest/uni-app/my-studentmanage-uniapp/pages.json?{"type":"style"} ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9693,9 +9693,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 76:
-/*!******************************************************************************************!*\
-  !*** E:/FrontTestandStudy/uni-app/my-studentmanage-uniapp/components/uni-icons/icons.js ***!
-  \******************************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** H:/TheFrontStudyandTest/uni-app/my-studentmanage-uniapp/components/uni-icons/icons.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9835,9 +9835,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 8:
-/*!***************************************************************************************!*\
-  !*** E:/FrontTestandStudy/uni-app/my-studentmanage-uniapp/pages.json?{"type":"stat"} ***!
-  \***************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** H:/TheFrontStudyandTest/uni-app/my-studentmanage-uniapp/pages.json?{"type":"stat"} ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

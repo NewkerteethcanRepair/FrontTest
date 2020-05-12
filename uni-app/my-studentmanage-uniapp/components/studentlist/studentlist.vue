@@ -9,7 +9,7 @@
 		</uni-list>
 
 		<uni-collapse>
-			<uni-collapse-item title="标题文字" thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png">
+			<!-- <uni-collapse-item title="标题文字" thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png">
 				<view style="padding: 30rpx;">
 					折叠内容主体，可自定义内容及样式
 				</view>
@@ -18,8 +18,23 @@
 				<view style="padding: 30rpx;">
 					折叠内容主体，可自定义内容及样式
 				</view>
-			</uni-collapse-item>
-		</uni-collapse>
+			</uni-collapse-item> -->
+			<template v-for="(item,index) in studentsdata">
+				<uni-collapse-item title="{{item.studentname}}" showAnimation=true>
+					<view style="padding: 30rpx;">
+						<text>
+							性别：{{item.studentsex}} 
+						</text>
+						<text>
+							年龄：{{item.studentage}}
+						</text>
+						<text>
+							班级：{{item.studentsex}}
+						</text>
+					</view>
+				</uni-collapse-item>
+			</template>
+		</uni-collapse> 
 
 	</view>
 
@@ -49,17 +64,15 @@
 		mounted(){
 			// console.log("21321")
 			// this.dd();
-			console.log(this.getstudentsdataAsync())
+			// console.log(this.getstudentsdataAsync())
 			this.getstudentsdataAsync()
 		},
 		computed:{
 			...mapState(["studentsdata"]),
-			...mapActions(["getstudentsdataAsync"])
+			
 		},
 		methods:{
-			dd(){
-		   console.log(23123)
-		   },
+			...mapActions(["getstudentsdataAsync"])
 		}
 	}
 </script>

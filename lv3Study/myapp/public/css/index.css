@@ -1,0 +1,79 @@
+body{
+    margin: 0;
+}
+h1{
+    text-align: center;
+}
+.student{
+    width: 60%;
+    margin: 0 auto;
+}
+.student .operation{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+}
+.student .operation .item{
+    width: 33%;
+    border: 1px dashed #888;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 0 20px;
+    margin-right: 10px;
+}
+.student .operation .item h3{
+    height: 30px;
+    line-height: 30px;
+    padding-left: 20px;
+    background-color: #888;
+    color: white;
+    border-radius: 10px;
+}
+.student .operation .item div{
+    margin-bottom: 10px;
+}
+.student .operation .item a{
+    display: block;
+    width: 80px;
+    line-height: 30px;
+    background: red;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    margin: 10px auto;
+}
+.studentBox{
+    width: 94.4%;
+    padding: 0 20px 20px;
+    border-radius: 10px;
+    border: 1px dashed #888;
+    margin-top: 30px;
+}
+#studentList td{
+    text-align: center;
+    height: 30px;
+}
+.studentBox h2{
+    width: 100%;
+    padding: 10px 0;
+    background: #888;
+    color: white;
+}
+#studentList tbody td a{
+    display: inline-block;
+    width: 40px;
+    background-color: rgb(60, 111, 153);
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+#studentList tbody td a:nth-child(2){
+    background-color: rgb(196, 22, 22);
+}
+
+.paging{
+    margin: 20px 0;
+}
+.paging button{
+    width: 100px;
+}

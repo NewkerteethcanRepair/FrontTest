@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery.min.js"></script>
+    <input type="text" id="username" autocomplete="off">
+    <input type="password" id="password" autocomplete="off">
+    <button type="button" id="loginBtn">注册</button>
+</head>
+
+<body>
+    <script>
+        $('#loginBtn').click(function () {
+            const username = $('#username').val();
+            const password = $('#password').val();
+            // console.log(username,password);
+            $.ajax({
+                url: '/users/verify',
+                type: 'POST',
+                data: { username, password },
+                success: (msg) => {
+                    if (msg) {
+                        alert('该账户已经被注册');
+                    } else {
+                        $.ajax({
+                            url: '/users/register',
+                            type: 'POST',
+                            data: { username, password },
+                            success: (msg) => {
+                                if(msg){
+                                    alert('注册成功！');
+                                    location.href = './login.html';
+                                }
+                            }
+                        });
+                    }
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>

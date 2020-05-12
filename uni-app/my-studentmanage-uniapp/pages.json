@@ -17,6 +17,12 @@
 		"style": {
 			"navigationBarTitleText": "班级添加"
 		}
+	},
+	{
+		"path": "pages/login/login",
+		"style": {
+			"navigationBarTitleText": "登录"
+		}
 	}
 	],
 	"globalStyle": {
@@ -51,6 +57,12 @@
 		    // "iconPath": "static/image/icon_API.png",
 		    // "selectedIconPath": "static/image/icon_API_HL.png",
 		    "text": "班级添加"
+		},
+		{
+		    "pagePath": "pages/login/login",
+		    // "iconPath": "static/image/icon_API.png",
+		    // "selectedIconPath": "static/image/icon_API_HL.png",
+		    "text": "登录"
 		}
 		
 		]

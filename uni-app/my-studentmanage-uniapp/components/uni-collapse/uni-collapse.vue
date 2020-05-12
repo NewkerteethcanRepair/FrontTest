@@ -4,13 +4,6 @@
 	</view>
 </template>
 <script>
-	/**
-	 * Collapse 折叠面板
-	 * @description 展示可以折叠 / 展开的内容区域
-	 * @tutorial https://ext.dcloud.net.cn/plugin?id=23
-	 * @property {Boolean} accordion = [true|false] 是否开启手风琴效果是否开启手风琴效果
-	 * @event {Function} change 切换面板时触发，activeNames（Array）：展开状态的uniCollapseItem的 name 值
-	 */
 	export default {
 		name: 'UniCollapse',
 		props: {
@@ -44,7 +37,9 @@
 		}
 	}
 </script>
-<style scoped>
+<style lang="scss" scoped>
+	@import '@/uni.scss';
+
 	.uni-collapse {
 		/* #ifndef APP-NVUE */
 		width: 100%;
@@ -54,6 +49,6 @@
 		flex: 1;
 		/* #endif */
 		flex-direction: column;
-		background-color: #ffffff;
+		background-color: $uni-bg-color;
 	}
 </style>

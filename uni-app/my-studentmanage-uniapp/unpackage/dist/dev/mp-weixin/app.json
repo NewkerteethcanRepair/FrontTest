@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/add/add",
-    "pages/classadd/classadd"
+    "pages/classadd/classadd",
+    "pages/login/login"
   ],
   "subPackages": [],
   "window": {
@@ -31,9 +32,13 @@
       {
         "pagePath": "pages/classadd/classadd",
         "text": "班级添加"
+      },
+      {
+        "pagePath": "pages/login/login",
+        "text": "登录"
       }
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap30.json"
+  "sitemapLocation": "sitemap76.json"
 }

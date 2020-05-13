@@ -19,9 +19,15 @@
 		}
 	},
 	{
-		"path": "pages/login/login",
+		"path": "pages/ucenter/login",
 		"style": {
 			"navigationBarTitleText": "登录"
+		}
+	},
+	{
+		"path": "pages/ucenter/register",
+		"style": {
+			"navigationBarTitleText": "注册"
 		}
 	}
 	],
@@ -59,7 +65,7 @@
 		    "text": "班级添加"
 		},
 		{
-		    "pagePath": "pages/login/login",
+		    "pagePath": "pages/ucenter/login",
 		    // "iconPath": "static/image/icon_API.png",
 		    // "selectedIconPath": "static/image/icon_API_HL.png",
 		    "text": "登录"

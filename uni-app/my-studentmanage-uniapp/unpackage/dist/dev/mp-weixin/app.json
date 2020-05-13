@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/add/add",
     "pages/classadd/classadd",
-    "pages/login/login"
+    "pages/ucenter/login",
+    "pages/ucenter/register"
   ],
   "subPackages": [],
   "window": {
@@ -34,11 +35,11 @@
         "text": "班级添加"
       },
       {
-        "pagePath": "pages/login/login",
+        "pagePath": "pages/ucenter/login",
         "text": "登录"
       }
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap76.json"
+  "sitemapLocation": "sitemap86.json"
 }

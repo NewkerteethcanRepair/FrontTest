@@ -8,7 +8,9 @@ const studentSchema = new mongoose.Schema({
   classesId:{
     type:mongoose.Schema.Types.ObjectId,
     ref:'classes'
-  }
+  },
+  img:String,
+  
 });
 // 定义数据模型
 //参数一:当前数据模型的名称

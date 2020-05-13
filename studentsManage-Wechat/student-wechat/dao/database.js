@@ -7,5 +7,6 @@ mongoose.connection.on('connected', function () {
 })
 require('./models/classmodel')
 require('./models/studentsmodel')
+require('./models/adminmodel')
 // require('./models/VipUserModel')
 // require('./models/wbCinemaModel')

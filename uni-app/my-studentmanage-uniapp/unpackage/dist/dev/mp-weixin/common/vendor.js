@@ -1560,10 +1560,10 @@ uni$1;exports.default = _default;
 
 /***/ }),
 
-/***/ 100:
-/*!*********************************************************************************************!*\
-  !*** H:/TheFrontStudyandTest/uni-app/my-studentmanage-uniapp/components/uni-icons/icons.js ***!
-  \*********************************************************************************************/
+/***/ 108:
+/*!******************************************************************************************!*\
+  !*** E:/FrontTestandStudy/uni-app/my-studentmanage-uniapp/components/uni-icons/icons.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1796,9 +1796,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 15:
-/*!******************************************************************************!*\
-  !*** H:/TheFrontStudyandTest/uni-app/my-studentmanage-uniapp/store/index.js ***!
-  \******************************************************************************/
+/*!***************************************************************************!*\
+  !*** E:/FrontTestandStudy/uni-app/my-studentmanage-uniapp/store/index.js ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2767,9 +2767,9 @@ var index_esm = {
 /***/ }),
 
 /***/ 17:
-/*!*****************************************************************************************!*\
-  !*** H:/TheFrontStudyandTest/uni-app/my-studentmanage-uniapp/store/modules/students.js ***!
-  \*****************************************************************************************/
+/*!**************************************************************************************!*\
+  !*** E:/FrontTestandStudy/uni-app/my-studentmanage-uniapp/store/modules/students.js ***!
+  \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8908,9 +8908,9 @@ module.exports = g;
 /***/ }),
 
 /***/ 4:
-/*!**************************************************************************!*\
-  !*** H:/TheFrontStudyandTest/uni-app/my-studentmanage-uniapp/pages.json ***!
-  \**************************************************************************/
+/*!***********************************************************************!*\
+  !*** E:/FrontTestandStudy/uni-app/my-studentmanage-uniapp/pages.json ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9817,21 +9817,21 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ }),
 
 /***/ 7:
-/*!*******************************************************************************************!*\
-  !*** H:/TheFrontStudyandTest/uni-app/my-studentmanage-uniapp/pages.json?{"type":"style"} ***!
-  \*******************************************************************************************/
+/*!****************************************************************************************!*\
+  !*** E:/FrontTestandStudy/uni-app/my-studentmanage-uniapp/pages.json?{"type":"style"} ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "首页", "usingComponents": { "studentlist": "/components/studentlist/studentlist" }, "usingAutoImportComponents": { "studentlist": "/components/studentlist/studentlist" } }, "pages/add/add": { "navigationBarTitleText": "学生添加", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/classadd/classadd": { "navigationBarTitleText": "班级添加", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/ucenter/login": { "navigationBarTitleText": "登录", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/ucenter/register": { "navigationBarTitleText": "注册", "usingComponents": {}, "usingAutoImportComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#d91688", "backgroundColor": "#fffffff" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "首页" }, "pages/add/add": { "navigationBarTitleText": "学生添加" }, "pages/classadd/classadd": { "navigationBarTitleText": "班级添加" }, "pages/ucenter/login": { "navigationBarTitleText": "登录" }, "pages/ucenter/register": { "navigationBarTitleText": "注册" } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#d91688", "backgroundColor": "#fffffff" } };exports.default = _default;
 
 /***/ }),
 
 /***/ 8:
-/*!******************************************************************************************!*\
-  !*** H:/TheFrontStudyandTest/uni-app/my-studentmanage-uniapp/pages.json?{"type":"stat"} ***!
-  \******************************************************************************************/
+/*!***************************************************************************************!*\
+  !*** E:/FrontTestandStudy/uni-app/my-studentmanage-uniapp/pages.json?{"type":"stat"} ***!
+  \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

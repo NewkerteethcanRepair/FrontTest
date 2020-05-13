@@ -1,49 +1,62 @@
 <template>
-	<!-- 	<view class="content">
+  <!-- 	<view class="content">
 		<image class="logo" src="/static/logo.png"></image>
 		<view class="text-area">
 			<text class="title">{{title}}</text>
 		</view>
 	</view> -->
-	<view>
-		
-	
-	<view class="student-head">
-		<text>{{title}}</text>
-	</view>
-	<studentlist></studentlist>
-	</view>
+  <view>
+    <view class="student-head">
+      <text>{{ title }}</text>
+    </view>
+    <studentlist></studentlist>
+  </view>
 </template>
 
 <script>
-	import studentlist from "../../components/studentlist/studentlist.vue"
+import studentlist from "../../components/studentlist/studentlist.vue";
 
-	export default {
-		data() {
-			return {
-				title: '学生列表',
-				studentdata:"",
-			}
-		},
-		components: {
-			studentlist
-		},
-		onLoad() {
-			console.log("231")
-			
+export default {
+  data() {
+    return {
+      title: "学生列表",
+      studentdata: "",
+    };
+  },
+  components: {
+    studentlist,
+  },
+  onLoad() {
+    console.log("231");
+    uni.getStorage({
+      key: "user",
+      success(e) {
+		e.data; //这就是你想要取的token
+		uni.request({
+      url: "http://127.0.0.1:3000/admin/islogin", //仅为示例，并非真实接口地址。
+      // data: {
+      // 	text: 'uni.request'
+      // },
+      header: {
+        // 'custom-header': 'hello' ,//自定义请求头信息
+        Authorization: `Bearer ${uni.getStorage}`,
+      },
+      success: (res) => {
+        console.log(res.data);
+        this.text = "request success";
+      },
+    });
+      },
+    });
 
-		},
-		computed:{
-		
-		},
-		methods:{
-
-		}
-	}
+  },
+  computed: {},
+  methods: {},
+};
 </script>
 
 <style>
-	/* .content {
+/* .content {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -69,9 +82,9 @@
 		color: #8f8f94;
 	} */
 
-	.student-head {
-		margin-top: 30rpx;
-		padding: 10rpx;
-		font-weight: 600;
-	}
+.student-head {
+  margin-top: 30rpx;
+  padding: 10rpx;
+  font-weight: 600;
+}
 </style>

@@ -1,6 +1,25 @@
 var express = require('express');
 var router = express.Router();
 const {rendering,addData,delData,modificationData} = require('../service/studentService');
+const {uploadFiles}= require("../utils/uploadFiles")
+
+
+// 上传
+const images=uploadFiles({
+    path:"./public/images",
+    key:"file"
+})
+router.post('/uploadImages',images, async function (req, res, next) {
+
+    res.send(req.files[0].filename);
+    
+});
+router.post('/cacheImages',images, async function (req, res, next) {
+    
+    res.send(req.files[0].filename);
+});
+
+
 // 数据渲染
 router.post('/rendering', async function (req, res, next) {
     res.send(await rendering(req.body));

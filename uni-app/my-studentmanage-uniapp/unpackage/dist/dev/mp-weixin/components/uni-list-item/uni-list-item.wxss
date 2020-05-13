@@ -1,5 +1,5 @@
 
-.uni-list-item.data-v-334a1294 {
+.uni-list-item.data-v-348e1d6d {
 		font-size: 32rpx;
 		position: relative;
 		-webkit-box-orient: vertical;
@@ -11,13 +11,13 @@
 		        justify-content: space-between;
 		padding-left: 30rpx;
 }
-.uni-list-item--disabled.data-v-334a1294 {
+.uni-list-item--disabled.data-v-348e1d6d {
 		opacity: 0.3;
 }
-.uni-list-item--hover.data-v-334a1294 {
+.uni-list-item--hover.data-v-348e1d6d {
 		background-color: #f1f1f1;
 }
-.uni-list-item__container.data-v-334a1294 {
+.uni-list-item__container.data-v-348e1d6d {
 		position: relative;
 
 		display: -webkit-box;
@@ -41,10 +41,10 @@
 		-webkit-align-items: center;
 		        align-items: center;
 }
-.uni-list-item--first.data-v-334a1294 {
+.uni-list-item--first.data-v-348e1d6d {
 		border-top-width: 0px;
 }
-.uni-list-item__container.data-v-334a1294:after {
+.uni-list-item__container.data-v-348e1d6d:after {
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -55,10 +55,10 @@
 		transform: scaleY(.5);
 		background-color: #e5e5e5;
 }
-.uni-list-item--first.data-v-334a1294:after {
+.uni-list-item--first.data-v-348e1d6d:after {
 		height: 0px;
 }
-.uni-list-item__content.data-v-334a1294 {
+.uni-list-item__content.data-v-348e1d6d {
 
 		display: -webkit-box;
 		display: -webkit-flex;
@@ -74,18 +74,18 @@
 		        flex-direction: column;
 		color: #3b4144;
 }
-.uni-list-item__content-title.data-v-334a1294 {
+.uni-list-item__content-title.data-v-348e1d6d {
 		font-size: 28rpx;
 		color: #3b4144;
 		overflow: hidden;
 }
-.uni-list-item__content-note.data-v-334a1294 {
+.uni-list-item__content-note.data-v-348e1d6d {
 		margin-top: 6rpx;
 		color: #999;
 		font-size: 24rpx;
 		overflow: hidden;
 }
-.uni-list-item__extra.data-v-334a1294 {
+.uni-list-item__extra.data-v-348e1d6d {
 		/* width: 25%;
  */
 
@@ -104,7 +104,7 @@
 		-webkit-align-items: center;
 		        align-items: center;
 }
-.uni-list-item__icon.data-v-334a1294 {
+.uni-list-item__icon.data-v-348e1d6d {
 		margin-right: 18rpx;
 		-webkit-box-orient: horizontal;
 		-webkit-box-direction: normal;
@@ -117,11 +117,11 @@
 		-webkit-align-items: center;
 		        align-items: center;
 }
-.uni-list-item__icon-img.data-v-334a1294 {
+.uni-list-item__icon-img.data-v-348e1d6d {
 		height: 52rpx;
 		width: 52rpx;
 }
-.uni-list-item__extra-text.data-v-334a1294 {
+.uni-list-item__extra-text.data-v-348e1d6d {
 		color: #999;
 		font-size: 24rpx;
 }

@@ -7,11 +7,11 @@ const studentSchema=new mongoose.Schema({
     },
     studentage:{
         type:Number,
-        ref:'23'
+        default:'23'
     },
     studentsex:{
         type:String,
-        ref:'男'
+        default:'男'
     },
     classid:{
         type:mongoose.Schema.Types.ObjectId,

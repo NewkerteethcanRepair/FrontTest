@@ -7,26 +7,75 @@ $(function () {
     }
     rendering();
     getClasses();
+    
+    let files;
+    // 上传
+    const formData=new FormData();
+    $("#inputfile").change(function(e) {
+         files=e.target.files;
+        console.log(e.target.files);
+        
+       
+        formData.append("file",files[0]);
+        $.ajax({
+            url:"/student/cacheImages",
+            type:"post",
+            data:formData,
+            cache:false,
+            contentType:false,
+            processData:false,
+            success(msg){
+                    console.log(msg);
+                    $("#showimg").append(`
+                    <img style="width:120px" src="../images/${msg}"
+                    
 
+                    
+                    />
+                    <div>dshdjakhdk</div>
+                    `)
+                    
+            }
+        })
+    
+    })
     // 新增学生
     $('.add #addStudentsBtn').click(function () {
         let name = $('.add .name input').val();
         let age = $('.add .age input').val();
         let gender = $('.add .gender input[name=addGender]:checked').val();
         let classesId = $('.add #classesList').val();
+        let img =$("#showimg").find("img").attr("src").split("/")[2];
         if (name != undefined && age != undefined && gender != undefined) {
             $.ajax({
                 url: '/student/addData',
                 type: 'post',
-                data: { name, age, gender, classesId},
+                data: { name, age, gender, classesId,img},
                 success: msg => { }
             });
+            $.ajax({
+                url:"/student/uploadImages",
+                type:"post",
+                data:formData,
+                cache:false,
+                contentType:false,
+                processData:false,
+                success(msg){
+                        // console.log(msg);
+                        // $("#showimg").find("img").attr("src","../images/"+msg)
+                        
+                }
+            })
+
+
+
             $('.add .name input').val('');
             $('.add .age input').val('');
             rendering();
         } else {
             alert('请把信息填写完整！');
         }
+      
     });
 
     // 新增班级
@@ -150,6 +199,8 @@ $(function () {
                             <td>${msg.rows[i].age}</td>
                             <td>${msg.rows[i].gender}</td>
                             <td>${msg.rows[i].classesId.name}</td>
+                            <td>${msg.rows[i].img? `<img style="width:80px" src="../images/${msg.rows[i].img}"/>` :"没有图片"
+                        }</td>
                             <td>
                                 <a href="javascript:" class='modification' data-_id='${msg.rows[i]._id}'>修改</a>
                                 <a href="javascript:" class='del' data-_id='${msg.rows[i]._id}'>删除</a>

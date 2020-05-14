@@ -254,11 +254,53 @@ var _createNamespacedHelp = (0, _vuex.createNamespacedHelpers)(
     uniPagination: uniPagination,
     uniFab: uniFab },
 
+  onLoad: function onLoad() {
+    uni.getStorage({
+      key: "user",
+      success: function success(res) {
+        // console.log(res.data);
+        console.log(res);
+
+        if (!res.data) {
+          uni.showModal({
+            title: "提示",
+            content: "请先登录",
+            success: function success(res) {
+              if (res.confirm) {
+                console.log("用户点击确定");
+                uni.switchTab({
+                  url: "/pages/ucenter/login" });
+
+              } else if (res.cancel) {
+                console.log("用户点击取消");
+                uni.switchTab({
+                  url: "/pages/ucenter/login" });
+
+              }
+            } });
+
+        } else {
+          console.log(3333);
+          //   uni.redirectTo({
+          //     url: "/pages/index/index",
+          //   });
+          uni.setTabBarItem({
+            index: 3,
+            text: "我的",
+            iconPath: "../../static/img/common/avatar.jpg",
+            selectedIconPath: "/path/to/selectedIconPath" });
+
+        }
+      } });
+
+  },
   mounted: function mounted() {
     // console.log("21321")
     // this.dd();
     // console.log(this.getstudentsdataAsync())
+
     this.getstudentsdataAsync();
+
   },
   computed: _objectSpread({},
   mapState(["studentsdata", "total"])),

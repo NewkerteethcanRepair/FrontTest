@@ -119,11 +119,53 @@ export default {
     uniPagination,
     uniFab
   },
+  onLoad(){
+         uni.getStorage({
+      key: "user",
+      success: function (res) {
+		// console.log(res.data);
+		console.log(res);
+		
+        if (!res.data) {
+          uni.showModal({
+            title: "提示",
+            content: "请先登录",
+            success: function (res) {
+              if (res.confirm) {
+                console.log("用户点击确定");
+                uni.switchTab({
+                  url: "/pages/ucenter/login",
+                });
+              } else if (res.cancel) {
+                console.log("用户点击取消");
+                uni.switchTab({
+                  url: "/pages/ucenter/login",
+                });
+              }
+            },
+          });
+        } else {
+          console.log(3333);
+          //   uni.redirectTo({
+          //     url: "/pages/index/index",
+          //   });
+          uni.setTabBarItem({
+            index: 3,
+            text: "我的",
+            iconPath: "../../static/img/common/avatar.jpg",
+            selectedIconPath: "/path/to/selectedIconPath",
+          });
+        }
+      },
+    });
+  },
   mounted() {
     // console.log("21321")
     // this.dd();
     // console.log(this.getstudentsdataAsync())
+
     this.getstudentsdataAsync();
+    
   },
   computed: {
     ...mapState(["studentsdata", "total"])

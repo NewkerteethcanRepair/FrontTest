@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+// const { createProxyMiddleware } = require('http-proxy-middleware');
 require('./dao/database/database');
 
 var indexRouter = require('./routes/index');
@@ -44,5 +44,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+// app.listen(3000);
+// app.use('/api', createProxyMiddleware({ target: 'http://127.0.0.1:3003', changeOrigin: true }));
 // module.exports = app;
 app.listen(3002,() => console.log('3002 端口启动成功'));

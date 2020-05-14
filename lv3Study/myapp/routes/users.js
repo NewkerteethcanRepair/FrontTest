@@ -3,6 +3,14 @@ var router = express.Router();
 const { login,register,verify} = require('../service/userService.js');
 let bcryptjs = require('bcryptjs');
 
+
+router.get('/userxixi', function(req, res, next) {
+  console.log("dadasda");
+  
+  res.send('嘻嘻嘻嘻');
+  
+});
+
 // 登录
 router.post('/login', async function (req, res, next) {
   //接收前端发送过来的数据

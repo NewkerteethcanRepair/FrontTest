@@ -85,7 +85,7 @@ export default {
           success: (res) => {
             console.log(res);
             // state.studentsdata = res.data
-            if (res.success) {
+            if (res.data.success) {
               // this.isregistered = true;
               uni.setStorage({
                 key: "user",

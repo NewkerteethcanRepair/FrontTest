@@ -9,7 +9,7 @@ var usersRouter = require('./routes/users');
 var classRouter = require('./routes/classdata');
 var studentRouter = require('./routes/studentsdata');
 var adminRouter = require('./routes/admin');
-
+const jwtAuth=require("./utils/jwt")
 var app = express();
 
 // view engine setup
@@ -27,7 +27,7 @@ app.use('/users', usersRouter);
 app.use('/class', classRouter);
 app.use('/student', studentRouter);
 app.use('/admin', adminRouter);
-
+app.use(jwtAuth);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

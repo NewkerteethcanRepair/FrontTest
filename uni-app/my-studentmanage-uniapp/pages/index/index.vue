@@ -28,30 +28,35 @@ export default {
   },
   onLoad() {
     console.log("231");
-    uni.getStorage({
-      key: "user",
-      success(e) {
-		e.data; //这就是你想要取的token
-		uni.request({
-      url: "http://127.0.0.1:3000/admin/islogin", //仅为示例，并非真实接口地址。
-      // data: {
-      // 	text: 'uni.request'
-      // },
-      header: {
-        // 'custom-header': 'hello' ,//自定义请求头信息
-        Authorization: `Bearer ${uni.getStorage}`,
-      },
-      success: (res) => {
-        console.log(res.data);
-        this.text = "request success";
-      },
-    });
-      },
-    });
-
+   
+    // this.islogin();
   },
+  onShow() {},
   computed: {},
-  methods: {},
+  methods: {
+    islogin() {
+      uni.getStorage({
+        key: "user",
+        success(e) {
+          e.data; //这就是你想要取的token
+          uni.request({
+            url: "http://127.0.0.1:3000/admin/islogin", //仅为示例，并非真实接口地址。
+            // data: {
+            // 	text: 'uni.request'
+            // },
+            header: {
+              // 'custom-header': 'hello' ,//自定义请求头信息
+              Authorization: `Bearer ${e.data}`,
+            },
+            success: (res) => {
+              console.log(res.data);
+              this.text = "request success";
+            },
+          });
+        },
+      });
+    },
+  },
 };
 </script>
 

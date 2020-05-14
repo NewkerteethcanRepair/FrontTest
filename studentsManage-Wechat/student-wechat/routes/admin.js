@@ -5,6 +5,20 @@ const bcryptjs =require("bcryptjs");
 const jwt=require("jsonwebtoken");
 const {getall2,add2,delete2,login2}=require("../service/adminService")
 /* GET users listing. */
+
+router.get('/islogin', async function(req, res, next) {
+    // req.query;
+    const token =req.get("Authorization")
+    const data =jwt.verify(token.split(" ")[1],"mytoken");
+    console.log(data);
+    
+    // const data= await getall2(req.query)
+    // // console.log('====================================');
+    // console.log(data);
+    // // console.log('====================================');
+    // res.send(data);
+  });
+
 router.get('/getall', async function(req, res, next) {
   // req.query;
 

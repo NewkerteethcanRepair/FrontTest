@@ -2,7 +2,7 @@
 
 .cinema-header-list {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   margin-top: 20px;
   padding: 10px;
 }

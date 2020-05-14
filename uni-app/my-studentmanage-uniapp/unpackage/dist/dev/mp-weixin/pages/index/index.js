@@ -164,30 +164,34 @@ __webpack_require__.r(__webpack_exports__);
 
   onLoad: function onLoad() {
     console.log("231");
-    uni.getStorage({
-      key: "user",
-      success: function success(e) {var _this = this;
-        e.data; //这就是你想要取的token
-        uni.request({
-          url: "http://127.0.0.1:3000/admin/islogin", //仅为示例，并非真实接口地址。
-          // data: {
-          // 	text: 'uni.request'
-          // },
-          header: {
-            // 'custom-header': 'hello' ,//自定义请求头信息
-            Authorization: "Bearer ".concat(uni.getStorage) },
 
-          success: function success(res) {
-            console.log(res.data);
-            _this.text = "request success";
-          } });
-
-      } });
-
-
+    // this.islogin();
   },
+  onShow: function onShow() {},
   computed: {},
-  methods: {} };exports.default = _default;
+  methods: {
+    islogin: function islogin() {
+      uni.getStorage({
+        key: "user",
+        success: function success(e) {var _this = this;
+          e.data; //这就是你想要取的token
+          uni.request({
+            url: "http://127.0.0.1:3000/admin/islogin", //仅为示例，并非真实接口地址。
+            // data: {
+            // 	text: 'uni.request'
+            // },
+            header: {
+              // 'custom-header': 'hello' ,//自定义请求头信息
+              Authorization: "Bearer ".concat(e.data) },
+
+            success: function success(res) {
+              console.log(res.data);
+              _this.text = "request success";
+            } });
+
+        } });
+
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

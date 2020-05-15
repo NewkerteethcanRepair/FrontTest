@@ -262,8 +262,8 @@ class cinemaDetailandOrder extends PureComponent {
           cinemaseat: [...cinemaseat],
           selectedseat:[...pureselected]
         },()=>{
-         console.log(this.state.selectedseat);
-         console.log(this.state.selectedseat.length);
+        //  console.log(this.state.selectedseat);
+        //  console.log(this.state.selectedseat.length);
         
         });
         
@@ -276,8 +276,9 @@ class cinemaDetailandOrder extends PureComponent {
       //   return
       // }
       // if(this.state.selectedseat.length>4){
-
-        if( this.state.selectedseat.has(`${row}+${col}`)){
+      console.log( this.state.selectedseat.hasOwnProperty());
+      
+        if( this.state.selectedseat.hasOwnProperty(`${row}+${col}`)){
 
           
         }

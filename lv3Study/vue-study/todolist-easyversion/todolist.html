@@ -14,12 +14,11 @@
     />
   </head>
   <style>
-   
-    input{
-        min-width: 150px;
+    input {
+      min-width: 150px;
     }
-    button{
-        min-width: 58px;
+    button {
+      min-width: 58px;
     }
     .done {
       color: red;
@@ -51,7 +50,30 @@
             </div>
             <!-- <list> -->
             <ul class="list-group">
-              <template v-for="(item,index) in todolistdata">
+              <template v-for="(item,index) in filtertodos">
+                <template v-if="index<=2">
+                  <li
+                    :key="index"
+                    class="list-group-item"
+                    :class="[item[1]? 'done': '']"
+                    @click="isselected(item[2])"
+                  >
+                    {{item[0]}}
+                  </li>
+                </template>
+                <template v-else>
+                  <li
+                    :key="index"
+                    class="list-group-item"
+                    :class="[item[1]? 'done': '']"
+                    @click="isselected(item[2])"
+                  >
+                    <span> {{item[0]}}</span>
+                    <span class="badge">新</span>
+                  </li>
+                </template>
+              </template>
+              <!-- <template v-for="(item,index) in todolistdata">
                 <template v-if="isstate=='all'">
                   <template v-if="index<=2">
                     <li
@@ -122,7 +144,7 @@
                     </li>
                   </template>
                 </template>
-              </template>
+              </template> -->
             </ul>
             <br />
             <!-- state -->
@@ -144,6 +166,15 @@
   </body>
 </html>
 <script>
+
+ Vue.component("todolistall", {
+         template:`
+         <div> 
+          
+          </div>
+         `
+       })
+
   new Vue({
     el: "#root",
     data() {
@@ -175,11 +206,32 @@
             // console.log(this.todolistdata[i][1]);
           }
         }
+      
+            
       },
       isselecteto(item) {
         console.log(item);
 
         this.isstate = item;
+      },
+    },
+    computed: {
+      filtertodos() {
+      
+        switch (this.isstate) {
+          case "done":
+            return this.todolistdata.filter((item) => {W
+             return  item[1] === true;
+            });
+          case "active":
+            return this.todolistdata.filter((item) => {
+             return item[1] === false;
+            });
+          default:
+            return this.todolistdata;
+        }
+   
+        
       },
     },
   });

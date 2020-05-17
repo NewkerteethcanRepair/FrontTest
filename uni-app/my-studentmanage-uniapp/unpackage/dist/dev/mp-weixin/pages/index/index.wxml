@@ -1,1 +1,0 @@
-<view><view class="student-head"><text>{{title}}</text></view><studentlist vue-id="8dd740cc-1" bind:__l="__l"></studentlist></view>

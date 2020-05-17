@@ -1,0 +1,10 @@
+mvvm 全称 model view view-model 改变model 可以改变影响到view -model 从而 自动改名view ，这样能够将数据 和 视图 同时绑定 触发，
+
+而 mvc model view  control  control 改变 需要手动设置 model 和 view 从而达到model 改变了  view 的也改变
+
+mvp  是个鬼？
+
+双向绑定 就是
+ 比如 v-model input 里面view 的视图层改变了， 响应的 同步 改变了 data里的值，
+vue 通过使用双向数据绑定，
+来实现了 View 和 Model 的同步更新。vue 的双向数据绑定主要是通过使用数据劫持和发布订阅者模式来实现的。

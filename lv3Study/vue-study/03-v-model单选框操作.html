@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  </head>
+  <body>
+    <div id="root">
+      {{selected}}
+      <select name="" id="" v-model="selected">
+        <option value="a">a</option>
+        <option value="b">b</option>
+        <option value="c">c</option>
+      </select>
+    </div>
+  </body>
+  <script>
+    new Vue({
+      el: "#root",
+      data() {
+        return {
+          selected: "a",
+        };
+      },
+      methods: {
+        selectto() {
+          console.log(this.selected);
+        },
+      },
+      computed: {
+        watchselected() {
+          console.log(this.selected);
+
+          return this.selected;
+        },
+      },
+      watch: {
+        selected(newval, oldval) {
+            console.log(newval);
+        },
+      },
+    });
+  </script>
+</html>

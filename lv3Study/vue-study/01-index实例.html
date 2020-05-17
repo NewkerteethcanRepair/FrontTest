@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  </head>
+  <body>
+    <!-- 模板语法 -->
+    <div id="root">
+      <h1 @click="changemsg">{{xixi}}</h1>
+      <h1 >{{watchmsg}}</h1>
+      <!-- <h2>{{msgwatch}}</h2> -->
+    </div>
+  </body>
+  <script>
+       //data是vue中存放数据的属性，该属性的值有两种
+    
+      //  vuecom
+       new Vue({
+         el: "#root",
+         data() {
+           return {
+             msg: "12321",
+             watchmsg:"2323s"
+           };
+         },
+         computed: {
+           xixi: function () {
+             return this.msg + "xixi";
+            
+           },
+         },
+         methods: {
+           changemsg(){
+               this.msg="dksadaslkdal"
+               this.watchmsg="bianle"
+           }
+         },
+    //      　1、键：就是你要监控的那个家伙，比如说$route，这个就是要监控路由的变化。或者是data中的某个变量。
+
+    // 2、值：
+         //   监听变化
+         watch: {
+             msg:{
+
+               handler(newVal , oldVal)  {
+                   console.log("改变了");
+
+               }
+               // return "改变了"
+             },
+             watchmsg(newval,oldval){
+                console.log("新"+newval,"旧"+oldval);
+                
+             }
+         },
+       });
+  </script>
+</html>

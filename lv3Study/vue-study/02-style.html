@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    
+</head>
+<script>
+    
+</script>
+<style>
+    .danger{
+        border: 1px solid red;
+    }
+    .red{
+        color:red;
+    }
+    .blue{
+        color:blue
+    }
+    .active{
+        padding: 100px;
+    }
+
+</style>
+<body>
+       <div id="root">
+            <h4 v-bind:class="[{ active: isActive },isred?'red':'blue']">
+                haha
+            </h4>
+            <h1>sada</h1>
+        </div>
+        <h5>dasd</h5>
+</body>
+<script>
+    new Vue({
+        el:"#root",
+        data(){
+            return {
+                isred:false,
+                isActive:true
+            }
+        },
+
+    });
+</script>
+</html>

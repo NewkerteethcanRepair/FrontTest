@@ -262,8 +262,8 @@ class cinemaDetailandOrder extends PureComponent {
           cinemaseat: [...cinemaseat],
           selectedseat:[...pureselected]
         },()=>{
-         console.log(this.state.selectedseat);
-         console.log(this.state.selectedseat.length);
+        //  console.log(this.state.selectedseat);
+        //  console.log(this.state.selectedseat.length);
         
         });
         
@@ -276,8 +276,12 @@ class cinemaDetailandOrder extends PureComponent {
       //   return
       // }
       // if(this.state.selectedseat.length>4){
-
-        if( this.state.selectedseat.has(`${row}+${col}`)){
+      // console.log( this.state.selectedseat instanceof Array);
+        let tomap=new Map(this.state.selectedseat)
+        console.log(tomap);
+        console.log(tomap.get(`${row}+${col}`));
+        
+        if( tomap.get(`${row}+${col}`)){
 
           
         }
@@ -584,12 +588,10 @@ class cinemaDetailandOrder extends PureComponent {
                           <div className="drawer-seatall-aside">
                                <h4> 已选择的座位:</h4>
                                {this.state.selectedseat.map((item,index)=>{
-                                  console.log('====================================');
-                                  console.log(item);
-                                  console.log('====================================');
+                                
                                  return(
                                    
-                                  <Tag color="orange" style={{fontSize:"16px"}}>{parseInt(item[1][0])+1+"排"+parseInt(item[1][1]+1)+"座"}</Tag>
+                                  <Tag color="orange" key={index} style={{fontSize:"16px"}}>{parseInt(item[1][0])+1+"排"+parseInt(item[1][1]+1)+"座"}</Tag>
                                  )
                                })}
 

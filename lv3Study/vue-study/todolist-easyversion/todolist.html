@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>todolist</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="../../bootstrap-4.4.1-dist/js/jQuery-3.4.1.js"></script>
+    <script src="../../bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>
+    <!-- <script src="../../bootstrap-4.4.1-dist/js/bootstrap.min.js"></script> -->
+    <link
+      rel="stylesheet"
+      href="../../bootstrap-4.4.1-dist//css//bootstrap.min.css"
+    />
+  </head>
+  <style>
+    input {
+      min-width: 150px;
+    }
+    button {
+      min-width: 58px;
+    }
+    .done {
+      color: red;
+      text-decoration: line-through;
+    }
+  </style>
+  <body>
+    <div id="root">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-4 offset-4">
+            <!-- input -->
+            <div class="form-group">
+              <label for="name" style="text-align: center;">列表添加</label>
+              <div class="row">
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    placeholder="请输入名称"
+                    v-model="msg"
+                  />
+                </div>
+                <div class="col-sm-3">
+                  <button class="btn btn-info" @click="addto">添加</button>
+                </div>
+              </div>
+            </div>
+            <!-- <list> -->
+            <ul class="list-group">
+              <template v-for="(item,index) in filtertodos">
+                <template v-if="index<=2">
+                  <li
+                    :key="index"
+                    class="list-group-item"
+                    :class="[item[1]? 'done': '']"
+                    @click="isselected(item[2])"
+                  >
+                    {{item[0]}}
+                  </li>
+                </template>
+                <template v-else>
+                  <li
+                    :key="index"
+                    class="list-group-item"
+                    :class="[item[1]? 'done': '']"
+                    @click="isselected(item[2])"
+                  >
+                    <span> {{item[0]}}</span>
+                    <span class="badge">新</span>
+                  </li>
+                </template>
+              </template>
+              <!-- <template v-for="(item,index) in todolistdata">
+                <template v-if="isstate=='all'">
+                  <template v-if="index<=2">
+                    <li
+                      :key="index"
+                      class="list-group-item"
+                      :class="[item[1]? 'done': '']"
+                      @click="isselected(item[2])"
+                    >
+                      {{item[0]}}
+                    </li>
+                  </template>
+                  <template v-else>
+                    <li
+                      :key="index"
+                      class="list-group-item"
+                      :class="[item[1]? 'done': '']"
+                      @click="isselected(item[2])"
+                    >
+                      <span> {{item[0]}}</span>
+                      <span class="badge">新</span>
+                    </li>
+                  </template>
+                </template>
+
+                <template v-else-if="isstate=='done'&&item[1]==true">
+                  <template v-if="index<=2">
+                    <li
+                      :key="index"
+                      class="list-group-item"
+                      :class="[item[1]? 'done': '']"
+                      @click="isselected(item[2])"
+                    >
+                      {{item[0]}}
+                    </li>
+                  </template>
+                  <template v-else>
+                    <li
+                      :key="index"
+                      class="list-group-item"
+                      :class="[item[1]? 'done': '']"
+                      @click="isselected(item[2])"
+                    >
+                      <span> {{item[0]}}</span>
+                      <span class="badge">新</span>
+                    </li>
+                  </template>
+                </template>
+                <template v-else-if="isstate=='active'&&item[1]==false">
+                  <template v-if="index<=2">
+                    <li
+                      :key="index"
+                      class="list-group-item"
+                      :class="[item[1]? 'done': '']"
+                      @click="isselected(item[2])"
+                    >
+                      {{item[0]}}
+                    </li>
+                  </template>
+                  <template v-else>
+                    <li
+                      :key="index"
+                      class="list-group-item"
+                      :class="[item[1]? 'done': '']"
+                      @click="isselected(item[2])"
+                    >
+                      <span> {{item[0]}}</span>
+                      <span class="badge">新</span>
+                    </li>
+                  </template>
+                </template>
+              </template> -->
+            </ul>
+            <br />
+            <!-- state -->
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <template v-for="(item,index) in state ">
+                <button
+                  class="btn btn-outline-info"
+                  @click="isselecteto(item)"
+                  :key="index+1"
+                >
+                  {{item}}
+                </button>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+
+ Vue.component("todolistall", {
+         template:`
+         <div> 
+          
+          </div>
+         `
+       })
+
+  new Vue({
+    el: "#root",
+    data() {
+      return {
+        todolistdata: [
+          ["html", false, 1],
+          ["js", true, 2],
+          ["css", false, 3],
+        ],
+        msg: "",
+        state: ["all", "done", "active"],
+        isstate: "all",
+      };
+    },
+    methods: {
+      addto() {
+        this.todolistdata.push([this.msg, false, this.todolistdata.length + 1]);
+        this.msg = "";
+      },
+      isselected(id) {
+        console.log(id);
+
+        for (let i in this.todolistdata) {
+          if (this.todolistdata[i][2] == id) {
+            // console.log(this.todolistdata[i][1]);
+
+            this.todolistdata[i][1] = !this.todolistdata[i][1];
+            this.todolistdata = [...this.todolistdata];
+            // console.log(this.todolistdata[i][1]);
+          }
+        }
+      
+            
+      },
+      isselecteto(item) {
+        console.log(item);
+
+        this.isstate = item;
+      },
+    },
+    computed: {
+      filtertodos() {
+      
+        switch (this.isstate) {
+          case "done":
+            return this.todolistdata.filter((item) => {W
+             return  item[1] === true;
+            });
+          case "active":
+            return this.todolistdata.filter((item) => {
+             return item[1] === false;
+            });
+          default:
+            return this.todolistdata;
+        }
+   
+        
+      },
+    },
+  });
+</script>

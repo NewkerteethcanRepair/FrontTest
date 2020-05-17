@@ -109,10 +109,10 @@ class moviesdetail extends Component {
                         </div>
                         <div className="bigimg">
                           <h5>部分剧照</h5>
-                          <Zmage
+                          {/* <Zmage
                             src={biginforimg}
                             alt="放大图片并并滑动预览"
-                          ></Zmage>
+                          ></Zmage> */}
                         </div>
                       </div>
                     </div>

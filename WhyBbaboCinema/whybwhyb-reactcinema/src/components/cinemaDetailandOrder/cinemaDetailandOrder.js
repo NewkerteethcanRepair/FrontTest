@@ -666,7 +666,7 @@ class cinemaDetailandOrder extends PureComponent {
               {/* <Table scroll={{ x: 1300 }} /> */}
               <div className="movieslist-list">
                 {MoviesData.map((item, index) => {
-                  if (index < 6) {
+                
                     return (
                       <div
                         className={`this-list ${
@@ -689,7 +689,7 @@ class cinemaDetailandOrder extends PureComponent {
                         <span>{item.MoviesName}</span>
                       </div>
                     );
-                  }
+                  
                 })}
                 {/* <h3>12</h3> */}
 

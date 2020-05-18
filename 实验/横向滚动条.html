@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .nowrap {
+      white-space: nowrap;
+      overflow-y: hidden;
+      overflow-x: scroll;
+      width: 600px;
+      height: 200px;
+    }
+
+    .item-t {
+      display: inline-block;
+
+      /* float: left; */
+
+      width: 108px;
+
+      height: 200px;
+
+      background: yellow;
+
+      vertical-align: top;
+    }
+
+    .item-t + .item-t {
+      margin-left: 15px;
+    }
+  </style>
+  <body>
+    <div class="nowrap">
+      <div class="item-t">sada</div>
+
+      <div class="item-t">sadad</div>
+
+      <div class="item-t">dasd</div>
+
+      <div class="item-t">dasd</div>
+      <div class="item-t">dasd</div>
+      <div class="item-t">dasd</div>
+      <div class="item-t">dasd</div>
+      <div class="item-t">dasd</div>
+    </div>
+  </body>
+  <script></script>
+</html>

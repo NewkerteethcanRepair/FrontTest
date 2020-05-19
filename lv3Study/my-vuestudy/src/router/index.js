@@ -15,13 +15,21 @@ Vue.use(VueRouter)
     component: () => import("../views/cartoonview/cartoonindex.vue"),
     children: [
       {
+        path: '/',
+        name: "",
+        component: () => import( '../components/02-cartoon/cartoonindex.vue'),
+      },
+      {
         path: '/add',
         name: "Add",
+       
         component: () => import( '../components/02-cartoon/add.vue'),
       },
+      
       {
         path: '/update',
         name: "update",
+        // props :true,
         component: () => import( '../components/02-cartoon/update.vue'),
       },
     ],

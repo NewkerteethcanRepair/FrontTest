@@ -10,11 +10,12 @@
                 <el-radio-button :label="true">收起</el-radio-button>
             </el-radio-group>-->
             <el-menu
-              default-active="1-4-1"
+              :default-active="currentroute"
               class="el-menu-vertical-demo"
               @open="handleOpen"
               @close="handleClose"
               :collapse="isCollapse"
+              router
             >
               <el-submenu index="1">
                 <template slot="title">
@@ -22,14 +23,23 @@
                   <span slot="title">动漫数据</span>
                 </template>
                 <el-menu-item-group title="信息">
-                 <router-link to="/" index="1-1" tag="el-menu-item">我的主页</router-link>
+                  <el-menu-item index="/">
+                    我的主页
+                    <!-- <router-link to="/" index="1-1" tag="el-menu-item">我的主页</router-link> -->
+                  </el-menu-item>
                 </el-menu-item-group>
                 <el-menu-item-group>
                   <span slot="title">操作</span>
-                  <router-link to="/add" index="1-1" tag="el-menu-item">添加</router-link>
-                  <router-link to="/update" index="1-2" tag="el-menu-item">删除</router-link>
-                  <!-- <el-menu-item index="1-1">添加</el-menu-item>
-                  <el-menu-item index="1-2">删除</el-menu-item> -->
+                  <!-- <router-link to="/add" index="1-2" tag="el-menu-item">添加</router-link>
+                  <router-link to="/update" index="1-3" tag="el-menu-item">删除</router-link>-->
+                  <el-menu-item index="/add">
+                    添加
+                    <!-- <router-link to="/add" index="1-2" tag="el-menu-item">添加</router-link> -->
+                  </el-menu-item>
+                  <el-menu-item index="/update">
+                    更新
+                    <!-- <router-link to="/update" index="1-3" tag="el-menu-item">删除</router-link> -->
+                  </el-menu-item>
                 </el-menu-item-group>
 
                 <el-submenu index="1-4">
@@ -54,7 +64,7 @@
         </el-aside>
         <el-container>
           <el-main>
-          <router-view ></router-view>
+            <router-view></router-view>
           </el-main>
           <el-footer>Footer</el-footer>
         </el-container>
@@ -64,17 +74,18 @@
 </template>
 
 <script>
-import cartoonindex from "../../components/02-cartoon/cartoonindex";
+// import cartoonindex from "../../components/02-cartoon/cartoonindex";
 export default {
   data() {
     return {
-      isCollapse: false
+      isCollapse: false,
+      currentroute:"",
     };
   },
   // name: 'Home',
   components: {
     // HelloWorld
-    cartoonindex
+    // cartoonindex
   },
   methods: {
     handleOpen(key, keyPath) {
@@ -83,7 +94,13 @@ export default {
     handleClose(key, keyPath) {
       console.log(key, keyPath);
     }
-  }
+  },
+  mounted() {
+    let path=this.$route.path;
+  console.log(path);
+  
+    this.currentroute=this.$route.path;
+  },
 };
 </script>
 

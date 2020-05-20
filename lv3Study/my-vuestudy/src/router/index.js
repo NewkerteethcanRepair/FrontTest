@@ -38,6 +38,24 @@ Vue.use(VueRouter)
         // props :true,
         component: () => import( '../components/02-cartoon/slot.vue'),
       },
+      {
+        path: '/homeindex',
+        name: "home",
+        // props :true,
+        component: () => import( '../components/03-cartoonaxios/cartoonindex.vue'),
+      },
+      {
+        path: '/homeadd',
+        name: "home",
+        // props :true,
+        component: () => import( '../components/03-cartoonaxios/add.vue'),
+      },
+      {
+        path: '/homeupdate',
+        name: "home",
+        // props :true,
+        component: () => import( '../components/03-cartoonaxios/update.vue'),
+      },
     ],
   },
   {

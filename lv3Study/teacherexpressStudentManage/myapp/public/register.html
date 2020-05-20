@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>注册</h1>
+    <input type="text" id="username">
+    <input type="text" id="password">
+    <input type="button" value="注册" id="registerBtn">
+
+    <script src="./js/jquery.min.js"></script>
+
+    <script>
+        // 用于表示用户名是否通过验证（默认为 false，即不通过）
+        let flag = false;
+
+        // $("#username").blur(function () {
+        //     $.ajax({
+        //         url: '/users/isExist',
+        //         type: 'POST',
+        //         data: { username: $("#username").val() },
+        //         success(msg) {
+        //             if (msg) {
+        //                 alert('该账号已存在');
+        //                 flag = false;
+        //             } else {
+        //                 flag = true;
+        //             }
+        //         }
+        //     })
+
+        // })
+
+
+
+        $("#registerBtn").click(function () {
+            // if (flag) {
+                const username = $("#username").val();
+                const password = $("#password").val();
+
+                $.ajax({
+                    url: '/users/register',
+                    type: 'POST',
+                    data: { username, password },
+                    success(msg) {
+                        if (msg) {
+                            location.href = "./login.html";
+                        }
+                    }
+                })
+            // }
+        })
+    </script>
+</body>
+
+</html>

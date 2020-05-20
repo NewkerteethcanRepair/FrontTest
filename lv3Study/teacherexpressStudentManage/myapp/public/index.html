@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生管理系统</title>
+    <style>
+        #showImages {
+            width: 150px;
+            height: 150px;
+            border: 1px dashed #cccccc;
+            border-radius: 10px;
+        }
+
+        #showImages>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .studentsImage {
+            width: 60px;
+            height: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>新增班级</h2>
+    <div>
+        <label>班级名称：</label>
+        <input type="text" id="classesName">
+        <input type="button" value="确认新增" id="addClasses">
+    </div>
+
+    <h2>新增学生</h2>
+    <div>
+        <div>
+            <label>学生姓名：</label>
+            <input type="text" id="addName">
+        </div>
+        <div>
+            <label>学生年龄：</label>
+            <input type="text" id="addAge">
+        </div>
+        <div>
+            <span>学生性别：</span>
+            <input type="radio" name="addGender" value="男">
+            <label>男</label>
+            <input type="radio" name="addGender" value="女">
+            <label>女</label>
+        </div>
+        <div>
+            <label>所属班级：</label>
+            <select id="chooseClasses"></select>
+        </div>
+        <div>
+            <label>学生照片：</label>
+            <input type="file" id="uploadBtn" multiple>
+        </div>
+        <div id="showImages">
+
+        </div>
+        <div>
+            <button id="addBtn">确认新增</button>
+        </div>
+    </div>
+
+    <h2>修改学生</h2>
+    <div>
+        <input type="hidden" id="updateId">
+        <div>
+            <label>学生姓名：</label>
+            <input type="text" id="updateName">
+        </div>
+        <div>
+            <label>学生年龄：</label>
+            <input type="text" id="updateAge">
+        </div>
+        <div>
+            <span>学生性别：</span>
+            <input type="radio" name="updateGender" value="男">
+            <label>男</label>
+            <input type="radio" name="updateGender" value="女">
+            <label>女</label>
+        </div>
+        <div>
+            <button id="updateBtn">确认修改</button>
+        </div>
+    </div>
+
+    <h2>搜索学生</h2>
+    <div>
+        <select id="searchType">
+            <option value="name">姓名</option>
+            <option value="age">年龄</option>
+            <option value="gender">性别</option>
+        </select>
+        <input type="text" id="searchValue">
+        <button id="searchBtn">搜索</button>
+    </div>
+
+
+    <h2>学生列表</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>学生编号</th>
+                <th>学生姓名</th>
+                <th>学生年龄</th>
+                <th>学生性别</th>
+                <th>学生班级</th>
+                <th>学生照片</th>
+                <th>学生操作</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <div style="display: flex;">
+        <div>
+            <button id="firstPage">首页</button>
+            <button id="nextPage">下一页</button>
+            <button id="prevPage">上一页</button>
+            <button id="lastPage">尾页</button>
+        </div>
+        <select id="pageSize">
+            <option value="2">2</option>
+            <option value="4">4</option>
+        </select>
+        <div>
+            当前页：<span id="currentPage">1</span>
+            总条数：<span id="total">6</span>
+        </div>
+    </div>
+
+    <script src="./js/jquery.min.js"></script>
+
+    <script>
+        // 用于保存分页相关的数据
+        let pageData = {
+            pageSize: 2,
+            currentPage: 1,
+            pages: 0,
+            total: 0,
+            rows: []
+        }
+
+        let searchData = {
+            searchType: '',
+            searchValue: ''
+        }
+
+        // isLogin();
+        render();
+        getClasses();
+
+        // 验证用户是否登录
+        function isLogin() {
+            $.ajax({
+                url: '/users/isLogin',
+                type: 'get',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.token}`
+                },
+                success(msg) {
+                    console.log(msg);
+                },
+                error(msg) {
+                    console.log(msg);
+                    if (msg.status === 401) {
+                        alert('你还未登录，请先登录');
+                        // location.href = "./login.html";
+                    }
+                }
+            })
+        }
+
+        // 图片上传
+        $("#uploadBtn").change(function (e) {
+            // 获取图片相关信息，然后通过 ajax 发送至服务端
+            const files = e.target.files;
+            const formData = new FormData();
+            
+            for(let item of files) {
+                formData.append('file', item);
+            }
+
+            $.ajax({
+                url: '/students/uploadImages',
+                type: 'POST',
+                data: formData,
+                cache: false,  // 不读取缓存
+                // 不采用 jquery 的方式对数据编码做额外的处理
+                contentType: false,
+                processData: false,
+                success(msg) {
+                    if (msg.success) {
+                        $("#showImages").html(`<img src="./temp/${msg.filename[0]}" alt=""/>`);
+                    } else {
+                        alert(msg.msg);
+                    }
+                }
+            })
+        })
+
+        // 获取所有班级
+        function getClasses() {
+            $.ajax({
+                url: 'http://localhost:8000/classes/getClasses',
+                type: 'GET',
+                dataType: 'jsonp',
+                success(msg) {
+                    // 将班级数据渲染到页面的下拉列表中
+                    const selectHtml = msg.map(item => `<option value="${item._id}">${item.name}</option>`).join("");
+                    $('#chooseClasses').html(selectHtml);
+                }
+            })
+        }
+
+        // 新增班级
+        $("#addClasses").click(function () {
+            $.ajax({
+                url: '/classes/addClasses',
+                type: 'POST',
+                data: { name: $("#classesName").val() },
+                success(msg) {
+                    console.log(msg);
+                }
+            })
+        })
+
+        // 新增学生
+        $('#addBtn').click(function () {
+            // 获取新增学生数据
+            const name = $("#addName").val();
+            const age = $("#addAge").val();
+            const gender = $('[name=addGender]:checked').val();
+            const classesId = $("#chooseClasses").val();
+            const imagePath = $("#showImages > img").attr('src');
+            // 发送学生数据到后端
+            $.ajax({
+                url: '/students/addStudents',
+                type: 'POST',
+                data: { name, age, gender, classesId, imagePath },
+                // traditional: true,  // data 中有数组类型的数据
+                success(msg) {
+                    console.log(msg);
+                    if (msg) {
+                        alert('新增成功');
+                        render();
+                    }
+                }
+            })
+        })
+
+        // 删除：将删除按钮的事件委托给祖先元素 tbody
+        $('tbody').on('click', '.removeBtn', function () {
+            const isDelete = confirm('确认删除？');
+            if (isDelete) {
+                $.ajax({
+                    url: '/students',
+                    type: 'DELETE',
+                    data: { _id: $(this).data('_id') },
+                    success(msg) {
+                        if (msg) {
+                            alert('删除成功');
+                            render();
+                        } else {
+                            alert('删除失败');
+                        }
+                    }
+                })
+            }
+        });
+
+        // 修改：将修改按钮的事件委托给祖先元素 tbody
+        $('tbody').on('click', '.updateBtn', function () {
+            $.ajax({
+                url: `/students/${$(this).data('_id')}`,
+                type: 'GET',
+                success([msg]) {
+                    $("#updateId").val(msg._id);
+                    $('#updateName').val(msg.name);
+                    $('#updateAge').val(msg.age);
+                    $(`[name=updateGender][value=${msg.gender}]`).prop('checked', true);
+                }
+            })
+        })
+
+        // 确认修改
+        $("#updateBtn").click(function () {
+            const _id = $("#updateId").val();
+            const name = $("#updateName").val();
+            const age = $('#updateAge').val();
+            const gender = $('[name=updateGender]:checked').val();
+
+            $.ajax({
+                url: '/students/updateStudents',
+                type: 'POST',
+                data: { _id, name, age, gender },
+                success(msg) {
+                    if (msg) {
+                        alert('修改成功');
+                        render();
+                    }
+                }
+            })
+
+        })
+
+        // 搜索
+        $("#searchBtn").click(function () {
+            // 获取到用户选择的“搜索类型”和输入的“搜索内容”
+
+            // 获取 select 标签的 value 值，实际获取到的是所有 option 中被选中的 option 的 value 值
+            const searchType = $("#searchType").val();
+            const searchValue = $("#searchValue").val();
+
+            searchData = { searchType, searchValue }
+
+            render();
+
+        })
+
+
+
+        // 下一页
+        $("#nextPage").click(function () {
+            pageData.currentPage++;
+            render();
+        })
+        // 上一页
+        $("#prevPage").click(function () {
+            if (pageData.currentPage > 1) {
+                pageData.currentPage--;
+                render();
+            }
+        })
+        // 首页
+        $("#firstPage").click(function () {
+            pageData.currentPage = 1;
+            render();
+        })
+        // 尾页
+        $("#lastPage").click(function () {
+            pageData.currentPage = Math.ceil(pageData.total / pageData.pageSize);
+            render();
+        })
+        // 改变每页显示条数
+        $("#pageSize").change(function () {
+            pageData.pageSize = $(this).val();
+            render();
+        })
+        //  获取所有学生数据/搜索学生/分页获取学生
+        function render() {
+
+
+            $.ajax({
+                url: 'http://localhost:8000/students/getStudents',
+                type: 'GET',
+                data: {
+                    pageSize: pageData.pageSize,     // 每页显示条数
+                    currentPage: pageData.currentPage,  // 当前页
+                    // searchType: searchData.searchType,
+                    // searchValue: searchData.searchValue,
+                    ...searchData
+                },
+                success(msg) {
+
+                    pageData = msg;
+                    // 渲染学生列表
+                    const tbHtml = msg.rows.map(item => (
+                        `<tr>
+                            <td>${item._id}</td>
+                            <td>${item.name}</td>
+                            <td>${item.age}</td>
+                            <td>${item.gender}</td>
+                            <td>${item.classesId.name}</td>
+                            <td>
+                                ${item.imagePath ? `<img class="studentsImage" src="${item.imagePath}" alt=""/>` : '暂无照片'}
+                            </td>
+                            <td>
+                                <button class="updateBtn" data-_id="${item._id}">修改</button>
+                                <button class="removeBtn" data-_id="${item._id}">删除</button>
+                            </td>
+                        </tr>
+                        `
+                    )).join('');
+                    $('tbody').html(tbHtml);
+                    // 渲染当前页
+                    $("#currentPage").text(pageData.currentPage);
+                    // 渲染总条数
+                    $("#total").text(pageData.total);
+                }
+            })
+        }
+
+    </script>
+</body>
+
+</html>

@@ -46,7 +46,20 @@
                   <span slot="title">slot插槽</span>
                   <el-menu-item index="/slot">slot</el-menu-item>
                 </el-submenu>
+              
               </el-submenu>
+                 <el-submenu index="2">
+                  <span slot="title">动漫数据库版</span>
+                    <el-menu-item-group title="动漫管理">
+                  <el-menu-item index="/homeindex">主页</el-menu-item>
+                    </el-menu-item-group>
+                     <el-menu-item-group title="操作">
+                  <el-menu-item index="/homeadd">添加</el-menu-item>
+                  <el-menu-item index="/homeupdate">修改</el-menu-item>
+                    </el-menu-item-group>
+                    
+
+                </el-submenu>
               <!-- <el-menu-item index="2">
                 <i class="el-icon-menu"></i>
                 <span slot="title">导航二</span>

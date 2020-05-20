@@ -45,6 +45,7 @@
 </template>
 
 <script>
+  import axios from 'axios';
 export default {
   props:[],
   data() {
@@ -124,6 +125,8 @@ export default {
     //     this.Height = window.innerHeight
     //   })()
     // }
+    
+
   },
   methods: {
     goBack() {

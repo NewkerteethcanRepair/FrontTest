@@ -18,7 +18,7 @@
         </template>
       </el-table-column>
       <el-table-column prop="name" label="动漫名字" min-width="14%"></el-table-column>
-      <el-table-column prop="value" label="评分" min-width="14%">
+      <el-table-column prop="value" label="评分" min-width="17%">
         <template slot-scope="scope">
           <el-rate
             v-model="scope.row.value"

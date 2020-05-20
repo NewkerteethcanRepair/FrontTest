@@ -32,6 +32,12 @@ Vue.use(VueRouter)
         // props :true,
         component: () => import( '../components/02-cartoon/update.vue'),
       },
+      {
+        path: '/slot',
+        name: "slot",
+        // props :true,
+        component: () => import( '../components/02-cartoon/slot.vue'),
+      },
     ],
   },
   {

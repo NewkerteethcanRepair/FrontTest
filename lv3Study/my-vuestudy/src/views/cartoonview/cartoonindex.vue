@@ -43,8 +43,8 @@
                 </el-menu-item-group>
 
                 <el-submenu index="1-4">
-                  <span slot="title">选项4</span>
-                  <el-menu-item index="1-4-1">选项1</el-menu-item>
+                  <span slot="title">slot插槽</span>
+                  <el-menu-item index="/slot">slot</el-menu-item>
                 </el-submenu>
               </el-submenu>
               <!-- <el-menu-item index="2">

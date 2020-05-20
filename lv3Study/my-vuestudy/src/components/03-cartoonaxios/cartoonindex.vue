@@ -124,7 +124,7 @@ export default {
     //     this.Height = window.innerHeight
     //   })()
     // }
-    this.getcartoondataAsync()
+    this.getcartoondataAsync();
   },
   methods: {
     goBack() {
@@ -135,10 +135,27 @@ export default {
     },
     handleEdit(index, row) {
       console.log(index, row);
-      this.$router.push({ path: "/update", query: { id: row.id } });
+      this.$router.push({ path: "/homeupdate", query: { _id: row._id } });
     },
     handleDelete(index, row) {
       console.log(index, row);
+
+      axios
+        .get("/cartoon/delete", {
+          params: {
+            _id: row._id
+          }
+        })
+        .then((response)=> {
+          console.log(response);
+          this.$notify({
+            title: "成功",
+            message: "删除成功",
+            type: "success"
+          });
+          [...this.tableData.splice(index, 1)];
+        })
+        .catch(function(error) {});
       //   let list=this.tableData.fliter((item,index1)=>{
       //       if(index!==index1){
       //         //    item.splice(index,row);
@@ -147,12 +164,7 @@ export default {
       //       }
       //   })
       //   this.tableData=[...list]
-      this.$notify({
-        title: "成功",
-        message: "删除成功",
-        type: "success"
-      });
-      [...this.tableData.splice(index, 1)];
+
       // console.log(row);
 
       // row.splice(index,1)
@@ -161,20 +173,18 @@ export default {
       axios
         .get("/cartoon/getall")
         .then(res => {
-          this.tableData=res.data
-         this.tableData= this.tableData.map((item,index)=>{
-           console.log(item.imgs);
-          if(item.imgs.length>0){
+          this.tableData = res.data;
+          this.tableData = this.tableData.map((item, index) => {
+            console.log(item.imgs);
+            if (item.imgs.length > 0) {
+              // item.imgs=require(`@/assets/${item.imgs}`);
+              //  this.tableData[i].banners_url="http://localhost:3000/files/"+a;
+              item.imgs = "http://localhost:3000/files/" + item.imgs;
+            }
+            item.time = item.time + "分钟";
 
-            // item.imgs=require(`@/assets/${item.imgs}`);
-            //  this.tableData[i].banners_url="http://localhost:3000/files/"+a;
-            item.imgs="http://localhost:3000/files/"+item.imgs;
-          }
-             item.time=item.time+"分钟"
-             
-
-             return item
-          })
+            return item;
+          });
         })
         .catch(err => {
           console.error(err);

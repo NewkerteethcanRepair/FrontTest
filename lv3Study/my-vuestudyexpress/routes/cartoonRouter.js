@@ -30,8 +30,19 @@ router.get("/delete", async function (req, res, next) {
   const data = await delete2(req.query);
   res.send(data);
 });
-router.get("/update2", async function (req, res, next) {
+router.get("/update", async function (req, res, next) {
+  
+  const { imgs } = req.query;
+  moveFiles({
+    fromPath: "./public/temp",
+    toPath: "./public/files",
+    filename:imgs
+  });
+
   const data = await update2(req.query);
+  if (data) {
+    removeFiles("./public/temp");
+  }
   res.send(data);
 });
 

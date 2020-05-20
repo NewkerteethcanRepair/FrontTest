@@ -23,7 +23,7 @@ module.exports.add2 = async function (reqdata) {
 module.exports.delete2 = async function (reqdata) {
 
   
-    const data2 = await delete3(resdata)
+    const data2 = await delete3(reqdata)
     if (data2 !="") {
         return data2
     } else {

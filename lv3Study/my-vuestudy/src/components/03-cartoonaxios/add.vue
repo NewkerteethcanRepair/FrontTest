@@ -226,7 +226,7 @@ export default {
               params: {
                 name: this.ruleForm.name,
                 types: this.ruleForm.options,
-                date: this.ruleForm.ruleForm,
+                date: this.ruleForm.valuedate,
                 value: this.ruleForm.valuescore,
                 time: this.ruleForm.time,
                 imgs: this.dialogImageUrl

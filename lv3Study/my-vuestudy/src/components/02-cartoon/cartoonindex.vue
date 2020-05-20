@@ -61,7 +61,7 @@ export default {
           name: "神之塔",
           types: "冒险",
           time: "23",
-          value: 4.8
+          value: 4.8,
           //   address: '上海市普陀区金沙江路 1518 弄',
           //   zip: 200333
         },

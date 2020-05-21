@@ -82,7 +82,7 @@
             <el-dialog :visible.sync="dialogVisible">
               <img width="100%" :src="dialogImageUrl" alt />
             </el-dialog>-->
-            <!-- <el-upload
+            <el-upload
               action="/cartoon/uploadImages"
               list-type="picture-card"
               :on-preview="handlePictureCardPreview"
@@ -93,26 +93,7 @@
             </el-upload>
             <el-dialog :visible.sync="dialogVisible">
               <img width="100%" :src="dialogImageUrl" alt />
-            </el-dialog>-->
-
-            <template v-if="isupload===true">
-              <img :src="ruleForm.imgs" width="120px" />
-            </template>
-            <el-upload
-              class="upload-demo"
-              action="/cartoon/uploadImages"
-              :on-preview="handlePreview"
-              :on-remove="handleRemove"
-              :on-progress="handleProgress"
-              :on-success="handleSuccess"
-              :file-list="fileList"
-              list-type="picture"
-              :multiple="ismultple"
-              :limit="limit"
-            >
-              <el-button size="small" type="primary">点击重新更改图片</el-button>
-              <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-            </el-upload>
+            </el-dialog>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
@@ -130,22 +111,14 @@ export default {
   data() {
     return {
       // 图片
-      dialogImageUrl: "",
+      dialogImageUrl: " ",
       dialogVisible: false,
       disabled: false,
       labelPosition: "right",
-      fileList: [],
-
-      //上传
-      ismultple: false,
-      isupload: true,
-      limit: 1,
-      // 判断没有更新照片的属性更新
-      isimg: "",
       //评分
 
       //日期
-      // valuedate: " ",
+      valuedate: " ",
       // name: " ",
       // time: " ",
       //其他数据
@@ -153,7 +126,7 @@ export default {
         name: " ",
         // region: "",
         // types: "",
-        imgs: "",
+        // img: "",
         time: " ",
         types: " ",
         valuedate: "",
@@ -199,39 +172,6 @@ export default {
       // types
     };
   },
-  mounted() {
-    // console.log(this.$route.params);
-    if (this.$route.params._id) {
-      axios
-        .get("/cartoon/getall", {
-          params: {
-            _id: this.$route.params._id
-          }
-        })
-        .then(res => {
-          // console.log(res);
-          if (res.data.length == 1) {
-            console.log("12321", res.data);
-            //  console.log(this.isimg);
-            this.ruleForm._id = res.data[0]._id;
-            this.ruleForm.name = res.data[0].name;
-            this.ruleForm.imgs =
-              "http://localhost:3000/files/" + res.data[0].imgs;
-            this.ruleForm.valuescore = res.data[0].value;
-            this.ruleForm.options = res.data[0].types;
-            this.ruleForm.time = res.data[0].time;
-            this.ruleForm.valuedate = res.data[0].date;
-            this.isimg = res.data[0].imgs;
-            this.ruleForm = { ...this.ruleForm };
-            // console.log(111111,res.data);
-            // console.log(222222,this.isimg);
-          }
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    }
-  },
   methods: {
     // 上传图片方法
     handleRemove(file, fileList) {
@@ -243,40 +183,27 @@ export default {
       this.dialogImageUrl = file.url;
       this.dialogVisible = true;
     },
-    handleProgress() {
-      console.log(this.isupload);
-
-      this.isupload = false;
-    },
-
     // handleDownload(file) {
     //   console.log(file);
     // },
     handleSuccess(response, file, fileList) {
       console.log(response, file, fileList);
-      console.log(response);
-
-      var imgdata = response.filename;
-      this.dialogImageUrl = imgdata;
-
-      // if(this.dialogImageUrl!=""){
-
-      //   axios.post("/cartoon/deleteImages",{imgs:this.dialogImageUrl})
+      // var imgdata = this.getFileName(response.file[0].path);
+      var imgdata=response.filename
+      console.log(imgdata);
+      this.dialogImageUrl=imgdata;
+      // axios
+      //   .post("./bannersfile/createbanners", { banners_url: imgdata })
       //   .then(res => {
-      //     console.log(res)
+      //     console.log(res.data);
+      //     this.activestate = 2;
       //   })
       //   .catch(err => {
       //     console.error(err);
-      //   })
-
-      // }
-      // console.log(imgdata);
-    },
-    handlePreview(file) {
-      console.log(file);
+      //   });
     },
     // 路径处理工具
-    getFileName(path) {
+     getFileName(path) {
       var pos1 = path.lastIndexOf("/");
       var pos2 = path.lastIndexOf("\\");
       var pos = Math.max(pos1, pos2);
@@ -294,27 +221,9 @@ export default {
           // valuedate: "",
           // valuescore: 0,
           // options:"",
-          if (this.dialogImageUrl == "") {
-            this.dialogImageUrl = this.isimg;
-          }
-          if (this.dialogImageUrl != "") {
-            console.log(213);
-            
-            axios
-              .post("/cartoon/deleteImages", { imgs: this.dialogImageUrl })
-              .then(res => {
-                console.log(res);
-              })
-              .catch(err => {
-                console.error(err);
-              });
-          }
-          console.log(222222, this.dialogImageUrl);
-
           axios
-            .get("/cartoon/update", {
+            .get("/cartoon/add", {
               params: {
-                _id: this.ruleForm._id,
                 name: this.ruleForm.name,
                 types: this.ruleForm.options,
                 date: this.ruleForm.valuedate,
@@ -330,7 +239,7 @@ export default {
               console.error(err);
             });
 
-          alert("提交成功!");
+          alert("submit!");
         } else {
           console.log("error submit!!");
           return false;

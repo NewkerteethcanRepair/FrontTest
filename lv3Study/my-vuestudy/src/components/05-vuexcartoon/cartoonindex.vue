@@ -3,7 +3,7 @@
     <el-page-header @back="goBack" content="数据详情"></el-page-header>
     <!-- <el-button>sadasd</el-button> -->
     <el-table
-      :data="tableData"
+      :data="tableDatas"
       border
       style="width: 100%; min-width:1100px ;margin:50px auto"
       id="table-control"
@@ -45,6 +45,8 @@
 
 <script>
 import axios from "axios";
+import {createNamespacedHelpers} from "vuex";
+const  {mapActions,mapMutations,mapGetters,mapState} =createNamespacedHelpers("cartoonindex")
 export default {
   // props: [],
   data() {
@@ -58,6 +60,13 @@ export default {
       ]
     };
   },
+  computed: {
+    ...mapState(["cartoondata"]),
+    ...mapGetters(["packcartoondata"]),
+    tableDatas(){
+      return this.packcartoondata
+    }
+  },
   mounted() {
     // const that = this
     // window.onresize = () => {
@@ -67,8 +76,14 @@ export default {
     //   })()
     // }
     this.getcartoondataAsync();
+    // this.getcartoondata();
+    this.tableData=this.packcartoondata;
+    // this.tableData=[...this.tableData]
+    // [...this.tableData]
   },
   methods: {
+    ...mapActions(["getcartoondataAsync"]),
+    ...mapMutations(["getcartoondata"]),
     goBack() {
       console.log("go back");
     },
@@ -84,7 +99,7 @@ export default {
       // this.$router.push({ path: "/homeupdate", query: { _id: row._id } });
 
       // 方式1
-      this.$router.push(`/homeupdate/${row._id}`);
+      this.$router.push(`/vuexupdate/${row._id}`);
     },
     handleDelete(index, row) {
       console.log(index, row);
@@ -122,32 +137,7 @@ export default {
 
       // row.splice(index,1)
     },
-    getcartoondataAsync() {
-      axios
-        .get("/cartoon/getall")
-        .then(res => {
-            if(res.data){
-                      this.tableData = res.data;
-          this.tableData = this.tableData.map((item, index) => {
-            console.log(item.imgs);
-            if (item.imgs.length > 0) {
-              
-              // item.imgs=require(`@/assets/${item.imgs}`);
-              //  this.tableData[i].banners_url="http://localhost:3000/files/"+a;
-              //  this.realimg=item.imgs;
-              item.imgs = "http://localhost:3000/files/" + item.imgs;
-             
-            }
-            item.time = item.time + "分钟";
-
-            return item;
-          });
-            }
-        })
-        .catch(err => {
-          console.error(err);
-        });
-    }
+   
   }
 };
 </script>

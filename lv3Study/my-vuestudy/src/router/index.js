@@ -40,22 +40,47 @@ Vue.use(VueRouter)
       },
       {
         path: '/homeindex',
-        name: "home",
+        name: "homeindex",
         // props :true,
         component: () => import( '../components/03-cartoonaxios/cartoonindex.vue'),
       },
       {
         path: '/homeadd',
-        name: "home",
+        name: "homeadd",
         // props :true,
         component: () => import( '../components/03-cartoonaxios/add.vue'),
       },
       {
-        path: '/homeupdate',
-        name: "home",
+        path: '/homeupdate/:_id',
+        name: "homeupdate",
         // props :true,
         component: () => import( '../components/03-cartoonaxios/update.vue'),
       },
+      {
+        path: '/vuexcounter',
+        name: "vuexcounter",
+        // props :true,
+        component: () => import( '../components/04-vuexcounter/count.vue'),
+      },
+      {
+        path: '/vuexindex',
+        name: "vuexindex",
+        // props :true,
+        component: () => import( '../components/05-vuexcartoon/cartoonindex.vue'),
+      },
+      {
+        path: '/vuexadd',
+        name: "vuexadd",
+        // props :true,
+        component: () => import( '../components/05-vuexcartoon/add.vue'),
+      },
+      {
+        path: '/vuexupdate/:_id',
+        name: "vuexupdate",
+        // props :true,
+        component: () => import( '../components/05-vuexcartoon/update.vue'),
+      },
+
     ],
   },
   {

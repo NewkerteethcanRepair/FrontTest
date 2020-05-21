@@ -1,4 +1,5 @@
 var express = require("express");
+const fs = require("fs");
 var router = express.Router();
 const { uploadFiles, moveFiles, removeFiles } = require("../utils/uploadFiles");
 const {
@@ -14,12 +15,12 @@ router.get("/getall", async function (req, res, next) {
 });
 router.get("/add", async function (req, res, next) {
   const { imgs } = req.query;
+
   moveFiles({
     fromPath: "./public/temp",
     toPath: "./public/files",
-    filename:imgs
+    filename: imgs,
   });
-
   const data = await add2(req.query);
   if (data) {
     removeFiles("./public/temp");
@@ -31,17 +32,25 @@ router.get("/delete", async function (req, res, next) {
   res.send(data);
 });
 router.get("/update", async function (req, res, next) {
-  
   const { imgs } = req.query;
-  moveFiles({
-    fromPath: "./public/temp",
-    toPath: "./public/files",
-    filename:imgs
-  });
 
   const data = await update2(req.query);
+
   if (data) {
-    removeFiles("./public/temp");
+    // console.log(data);
+
+    fs.exists("./public/temp", function (exists) {
+      console.log(exists ? "存在" : "没有创建");
+      if (exists) {
+        moveFiles({
+          fromPath: "./public/temp",
+          toPath: "./public/files",
+          filename: imgs,
+        });
+        removeFiles("./public/temp");
+      } else {
+      }
+    });
   }
   res.send(data);
 });
@@ -69,6 +78,16 @@ router.post("/uploadImages", async function (req, res, next) {
 });
 router.post("/cacheImages", images, async function (req, res, next) {
   res.send(req.files[0].filename);
+});
+
+router.post("/deleteImages", images, async function (req, res, next) {
+  // res.send(req.files[0].filename);
+  if(req.imgs){
+
+    fs.unlink("public/files/" + req.imgs, (err) => {
+      if (err) console.log(err);
+    });
+  }
 });
 
 // router.post("/upload", function (req, res, next) {

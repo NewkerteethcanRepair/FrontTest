@@ -1,7 +1,18 @@
 <template>
   <div id="menuall">
     <el-container>
-      <el-header>歪比巴卜动漫数据</el-header>
+      <el-header>
+        歪比巴卜动漫数据
+        <!-- <el-menu
+          :default-active="activeIndex"
+          class="el-menu-demo"
+          mode="horizontal"
+          @select="handleSelect"
+        >
+        <el-menu-item index="1">登录</el-menu-item>
+        </el-menu>-->
+        <el-button type="primary" id="login" plain>登录</el-button>
+      </el-header>
       <el-container>
         <el-aside width="200px">
           <div class="aside">
@@ -46,20 +57,35 @@
                   <span slot="title">slot插槽</span>
                   <el-menu-item index="/slot">slot</el-menu-item>
                 </el-submenu>
-              
               </el-submenu>
-                 <el-submenu index="2">
-                  <span slot="title">动漫数据库版</span>
-                    <el-menu-item-group title="动漫管理">
+              <el-submenu index="2">
+                <span slot="title">动漫数据库版</span>
+                <el-menu-item-group title="动漫管理">
                   <el-menu-item index="/homeindex">主页</el-menu-item>
-                    </el-menu-item-group>
-                     <el-menu-item-group title="操作">
+                </el-menu-item-group>
+                <el-menu-item-group title="操作">
                   <el-menu-item index="/homeadd">添加</el-menu-item>
-                  <el-menu-item index="/homeupdate">修改</el-menu-item>
-                    </el-menu-item-group>
-                    
+                  <!-- <el-menu-item index="/homeupdate">修改</el-menu-item> -->
+                </el-menu-item-group>
+              </el-submenu>
+              <el-submenu index="3">
+                <span slot="title">vuex语法</span>
+                <el-menu-item-group title="辅助函数版本">
+                  <el-menu-item index="/vuexcounter">计数器</el-menu-item>
+                </el-menu-item-group>
 
-                </el-submenu>
+                <!-- <el-menu-item index="/homeupdate">修改</el-menu-item> -->
+              </el-submenu>
+              <el-submenu index="4">
+                <span slot="title">动漫数据库vuex最终版</span>
+                <el-menu-item-group title="动漫管理">
+                  <el-menu-item index="/vuexindex">主页</el-menu-item>
+                </el-menu-item-group>
+                <el-menu-item-group title="操作">
+                  <el-menu-item index="/vuexadd">添加</el-menu-item>
+                  <!-- <el-menu-item index="/vuexupdate/">修改</el-menu-item> -->
+                </el-menu-item-group>
+              </el-submenu>
               <!-- <el-menu-item index="2">
                 <i class="el-icon-menu"></i>
                 <span slot="title">导航二</span>
@@ -92,7 +118,9 @@ export default {
   data() {
     return {
       isCollapse: false,
-      currentroute:"",
+      currentroute: "",
+      activeIndex: "1",
+      activeIndex2: "1"
     };
   },
   // name: 'Home',
@@ -106,18 +134,21 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
+    },
+    handleSelect(key, keyPath) {
+      console.log(key, keyPath);
     }
   },
   mounted() {
-    let path=this.$route.path;
-  console.log(path);
-  
-    this.currentroute=this.$route.path;
-  },
+    let path = this.$route.path;
+    console.log(path);
+
+    this.currentroute = this.$route.path;
+  }
 };
 </script>
 
-<style>
+<style scope>
 #menuall {
   height: 100vh;
 }
@@ -165,5 +196,10 @@ body > .el-container {
 
 .el-container:nth-child(7) .el-aside {
   line-height: 320px;
+}
+#login {
+  float: right;
+  /* line-height: 40px; */
+  margin-top: 10px;
 }
 </style>

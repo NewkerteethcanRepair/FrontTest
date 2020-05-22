@@ -23,7 +23,7 @@
             <el-input v-model="ruleForm.time"></el-input>
           </el-form-item>
           <el-form-item label="类型" prop="options">
-            <el-select v-model="ruleForm.options" placeholder="请选择">
+            <el-select v-model="ruleForm.types" placeholder="请选择">
               <el-option
                 v-for="item in options"
                 :key="item.value"
@@ -36,12 +36,12 @@
           <el-form-item label="上映时间" prop="valuedate">
             <div class="block">
               <!-- <span class="demonstration">默认</span> -->
-              <el-date-picker v-model="ruleForm.valuedate" type="date" placeholder="选择日期"></el-date-picker>
+              <el-date-picker v-model="ruleForm.date" type="date" placeholder="选择日期"></el-date-picker>
             </div>
           </el-form-item>
           <el-form-item label="评分" prop="valuescore">
             <el-rate
-              v-model="ruleForm.valuescore"
+              v-model="ruleForm.value"
               allow-half
               show-score
               text-color="#ff9900"
@@ -50,51 +50,6 @@
             ></el-rate>
           </el-form-item>
           <el-form-item label="预览图">
-            <!-- <el-input v-model="ruleForm.img"></el-input> -->
-            <!-- <el-upload action="/cartoon/uploadImages" list-type="picture-card" :auto-upload="false" :on-remove="handleRemove">
-              <i slot="default" class="el-icon-plus"></i>
-              <div slot="file" slot-scope="{file}">
-                <img class="el-upload-list__item-thumbnail" :src="file.url" alt />
-                <span class="el-upload-list__item-actions">
-                  <span
-                    class="el-upload-list__item-preview"
-                    @click="handlePictureCardPreview(file)"
-                  >
-                    <i class="el-icon-zoom-in"></i>
-                  </span>
-                  <span
-                    v-if="!disabled"
-                    class="el-upload-list__item-delete"
-                    @click="handleDownload(file)"
-                  >
-                    <i class="el-icon-download"></i>
-                  </span>
-                  <span
-                    v-if="!disabled"
-                    class="el-upload-list__item-delete"
-                    @click="handleRemove(file)"
-                  >
-                    <i class="el-icon-delete"></i>
-                  </span>
-                </span>
-              </div>
-            </el-upload>
-            <el-dialog :visible.sync="dialogVisible">
-              <img width="100%" :src="dialogImageUrl" alt />
-            </el-dialog>-->
-            <!-- <el-upload
-              action="/cartoon/uploadImages"
-              list-type="picture-card"
-              :on-preview="handlePictureCardPreview"
-              :on-remove="handleRemove"
-             :on-success="handleSuccess"
-            >
-              <i class="el-icon-plus"></i>
-            </el-upload>
-            <el-dialog :visible.sync="dialogVisible">
-              <img width="100%" :src="dialogImageUrl" alt />
-            </el-dialog>-->
-
             <template v-if="isupload===true">
               <img :src="ruleForm.imgs" width="120px" />
             </template>
@@ -126,6 +81,13 @@
 
 <script>
 import axios from "axios";
+import { createNamespacedHelpers } from "vuex";
+const {
+  mapActions,
+  mapMutations,
+  mapGetters,
+  mapState
+} = createNamespacedHelpers("cartoonindex");
 export default {
   data() {
     return {
@@ -156,9 +118,8 @@ export default {
         imgs: "",
         time: " ",
         types: " ",
-        valuedate: "",
-        valuescore: 0,
-        options: ""
+        date: "",
+        values: 0
       },
       options: [
         {
@@ -188,51 +149,82 @@ export default {
         name: [
           { required: true, message: "请输入加入的电影名字", trigger: "blur" },
           { min: 1, max: 9, message: "长度在 2 到 8 个字符", trigger: "blur" }
-        ],
-        time: [
-          {
-            trigger: "blur"
-          }
         ]
+        // time: [
+        //   {
+        //     trigger: "blur"
+        //   }
+        // ]
       }
 
       // types
     };
   },
+  watch: {
+    updatedata(newval, oldval) {
+      console.log(newval, oldval, 23131);
+      this.ruleForm = new Object(newval[0]);
+      console.log(12321412, this.ruleForm);
+      // d.imgs = "http://localhost:3000/files/" + d.imgs;
+      // d.value = d.value - 0;
+      this.ruleForm.imgs = "http://localhost:3000/files/" + this.ruleForm.imgs;
+      this.ruleForm.value = this.ruleForm.value - 0;
+    }
+  },
+  computed: {
+    ...mapState(["cartoondata", "total", "pageSize", "current", "updatedata"]),
+    ...mapGetters(["packupdatedata"])
+    // cartoondatas(){
+    //   this.ruleForm=this.cartoondata;
+
+    //   return this.ruleForm;
+    //   // console.log();
+
+    // }
+  },
   mounted() {
-    // console.log(this.$route.params);
+    console.log(2222, this.$route.params);
+
     if (this.$route.params._id) {
-      axios
-        .get("/cartoon/getall", {
-          params: {
-            _id: this.$route.params._id
-          }
-        })
-        .then(res => {
-          // console.log(res);
-          if (res.data.length == 1) {
-            console.log("12321", res.data);
-            //  console.log(this.isimg);
-            this.ruleForm._id = res.data[0]._id;
-            this.ruleForm.name = res.data[0].name;
-            this.ruleForm.imgs =
-              "http://localhost:3000/files/" + res.data[0].imgs;
-            this.ruleForm.valuescore = res.data[0].value;
-            this.ruleForm.options = res.data[0].types;
-            this.ruleForm.time = res.data[0].time;
-            this.ruleForm.valuedate = res.data[0].date;
-            this.isimg = res.data[0].imgs;
-            this.ruleForm = { ...this.ruleForm };
-            // console.log(111111,res.data);
-            // console.log(222222,this.isimg);
-          }
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+      // axios
+      //   .get("/cartoon/getall", {
+      //     params: {
+      //       _id: this.$route.params._id
+      //     }
+      //   })
+      //   .then(res => {
+      //     // console.log(res);
+      //     if (res.data.length == 1) {
+      //       console.log("12321", res.data);
+      //       //  console.log(this.isimg);
+      //       this.ruleForm._id = res.data[0]._id;
+      //       this.ruleForm.name = res.data[0].name;
+      //       this.ruleForm.imgs =
+      //         "http://localhost:3000/files/" + res.data[0].imgs;
+      //       this.ruleForm.valuescore = res.data[0].value;
+      //       this.ruleForm.options = res.data[0].types;
+      //       this.ruleForm.time = res.data[0].time;
+      //       this.ruleForm.valuedate = res.data[0].date;
+      //       this.isimg = res.data[0].imgs;
+      //       this.ruleForm = { ...this.ruleForm };
+      //       // console.log(111111,res.data);
+      //       console.log(222222, this.isimg);
+      //     }
+      //   })
+      //   .catch(function(error) {
+      //     console.log(error);
+      //   });
+      this.updatecartoondataAsync(this.$route.params._id);
     }
   },
   methods: {
+    ...mapActions(["updatecartoondataAsync"]),
+    ...mapMutations([
+      "getcartoondata",
+      "storehandleSizeChange",
+      "storehandleCurrentChange",
+      "storesearch"
+    ]),
     // 上传图片方法
     handleRemove(file, fileList) {
       console.log(file, fileList);
@@ -297,34 +289,47 @@ export default {
           if (this.dialogImageUrl == "") {
             this.dialogImageUrl = this.isimg;
           }
-          if (this.dialogImageUrl != "") {
-            console.log(213);
-            
-            axios
-              .post("/cartoon/deleteImages", { imgs: this.dialogImageUrl })
-              .then(res => {
-                console.log(res);
-              })
-              .catch(err => {
-                console.error(err);
-              });
-          }
-          console.log(222222, this.dialogImageUrl);
 
+          // console.log(222222, this.dialogImageUrl);
+        // name: " ",
+        // // region: "",
+        // // types: "",
+        // imgs: "",
+        // time: " ",
+        // types: " ",
+        // date: "",
+        // values: 0
           axios
             .get("/cartoon/update", {
               params: {
                 _id: this.ruleForm._id,
                 name: this.ruleForm.name,
-                types: this.ruleForm.options,
-                date: this.ruleForm.valuedate,
-                value: this.ruleForm.valuescore,
+                types: this.ruleForm.types,
+                date: this.ruleForm.date,
+                value: this.ruleForm.value,
                 time: this.ruleForm.time,
                 imgs: this.dialogImageUrl
               }
             })
             .then(res => {
               console.log(res);
+              if (res.data.ok == 1) {
+                if (
+                  this.dialogImageUrl != this.isimg &&
+                  this.dialogImageUrl != ""
+                ) {
+                  console.log(213, this.isimg);
+                  // log
+                  axios
+                    .post("/cartoon/deleteImages", { imgs: this.isimg })
+                    .then(res => {
+                      console.log(123123123, res);
+                    })
+                    .catch(err => {
+                      console.error(err);
+                    });
+                }
+              }
             })
             .catch(err => {
               console.error(err);

@@ -11,19 +11,33 @@ const {
 /* GET users listing. */
 router.get("/getall", async function (req, res, next) {
   const data = await getall2(req.query);
+  console.log(23123,req.query);
+  
   res.send(data);
 });
 router.get("/add", async function (req, res, next) {
   const { imgs } = req.query;
+  // console.log(imgs);
+  
+  if(imgs){
 
-  moveFiles({
-    fromPath: "./public/temp",
-    toPath: "./public/files",
-    filename: imgs,
-  });
+    moveFiles({
+      fromPath: "./public/temp",
+      toPath: "./public/files",
+      filename: imgs,
+    });
+    // const data = await add2(req.query);
+  }
+  else{
+    req.query.imgs="defalut.jpg";
+  }
   const data = await add2(req.query);
+
   if (data) {
-    removeFiles("./public/temp");
+    if(imgs){
+
+      removeFiles("./public/temp");
+    }
   }
   res.send(data);
 });
@@ -80,13 +94,28 @@ router.post("/cacheImages", images, async function (req, res, next) {
   res.send(req.files[0].filename);
 });
 
-router.post("/deleteImages", images, async function (req, res, next) {
+router.post("/deleteImages",async function (req, res, next) {
   // res.send(req.files[0].filename);
-  if(req.imgs){
+  // console.log("imgs",req.imgs);
+  const { imgs } = req.body;
+  console.log("img",imgs);
+  
+  if(imgs&&imgs!="defalut.jpg"){
 
-    fs.unlink("public/files/" + req.imgs, (err) => {
-      if (err) console.log(err);
+    fs.unlinkSync("public/files/" +imgs, (err) => {
+     
+     if(err){
+
+       console.log(err);
+       res.send(err)
+     }
+     else{
+
+       res.send("删除成功")
+     }
+      
     });
+  
   }
 });
 

@@ -149,6 +149,7 @@ export default {
 </script>
 
 <style scope>
+
 #menuall {
   height: 100vh;
 }

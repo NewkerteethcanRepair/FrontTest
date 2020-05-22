@@ -111,7 +111,7 @@ export default {
   data() {
     return {
       // 图片
-      dialogImageUrl: " ",
+      dialogImageUrl: "",
       dialogVisible: false,
       disabled: false,
       labelPosition: "right",
@@ -221,6 +221,7 @@ export default {
           // valuedate: "",
           // valuescore: 0,
           // options:"",
+          
           axios
             .get("/cartoon/add", {
               params: {

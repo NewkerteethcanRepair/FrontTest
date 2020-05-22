@@ -6,11 +6,11 @@ const cartoonSchema = new mongoose.Schema({
   },
   imgs: {
     type: String,
-    default: "dasd.jpg",
+    default: "defalut.jpg",
   },
 //   星星评分
   value: {
-    type: Number,
+    type: String,
     default: 3.9,
   },
   types: {
@@ -18,7 +18,7 @@ const cartoonSchema = new mongoose.Schema({
     default: "搞笑",
   },
   time: {
-    type: Number,
+    type: String,
     default: 23,
   },
   date: {

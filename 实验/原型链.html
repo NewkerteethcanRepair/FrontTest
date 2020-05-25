@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let a={name:"xixi"};
+    a.__proto__.sex=12;
+    console.log(a);
+    // console.log(a.prototype);
+    console.log(a.__proto__.__proto__);
+    
+    class data{
+
+        constructor(sex){
+
+            this.sex=1;
+        }
+        name=function(name1){
+            this.name=name1
+        }
+
+    }
+
+    let b=new data(3);
+    b.name("xixi")
+
+    console.log("data.prototype",data.prototype);
+    console.log("prototype.name",data.name);
+    
+    console.log("b.__proto__",b.__proto__);
+    console.log("b.__proto__.__proto__",b.__proto__.__proto__);
+    
+    
+
+</script>
+</html>

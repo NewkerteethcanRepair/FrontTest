@@ -167,6 +167,7 @@ export default {
       console.log(12321412, this.ruleForm);
       // d.imgs = "http://localhost:3000/files/" + d.imgs;
       // d.value = d.value - 0;
+      this.isimg= this.ruleForm.imgs
       this.ruleForm.imgs = "http://localhost:3000/files/" + this.ruleForm.imgs;
       this.ruleForm.value = this.ruleForm.value - 0;
     }

@@ -52,7 +52,7 @@ module.exports.delete2 = async function (reqdata) {
     console.log(reqdata.imgs);
     console.log('====================================');
     if (data2 !="") {
-        if(reqdata.imgs!="defalut.jpg"){
+        if(reqdata.imgs!="defalut.jpg"&&reqdata.imgs!=""){
             
 
             fs.unlinkSync("public/files/"+reqdata.imgs, err => {

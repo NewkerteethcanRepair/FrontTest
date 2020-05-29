@@ -1,7 +1,7 @@
 var express = require("express");
 const fs = require("fs");
-var router = express.Router();
 const { uploadFiles, moveFiles, removeFiles } = require("../utils/uploadFiles");
+var router = express.Router();
 const {
   getall2,
   add2,

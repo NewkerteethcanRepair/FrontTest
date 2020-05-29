@@ -1,0 +1,19 @@
+{
+  "name": "uni-upupplaywith",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "uview": "^0.1.0",
+    "uview-ui": "file:uview-ui"
+  },
+  "devDependencies": {
+    "sass-loader": "^8.0.2"
+  }
+}

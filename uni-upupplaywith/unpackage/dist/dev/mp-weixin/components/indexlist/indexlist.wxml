@@ -1,0 +1,1 @@
+<view class="data-v-616b1afa"><view class="wrap data-v-616b1afa"><u-swiper vue-id="61ac1fa0-1" list="{{list}}" effect3d="{{true}}" duration="3000" class="data-v-616b1afa" bind:__l="__l"></u-swiper></view><view class="data-v-616b1afa">dasdasdas</view></view>

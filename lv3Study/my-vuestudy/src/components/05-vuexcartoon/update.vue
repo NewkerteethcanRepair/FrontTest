@@ -252,18 +252,6 @@ export default {
       var imgdata = response.filename;
       this.dialogImageUrl = imgdata;
 
-      // if(this.dialogImageUrl!=""){
-
-      //   axios.post("/cartoon/deleteImages",{imgs:this.dialogImageUrl})
-      //   .then(res => {
-      //     console.log(res)
-      //   })
-      //   .catch(err => {
-      //     console.error(err);
-      //   })
-
-      // }
-      // console.log(imgdata);
     },
     handlePreview(file) {
       console.log(file);
@@ -282,24 +270,10 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           console.log(valid);
-          //      time: " ",
-          // types: " ",
-          // valuedate: "",
-          // valuescore: 0,
-          // options:"",
+        
           if (this.dialogImageUrl == "") {
             this.dialogImageUrl = this.isimg;
           }
-
-          // console.log(222222, this.dialogImageUrl);
-        // name: " ",
-        // // region: "",
-        // // types: "",
-        // imgs: "",
-        // time: " ",
-        // types: " ",
-        // date: "",
-        // values: 0
           axios
             .get("/cartoon/update", {
               params: {

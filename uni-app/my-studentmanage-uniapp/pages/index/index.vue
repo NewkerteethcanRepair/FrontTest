@@ -8,6 +8,7 @@
   <view>
     <view class="student-head">
       <text>{{ title }}</text>
+      <u-button type="primary">主要按钮</u-button>
     </view>
     <studentlist></studentlist>
   </view>

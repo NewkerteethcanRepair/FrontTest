@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "usingComponents": {
+    "uni-list": "/components/uni-list/uni-list",
+    "uni-list-item": "/components/uni-list-item/uni-list-item",
+    "uni-collapse": "/components/uni-collapse/uni-collapse",
+    "uni-collapse-item": "/components/uni-collapse-item/uni-collapse-item",
+    "uni-pagination": "/components/uni-pagination/uni-pagination",
+    "uni-fab": "/components/uni-fab/uni-fab"
+  }
+}

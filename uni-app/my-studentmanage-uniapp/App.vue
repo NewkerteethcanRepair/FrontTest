@@ -1,26 +1,26 @@
 <script>
-	export default {
-		onLaunch: function () {
-			console.log('App Launch');
-		},
-		onShow: function () {
-			console.log('App Show');
-		},
-		onHide: function () {
-			console.log('App Hide');
-		}
-	};
+export default {
+  onLaunch: function() {
+    console.log("App Launch");
+  },
+  onShow: function() {
+    console.log("App Show");
+  },
+  onHide: function() {
+    console.log("App Hide");
+  }
+};
 </script>
 
-<style>
-	@import "./static/css/simplepro.css";
+<style lang="scss">
+@import "./static/css/simplepro.css";
+@import "uview-ui/index.scss";
+/* 解决头条小程序组件内引入字体不生效的问题 */
+/* #ifdef MP-TOUTIAO */
+@font-face {
+  font-family: uniicons;
+  src: url("/static/uni.ttf");
+}
 
-	/* 解决头条小程序组件内引入字体不生效的问题 */
-	/* #ifdef MP-TOUTIAO */
-	@font-face {
-		font-family: uniicons;
-		src: url('/static/uni.ttf');
-	}
-
-	/* #endif */
+/* #endif */
 </style>

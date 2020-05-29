@@ -1,0 +1,1 @@
+<view><view class="student-head"><text>{{title}}</text><u-button vue-id="8dd740cc-1" type="primary" bind:__l="__l" vue-slots="{{['default']}}">主要按钮</u-button></view><studentlist vue-id="8dd740cc-2" bind:__l="__l"></studentlist></view>

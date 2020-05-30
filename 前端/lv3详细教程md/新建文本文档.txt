@@ -1,0 +1,21 @@
+1. Vue 指令中 v-if 与 v-show 的区别是什么？
+
+v-if 惰性渲染
+
+2. Vue 中如何实现父子组件间的通信？
+
+3. Vue 组件中 data 的值为什么不能是对象？
+
+4. 什么是 MVVM 模式？
+
+M：Model 数据模型
+V：View 视图
+VM：ViewModel 视图模型
+
+MVC：
+C：controller 控制器
+
+5. Vue 中的 v-if 和 v-for 指令能否在一个元素上使用？为什么？
+
+
+6. 什么是单向数据流？

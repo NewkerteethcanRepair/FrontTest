@@ -104,11 +104,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"node-modules/uview-ui/components/u-button/u-button":1};
+/******/ 		var cssChunks = {"components/indexlist/indexlist":1,"node-modules/uview-ui/components/u-button/u-button":1,"node-modules/uview-ui/components/u-tabs/u-tabs":1,"node-modules/uview-ui/components/u-divider/u-divider":1,"node-modules/uview-ui/components/u-swiper/u-swiper":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"node-modules/uview-ui/components/u-button/u-button":"node-modules/uview-ui/components/u-button/u-button"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"components/indexlist/indexlist":"components/indexlist/indexlist","node-modules/uview-ui/components/u-button/u-button":"node-modules/uview-ui/components/u-button/u-button","components/indexinfor/indexinfor":"components/indexinfor/indexinfor","node-modules/uview-ui/components/u-tabs/u-tabs":"node-modules/uview-ui/components/u-tabs/u-tabs","node-modules/uview-ui/components/u-divider/u-divider":"node-modules/uview-ui/components/u-divider/u-divider","node-modules/uview-ui/components/u-gap/u-gap":"node-modules/uview-ui/components/u-gap/u-gap","node-modules/uview-ui/components/u-swiper/u-swiper":"node-modules/uview-ui/components/u-swiper/u-swiper"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

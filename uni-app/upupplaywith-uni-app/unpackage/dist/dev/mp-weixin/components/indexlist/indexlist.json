@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "u-swiper": "/node-modules/uview-ui/components/u-swiper/u-swiper",
+    "u-gap": "/node-modules/uview-ui/components/u-gap/u-gap",
+    "u-divider": "/node-modules/uview-ui/components/u-divider/u-divider",
+    "u-tabs": "/node-modules/uview-ui/components/u-tabs/u-tabs"
+  },
+  "component": true
+}

@@ -1,13 +1,55 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/indexlist/indexlist",
+    "pages/index/index",
+    "pages/indexsearch/indexsearch",
+    "pages/indexmine/indexmine",
+    "pages/indexinfor/indexinfor"
   ],
   "subPackages": [],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#F8F8F8",
+    "navigationBarBackgroundColor": "#19be6b",
     "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#19be6b",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/indexlist/indexlist",
+        "iconPath": "static/img/footer/footer-home.png",
+        "selectedIconPath": "static/img/footer/footer-home-act.png",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/indexsearch/indexsearch",
+        "iconPath": "static/img/footer/footer-appeal.png",
+        "selectedIconPath": "static/img/footer/footer-appeal-act.png",
+        "text": "搜寻"
+      },
+      {
+        "pagePath": "pages/indexinfor/indexinfor",
+        "iconPath": "static/img/footer/footer-msg.png",
+        "selectedIconPath": "static/img/footer/footer-msg-act.png",
+        "text": "信息"
+      },
+      {
+        "pagePath": "pages/indexmine/indexmine",
+        "iconPath": "static/img/footer/footer-member.png",
+        "selectedIconPath": "static/img/footer/footer-member-act.png",
+        "text": "我的"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/img/footer/footer-task.png",
+        "selectedIconPath": "static/img/footer/footer-task-act.png",
+        "text": "云说明"
+      }
+    ]
   },
   "usingComponents": {}
 }

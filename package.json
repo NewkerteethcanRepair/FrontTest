@@ -7,5 +7,9 @@
     "mongoose": "^5.9.13",
     "weui": "^2.3.0",
     "weui-miniprogram": "^1.0.3"
+  },
+  "devDependencies": {
+    "less": "^3.11.2",
+    "less-loader": "^6.1.0"
   }
 }
